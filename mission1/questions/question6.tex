@@ -1,0 +1,47 @@
+\section*{Question 6 : Arnaud Dethise}
+
+Soient deux piles, $p_{1}$ et $p_{2}$.
+
+push(A) : ajouter A dans la liste non-vide ($p_{1}$).
+
+pop() : vider tous les éléments de la liste non-vide ($p_{1}$) dans la liste vide ($p_{2}$), à l'exception du dernier élément. Retourner le dernier élément. $p_{2}$ est maintenant la liste non-vide, $p_{1}$ est la liste vide.\\
+
+Ainsi, les opérations suivantes :
+\begin{lstlisting}
+	push(1)
+	push(2)
+	push(3)
+	a = pop()
+	b = pop()
+\end{lstlisting}
+se traduisent en utilisant des files par :
+\begin{lstlisting}
+	p1.enqueue(1)                %   p1: [1]        p2: []
+	p1.enqueue(2)                %   p1: [2,1]      p2: []
+	p1.enqueue(3)                %   p1: [3,2,1]    p2: []
+	p2.enqueue(p1.dequeue())     %   p1: [3,2]      p2: [1]
+	p2.enqueue(p1.dequeue())     %   p1: [3]        p2: [2,1]
+	a = p1.dequeue()             %   p1: []         p2: [2,1]
+	p1.enqueue(p2.dequeue())     %   p1: [1]        p2: [2]
+	b = p2.dequeue()             %   p1: [1]        p2: []
+\end{lstlisting}
+
+La complexité de la fonction push est alors de $\Theta(1)$ et celle de pop est de $\Theta(N)$ où N est le nombre d'élément dans la pile. Il est possible d'implémenter la pile de telle sorte que les complexités de push et pop soient inversées.
+
+Cette solution est donc moins efficace que les implémentations normales d'une pile, dont la complexité est en temps constant pour push() et pop().\\
+
+Nous avons également discuté en séance de la possibilité d'implémenter une file à partir de deux piles. La solution, pour laquelle la fonction push a une complexité constante $\Theta(1)$ et la fonction pop a une complexité moyenne $\Theta(1)$, est indiquée ci-dessous.
+
+\begin{lstlisting}
+	pile A
+	pile B
+	
+	function enqueue(A) :
+		A.push(A)
+		
+	function dequeue() :
+		if B.isEmpty() :
+			while not A.isEmpty() :
+				B.push(A.pop())
+		return B.pop()
+\end{lstlisting}
