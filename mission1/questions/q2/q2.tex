@@ -1,0 +1,20 @@
+\section*{Question 2 : Charles Jacquet}
+Premièrement, une liste simplement chaînée est une liste composée de noeuds, dans laquelle chaque noeud contient des données et la référence du noeud suivant (lié uniquement dans un sens). Le premier noeud est appelé la tête (head) et le dernier élément est appelé la queue (tail). La liste est référencée par un élément gardant la référence de la tête de la liste. La référence au noeud suivant (appelé next) de la queue est null.\\
+Une pile est une liste dans laquelle on ne peut ajouter et supprimer des éléments qu'à la queue de la liste par des opérations appelées respectivement push et pop.\\
+Implémentation des deux fonctions:
+\begin{itemize}
+\item {Push :}
+
+Pour ajouter un élément, il faut parcourir la liste jusqu'à ce que l'élément de référence au prochain noeud soit null (la queue). Mettre la référence de ce noeud vers le nouveau noeud juste créé avec les données reçues et dont la référence au prochain noeud (next) est null.\\
+Lorsque la liste est vide. Il suffit de créer le noeud (toujours avec le next = null) et de mettre la référence de début de liste vers ce noeud.\\
+La complexité de cette fonction est de $\theta (n) $
+\item {Pop : }
+
+Pour supprimer un élément, il faut parcourir la liste jusqu'à ce que la référence contenue dans le noeud suivant soit null (next.next est null). Dans ce cas, il faut renvoyer les données de l'élément suivant et mettre la référence du noeud actuel (this.next) à null. 
+Dans le cas où il n'y a qu'un seul élément (la tête = la queue) il faut simplement renvoyer les données de la tête et ensuite la supprimer.
+
+La complexité de cette fonction est aussi de $\theta (n) $
+\end{itemize}
+
+On se rend compte que ce n'est pas très efficace car dans les deux cas, que ce soit pour supprimer ou ajouter un élément, il faut parcourir toute la liste ($\theta (n)$). 
+Une liste doublement chaînée pourrait être beaucoup plus efficace si nous gardions une référence vers la queue. Dans ce cas, la complexité serait en $\theta (1)$.
