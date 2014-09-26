@@ -1,10 +1,4 @@
-\documentclass{article}
-\usepackage{listings}
-\usepackage[margin=0.7in]{geometry}
-\begin{document}
-\lstset{language=Java}
-
-\section{Question 4 : Aurian de Potter}
+\section*{Question 4 : Aurian de Potter}
 \begin{lstlisting}
 public class DNodeStack<E> implements Stack<E>
 {
@@ -29,7 +23,7 @@ public class DNodeStack<E> implements Stack<E>
 		return false;
 	}
 	
-	// Rajoute un élément dans la pile
+	// Rajoute un element dans la pile
 	public void push(E elem)
 	{
 		DNode<E> v = new DNode<E>(elem, top, null);
@@ -38,14 +32,14 @@ public class DNodeStack<E> implements Stack<E>
 		size++;
 	}
 	
-	// Renvoi le premiere element de la pile
+	// Renvoie le premiere element de la pile
 	public E top() throws EmptyStackException
 	{
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 		return top.getElement();
 	}
 
-	// Enleve le premiere element de la pile 
+	// Enleve le premier element de la pile 
 	public E pop() throws EmptyStackException
 	{
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
@@ -175,4 +169,3 @@ public class EmptyStackException extends RuntimeException
 }
 \end{lstlisting}
 
-\end{document}
