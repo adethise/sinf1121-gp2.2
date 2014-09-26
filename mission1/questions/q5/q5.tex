@@ -2,59 +2,43 @@
 Dans cette question, il était demandé de compléter l'interface se trouvant à la page 220 du DSAJ-6 en ajoutant les préconditions et les postconditions.\\
 Voici l'interface complétée :\\
 
+\begin{lstlisting}
 
-public interface Queue<E e> \left\{ \\
-\\
+public interface Queue<E e> { 
+	@pre : La file n'est pas modifiee pendant que la methode est appliquee.  
+	@post : Retourne le nombre d'elements presents dans la file  si la file est vide alors la methode retourne null
+	@exception : 
+		
+		int size();	
+	
+	
+	@pre : La file n'est pas modifiee pendant que la methode est appliquee. 
+	@post : Retourne true si la file est vide sinon false 
+ 	@exception : 
 
-\begin{size}
+		boolean isempty();
+
+	@pre : this n'est pas modifiee pendant l'ajout de l'element e.L'element e est du meme type que la liste.
+	@post :Ajout l'element e a l'arriere de la file 
+	@exception : Si e n'est pas un element du type attendu alors une 	InvalidElementException est lancee.
+
+		void enqueue (E e)  throws InvalidElementException;
+
+	@pre : La file n'est pas modifiee durant l'application de la methode. 
+	@post : Retourne le premier element de la file sans le retirer et retourne null si la file est vide  
+ 	@exception : 
+
+		E first();
 
 
-@pré : La file n'est pas modifiée pendant que la méthode est appliquée. \\ 
-@post : Retourne le nombre d'éléments présents dans la file  si la file est vide alors la méthode retourne \textit{null} \\
- @exception : 
+	@pre : La file n'est pas modifiee durant l'application de la methode. 
+	@post : Retourne le premier element de la file et le retire. Retourne null 	si la file est vide 
+ 	@exception : 
 
-int size\left(\right);\\
-\end{size}
-
-\begin{isempty}
-
-@pré : La file n'est pas modifiée pendant que la méthode est appliquée. \\
-@post : Retourne \textit{true} si la file est vide sinon\textit{false} \\
- @exception : 
-
-boolean isempty\left(\right);\\
-\end{isempty}
-
-\begin{enqueue}
-
-@pré : \textbf{this} n'est pas modifiée pendant l'ajout de l'élément e.L'élément e est du même type que la liste.\\
-@post :Ajout l'élément e à l'arrière de la file  \\
-@exception : Si e n'est pas un élément du type attendu alors une InvalidElementException est lancée.
-
-void enqueue  \left( E e\right)  throws InvalidElementException;\\
-\end{enqueue}
-
-\begin{first}
-
-@pré : La file n'est pas modifiée durant l'application de la méthode. \\
-@post : Retourne le premier élément de la file sans le retirer et retourne \textit{null} si la file est vide  \\
- @exception : 
-
-E first\left(\right);\\
-\end{first}
-
-\begin{dequeue}
-
-@pré : La file n'est pas modifiée durant l'application de la méthode. \\
-@post : Retourne le premier élément de la file et le retire. Retourne \textit{null} si la file est vide  \\
- @exception : 
-
-E dequeue\left(\right);\right\}\\
+		E dequeue();
+		
+\end{lstlisting}
 
 
 
-\end{dequeue}
-
-\begin{explication}
 Dans cette interface, les spécifications n'ont pas besoin d'être défensives car les méthodes n'autorisent pas l'utilisateur à modifier directement la pile sauf pour la méthode enqueue. La méthode enqueue doit donc vérifier si les préconditions sont respectées et lancer une exception en cas de non respect de celles-ci. Mais est-ce judicieux sachant qu'en java, une telle erreur lance automatiquement une exception ?
-\end{explication}

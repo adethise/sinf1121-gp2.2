@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.26)  26 SEP 2014 12:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.26)  26 SEP 2014 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,40 +648,46 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 10.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 10.
-) (./q3/q3.tex) (./q6/q6.tex [1
+) (./q3/q3.tex) (./q5/q5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./q7/q7.tex
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./q6/q6.tex [2])
+(./q7/q7.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-[2]
+
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-) [3] (./solutions.aux) ) 
+[3]) [4] (./solutions.aux) ) 
 Here is how much of TeX's memory you used:
- 6857 strings out of 494958
- 90383 string characters out of 6179213
- 335322 words of memory out of 5000000
- 9935 multiletter control sequences out of 15000+600000
+ 6920 strings out of 494958
+ 91015 string characters out of 6179213
+ 370322 words of memory out of 5000000
+ 9994 multiletter control sequences out of 15000+600000
  49668 words of font info for 53 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,6n,36p,500b,1673s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/u
-sr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/l
-m/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texm
-f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on solutions.pdf (3 pages, 195407 bytes).
+ 38i,6n,36p,500b,1671s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvip
+s/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/t
+exmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on solutions.pdf (4 pages, 202190 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
