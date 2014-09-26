@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage[margin=0.7in]{geometry}
+\begin{document}
+\lstset{language=Java}
+
+\section{Question 4 : Aurian de Potter}
+\begin{lstlisting}
+public class DNodeStack<E> implements Stack<E>
+{
+	protected DNode<E> top;
+	protected int size;
+	
+	// Contruction d'une pile vide
+	public DNodeStack()
+	{
+		top = null;
+		size = 0;
+	}
+
+	public int size()
+	{
+		return size;
+	}
+
+	public boolean isEmpty()
+	{
+		if (top == null) return true;
+		return false;
+	}
+	
+	// Rajoute un élément dans la pile
+	public void push(E elem)
+	{
+		DNode<E> v = new DNode<E>(elem, top, null);
+		top = v;
+		v.getNext().setPrev(v);
+		size++;
+	}
+	
+	// Renvoi le premiere element de la pile
+	public E top() throws EmptyStackException
+	{
+		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
+		return top.getElement();
+	}
+
+	// Enleve le premiere element de la pile 
+	public E pop() throws EmptyStackException
+	{
+		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
+		E temp = top.getElement();
+		top = top.getNext();
+		top.setPrev(null);
+		size--;
+		return temp;
+	}
+	
+	// Affiche le pile sous forme de string
+	public String toString()
+	{
+		String out = "[";
+		DNode<E> v = top;
+		if(v == null) return (out + "]");
+		while(v.getNext() != null)
+		{
+			out += (v.getElement().toString() + ",");
+			v = v.getNext();
+		}
+		out += (v.getElement().toString() + "]");
+		return out;
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class DNode<E>
+{
+	// Instance variables:
+	private E element;
+	private DNode<E> next;
+	private DNode<E> prev;
+
+	/** Creates a node with null references to its element, next node and previous node */
+	public DNode()
+	{
+		this(null, null, null);
+	}
+
+	/** Creates a node with the given element, next node and previous node */
+	public DNode(E e, DNode<E> n, DNode<E> p)
+	{
+		element = e;
+		next = n;
+		prev = p;
+	}
+
+	// Accessor methods:
+	public E getElement()
+	{
+		return element; 
+	}
+
+	public DNode<E> getNext()
+	{ 
+		return next;
+	}
+	
+	public DNode<E> getPrev()
+	{
+		return prev;
+	}
+
+	// Modifier methods:
+	public void setElement(E newElem)
+	{ 
+		element = newElem; 
+	}
+
+	public void setNext(DNode<E> newNext)
+	{
+		next = newNext; 
+	}
+
+	public void setPrev(DNode<E> prev)
+	{
+		this.prev = prev;
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public interface Stack<E>
+{
+	/**
+	 * Return the number of elements in the stack.
+	 * @return number of elements in the stack. 
+	 */
+	public int size();
+	/** 
+	 * Return whether the stack is empty.
+	 * @return true if the stack is empty, false otherwise. 
+	 */
+	public boolean isEmpty();
+	/** 
+	 * Inspect the element at the top of the stack.
+	 * @return top element in the stack.  
+	 * @exception EmptyStackException if the stack is empty. 
+	 */
+	public E top() 
+			throws EmptyStackException;  
+	/**
+	 * Insert an element at the top of the stack.
+	 * @param element to be inserted.
+	 */
+	public void push (E element); 
+	/** 
+	 * Remove the top element from the stack.
+	 * @return element removed.
+	 * @exception EmptyStackException if the stack is empty.
+	 */
+	public E pop()
+			throws EmptyStackException;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+@SuppressWarnings("serial")
+public class EmptyStackException extends RuntimeException
+{  
+	public EmptyStackException(String err)
+	{
+		super(err);
+	}
+}
+\end{lstlisting}
+
+\end{document}
