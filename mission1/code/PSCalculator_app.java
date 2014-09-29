@@ -9,7 +9,9 @@ public class PSCalculator_app {
 		List<String> file = new ArrayList<String>(); 
 		file = FileAcces.ReadFromFile("ps.txt");
 		
-		System.out.print(file.toString());
+		
+		for (String x : file)
+		    System.out.println (x);				
 	}
 
 }

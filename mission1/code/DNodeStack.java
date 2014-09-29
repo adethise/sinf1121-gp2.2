@@ -24,9 +24,8 @@ public class DNodeStack<E> implements Stack<E>
 	// Rajoute un element dans la pile
 	public void push(E elem)
 	{
-		DNode<E> v = new DNode<E>(elem, top, null);
+		DNode<E> v = new DNode<E>(elem, top);
 		top = v;
-		v.getNext().setPrev(v);
 		size++;
 	}
 	
@@ -43,7 +42,6 @@ public class DNodeStack<E> implements Stack<E>
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 		E temp = top.getElement();
 		top = top.getNext();
-		top.setPrev(null);
 		size--;
 		return temp;
 	}
