@@ -49,15 +49,15 @@ public class DNodeStack<E> implements Stack<E>
 	// Affiche le pile sous forme de string
 	public String toString()
 	{
-		String out = "[";
+		String out = "";
 		DNode<E> v = top;
-		if(v == null) return (out + "]");
+		if(v == null) return (out);
 		while(v.getNext() != null)
 		{
-			out += (v.getElement().toString() + ",");
+			out += (v.getElement().toString() +" ");
 			v = v.getNext();
 		}
-		out += (v.getElement().toString() + "]");
+		out += (v.getElement().toString());
 		return out;
 	}
 }
