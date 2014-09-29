@@ -11,7 +11,7 @@ public class PSCalculator_app {
 		DNodeStack<Object>  stack = new DNodeStack<Object>();
 		List<String> file = new ArrayList<String>(); 
 		file = FileAcces.ReadFromFile("ps.txt");
-		Map<String, Integer> def = new HashMap<String, Integer>();
+		Map<String, Float> def = new HashMap<String, Float>();
 		
 		for (String x : file)
 		{	System.out.println(x);
@@ -75,6 +75,31 @@ public class PSCalculator_app {
 				}
 			}
 		    
+		}
+	}
+
+	/*
+	 * Set or update the value in map mapped with key s.
+	 */
+	protected static void def(float n, String s, Map<String, Float> map)
+	{
+		map.put(s, n);
+	}
+
+	/*
+	 * If o is an alias to a value mapped in map, return said value.
+	 * Else, o should be a float and this function will return its value.
+	 *
+	 * Throw an exception if o isn't a String and can't be casted to a float.
+	 * Return NULL if there is no key o in map.
+	 */
+	protected static float getValue(Object o, Map<String, Float> map)
+	{
+		if (o instanceof String) {
+			return map.get(o);
+		}
+		else {
+			return (Float) o;
 		}
 	}
 
