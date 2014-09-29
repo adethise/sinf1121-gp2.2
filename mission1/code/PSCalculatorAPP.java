@@ -10,14 +10,14 @@ public class PSCalculatorAPP {
 		
 		DNodeStack<Object>  stack = new DNodeStack<Object>();
 		List<String> file = new ArrayList<String>(); 
-		file = FileAccess.ReadFromFile("ps.txt");
+		file = FileAccess.ReadFromFile(args[0]);
 		PSCalculator PS = new PSCalculator();
 		
 		for (String x : file)
 		{
 			PS.feedStackFromLine(x);		    
 		}
-		FileAccess.WriteInFile("ps_Result.txt", PS.getOutString());
+		FileAccess.WriteInFile(args[1], PS.getOutString());
 	}
 
 }

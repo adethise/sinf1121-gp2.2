@@ -1,13 +1,16 @@
 1 1 add pstack pop
 1 3 4 mul add pstack pop
-1 3 add 4 mul pstack pop 
+1 ab add 4 mul pstack pop
 3 3 div pstack
-1 sub 0 eq pstack pop
+
+     1 sub 0 eq pstack pop
 
 1 2 eq pstack pop
+
 1 2 ne pstack pop
 
 /pi 3.141592653 def
+
 /radius 1.6 def
-pi radius dup mul mul pstack pop
+pi radius dup mul mul pstack pop     
 

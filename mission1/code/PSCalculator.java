@@ -7,7 +7,7 @@ public class PSCalculator {
 	private static DNodeStack<Object> PSStack = new DNodeStack<Object>();
 	private static Map<String, Float> def = new HashMap<String, Float>();
 	private static String outString = new String();	
-
+	private static int intLine = 1;
 	public String getOutString() {
 		return outString;
 	}
@@ -16,56 +16,87 @@ public class PSCalculator {
 	}
 
 	void feedStackFromLine(String lineToFeed){
-		System.out.println(lineToFeed);
 		String[] tabElement = lineToFeed.split(" ");
 		for( String element : tabElement)
 		{
-			interpretor(element);
+			if (interpretor(element) == -1)
+				return;			
 		}		
 	}
-	private static void interpretor(String element)
+	private static int interpretor(String element)
 	{	
 		switch(element){
+		case "":
+			return 0;
 		case "add" : 
 			add();
-			break;
+			return 0;
 		case "sub" : 
 			sub();
-			break;
+			return 0;
 		case "mul" : 
 			mul();
-			break;
+			return 0;
 		case "div" : 
 			div();
-			break;
+			return 0;
 		case "eq" : 
 			eq(false);
-			break;
+			return 0;
 		case "ne" : 
 			eq(true);
-			break;
+			return 0;
 		case "pstack" : 
 			pstack();
-			break;
+			
+			return 0;
 		case "dup" : 
 			dup();
-			break;
+			return 0;
 		case "exch" : 
 			exch();
-			break;
+			return 0;
 		case "def" : 
 			def();
-			break;
+			return 0;
 		case "pop":
 			pop();
-			break;
+			return 0;
 		default :
 			if(def.containsKey(element))
 			{
-			element = def.get(element).toString();
+				element = def.get(element).toString();
+				PSStack.push(element);
+				return 0;
 			}
-			PSStack.push(element);
+			else if (isFloat(element) || element.startsWith("/"))
+			{
+				PSStack.push(element);
+				return 0;
+			}
+			else
+			{
+				outString += (intLine++) + ") Erreur de format PostScript \n";
+				PSStack = new DNodeStack<Object>();
+				System.err.println("Erreur dans le format des instructions Post-Script");
+				return -1;
+			}
 		}
+	}
+
+	private static boolean isFloat(String element)
+	{
+
+		boolean toReturn = true;
+		try{
+			Float.parseFloat(element);
+		}
+		catch(NumberFormatException err)
+		{
+			toReturn = false;
+		}
+		return toReturn;
+
 	}
 	private static Float getFloatFromStack()
 	{
@@ -182,6 +213,6 @@ public class PSCalculator {
 	}
 	private static void pstack()
 	{
-		outString += PSStack.toString() + '\n';
+		outString += (intLine++) + ") "+PSStack.toString() + '\n';
 	}
 }
