@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 
-public class PSCalculator_app {
+public class PSCalculatorAPP {
 
 	public static void main(String[] args) {		
 		
 		DNodeStack<Object>  stack = new DNodeStack<Object>();
 		List<String> file = new ArrayList<String>(); 
-		file = FileAcces.ReadFromFile("ps.txt");
+		file = FileAccess.ReadFromFile("ps.txt");
 		Map<String, Float> def = new HashMap<String, Float>();
-		
 		for (String x : file)
 		{	System.out.println(x);
 			String[] element = x.split(" ");

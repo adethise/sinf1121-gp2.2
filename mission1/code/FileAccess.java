@@ -12,7 +12,7 @@ import java.util.List;
  * @author Gil De Grove, Romain Henneton
  *
  */
-public class FileAcces {
+public class FileAccess {
 	public static int WriteInFile(String filePath, String toWrite)
 	{
 
