@@ -22,9 +22,9 @@ public class DNodeStack<E> implements Stack<E>
 	}
 	
 	// Rajoute un element dans la pile
-	public void push(E elem)
+	public void push(E dNode)
 	{
-		DNode<E> v = new DNode<E>(elem, top);
+		DNode<E> v = new DNode<E>(dNode, top);
 		top = v;
 		size++;
 	}

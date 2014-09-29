@@ -3,7 +3,6 @@ public class DNode<E>
 	// Instance variables:
 	private E element;
 	private DNode<E> next;
-	//private DNode<E> prev;
 
 	/** Creates a node with null references to its element, next node and previous node */
 	public DNode()
@@ -12,16 +11,16 @@ public class DNode<E>
 	}
 
 	/** Creates a node with the given element, next node and previous node */
-	public DNode(E e, DNode<E> n)
+	public DNode(E element, DNode<E> next)
 	{
-		element = e;
-		next = n;
+		this.element = element;
+		this.next = next;
 	}
 
 	// Accessor methods:
 	public E getElement()
 	{
-		return element; 
+		return this.element; 
 	}
 
 	public DNode<E> getNext()
@@ -32,11 +31,11 @@ public class DNode<E>
 	// Modifier methods:
 	public void setElement(E newElem)
 	{ 
-		element = newElem; 
+		this.element = newElem; 
 	}
 
 	public void setNext(DNode<E> newNext)
 	{
-		next = newNext; 
+		this.next = newNext; 
 	}
 }
