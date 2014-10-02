@@ -143,9 +143,6 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
-			return;
-		else 
 			PSStack.push(temp1 + temp2);
 
 	}
@@ -156,9 +153,6 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
-			return;
-		else 
 			PSStack.push(temp2 - temp1);
 
 	}
@@ -169,9 +163,6 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
-			return;
-		else 
 			PSStack.push(temp1 * temp2);
 
 	}
@@ -182,9 +173,6 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
-			return;
-		else 
 			PSStack.push(temp2 / temp1);
 
 	}
@@ -222,10 +210,6 @@ public class PSCalculator {
 	private static void def()
 	{
 		Float fl = getFloatFromStack();
-		if( fl == Float.MIN_VALUE || fl == Float.MAX_VALUE)
-		{
-			return;
-		}
 		String d = PSStack.pop().toString();
 		if (d.startsWith("/")){
 			String tabD[] = d.split("/");
