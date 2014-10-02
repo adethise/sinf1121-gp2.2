@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class PSCalculator {
 
-	private static DNodeStack<Object> PSStack = new DNodeStack<Object>();
+	private static DNodeStack PSStack;;
 	private static Map<String, Float> def = new HashMap<String, Float>();
 	private static String outString = new String();	
 	private static int intLine = 1;
@@ -13,16 +13,37 @@ public class PSCalculator {
 	}
 
 	public PSCalculator() {
+		PSStack = new DNodeStack();
 	}
 
 	void feedStackFromLine(String lineToFeed){
 		String[] tabElement = lineToFeed.split(" ");
 		for( String element : tabElement)
 		{
+			try{
 			if (interpretor(element) == -1)
-				return;			
-		}		
+				break;		
+			}
+			catch(EmptyStackException err)
+			{
+				PSStack = new DNodeStack();
+				System.err.println("ERROR : not enough argument for the "+element+" instruction\n");
+				outString += intLine++ +") ERROR : not enough argument for the "+element+" instruction\n";
+				break;
+			}
+			catch(NumberFormatException err){
+				PSStack = new DNodeStack();
+				System.err.println("ERROR : not a float \n");
+				outString += intLine++ +") ERROR : not a float \n";
+				break;
+				
+			}
+			
+		}	
+		return;
 	}
+	
+	
 	private static int interpretor(String element)
 	{	
 		switch(element){
@@ -47,8 +68,7 @@ public class PSCalculator {
 			eq(true);
 			return 0;
 		case "pstack" : 
-			pstack();
-			
+			pstack();			
 			return 0;
 		case "dup" : 
 			dup();
@@ -87,36 +107,24 @@ public class PSCalculator {
 	private static boolean isFloat(String element)
 	{
 
-		boolean toReturn = true;
-		try{
+		try {
 			Float.parseFloat(element);
+			return true;
 		}
-		catch(NumberFormatException err)
-		{
-			toReturn = false;
-		}
-		return toReturn;
+		catch(NumberFormatException err){return false;} 
 
 	}
 	private static Float getFloatFromStack()
 	{
 		Float returnFloat;
-		try
-		{
 			returnFloat = Float.parseFloat(PSStack.pop().toString());
-		}
-		catch (NumberFormatException | NullPointerException e2) {
-			System.err.println("La valeur du def n'est pas dans le bon format ou n'a pas été spécifiée.");
-			outString += "error of conversion \n";
-			returnFloat = Float.MIN_VALUE;
-		}
 		return 	returnFloat;	
 	}
 	private static void add()
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MAX_VALUE)
+		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
 			return;
 		else 
 			PSStack.push(temp1 + temp2);
@@ -126,17 +134,17 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MAX_VALUE)
+		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
 			return;
 		else 
-			PSStack.push(temp1 - temp2);
+			PSStack.push(temp2 - temp1);
 
 	}
 	private static void mul()
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MAX_VALUE)
+		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
 			return;
 		else 
 			PSStack.push(temp1 * temp2);
@@ -146,17 +154,17 @@ public class PSCalculator {
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MAX_VALUE)
+		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE)
 			return;
 		else 
-			PSStack.push(temp1 / temp2);
+			PSStack.push(temp2 / temp1);
 
 	}
 	private static void eq(boolean not)
 	{
 		Float temp1 = getFloatFromStack();
 		Float temp2 = getFloatFromStack();
-		if (temp1 == Float.MIN_VALUE || temp2 == Float.MAX_VALUE)
+		if (temp1 == Float.MIN_VALUE || temp2 == Float.MIN_VALUE )
 			return;
 		boolean tempResult ;
 		if (temp1.equals(temp2))
@@ -176,9 +184,8 @@ public class PSCalculator {
 	}
 	private static void def()
 	{
-
 		Float fl = getFloatFromStack();
-		if( fl == Float.MIN_VALUE)
+		if( fl == Float.MIN_VALUE || fl == Float.MAX_VALUE)
 		{
 			return;
 		}
@@ -196,8 +203,7 @@ public class PSCalculator {
 
 	private static void dup()
 	{
-		Object temp = PSStack.top();
-		PSStack.push(temp);
+			PSStack.push(PSStack.top());
 
 	}
 	private static void exch()
@@ -209,7 +215,7 @@ public class PSCalculator {
 	}
 	private static void pop()
 	{
-		PSStack.pop();
+			PSStack.pop();
 	}
 	private static void pstack()
 	{

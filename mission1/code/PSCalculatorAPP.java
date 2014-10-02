@@ -8,7 +8,6 @@ public class PSCalculatorAPP {
 
 	public static void main(String[] args) {		
 		
-		DNodeStack<Object>  stack = new DNodeStack<Object>();
 		List<String> file = new ArrayList<String>(); 
 		file = FileAccess.ReadFromFile(args[0]);
 		PSCalculator PS = new PSCalculator();
