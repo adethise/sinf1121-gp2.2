@@ -1,0 +1,8 @@
+1) 2.0
+2) 13.0
+3) Erreur de format PostScript 
+4) 1.0
+5) true
+6) false
+7) true
+8) 8.042478
