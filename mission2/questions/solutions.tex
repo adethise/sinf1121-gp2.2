@@ -54,7 +54,43 @@
 
 \section*{Question 1 - Henneton Romain}
 \section*{Question 2 - Henneton Romain}
+
+
 \section*{Question 3 - Arnaud Dethise}
+
+	Un arbre équilibré (\textit{balanced}) est un arbre binaire dont la hauteur est minimisée. Ainsi, un arbre binaire contenant $l$ feuilles (\textit{leafs}) est équilibré s'il s'étend sur $log_{2}(l)+1$ niveaux, arrondi vers le haut.
+	Un arbre binaire équilibré contenant $n$ nœuds s'étend sur $log_{2}(n+1)$ niveaux.
+	
+	Remarque : un arbre correspondant à cette définition est dit \textit{à critère d'équilibre partiel}. Un arbre \textit{à critère d'équilibre total} devrait aussi être complet (voir ci-après), mais est rarement utilisé car cette contrainte peut imposer une réorganisation de l'arbre entier en cas d'insertion.
+	
+	Un arbre propre est un arbre dans lequel tout nœud possède 0 ou 2 sous-arbres.
+	Un arbre binaire équilibré n'est pas forcément propre, comme on peut le voir dans l'arbre représenté sur la figure \ref{balanced_improper_tree}.
+	
+	\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[scale=.7]{q3-balanced_improper_tree.png}
+		\caption{Les nœuds 23 et 54 n'ont qu'un seul \textit{subtree}, l'arbre est donc impropre. Il est par contre équilibré (11 nœuds, 4 niveaux). \textit{(source csupomona.edu)}}
+		\label{balanced_improper_tree}
+	\end{center}
+	\end{figure}
+	
+	Un arbre binaire essentiellement complet est un arbre pour lequel chaque niveau à l'exception du dernier est totalement rempli, et tous les nœuds du dernier niveau sont placés aussi loin que possible à gauche.
+	Le fait de définir l'arbre comme \textit{essentiellement} complet signifie que le dernier niveau peut ne pas être totalement rempli.
+	
+	Un arbre complet est toujours équilibré car le fait de placer les nouveaux nœuds sur le niveau le plus haut possible minimise effectivement la hauteur de l'arbre.
+	Un arbre équilibré n'est en revanche pas forcément complet. Un contre-exemple est donné à la figure \ref{balanced_incomplete_tree}.
+	
+	\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[scale=.7]{q3-balanced_incomplete_tree.png}
+		\caption{L'arbre compte 11 nœuds et 4 niveaux, il est donc équilibré. En revanche, le niveau $n-1$ n'est pas rempli et tous les nœuds du niveau $n$ ne sont pas à gauche, l'arbre est donc incomplet. \textit{(source boyet.com, edited)}}
+		\label{balanced_incomplete_tree}
+	\end{center}
+	\end{figure}
+	
+	Attention à ne pas confondre les arbres équilibrés et les arbres AVL, quasi équilibrés.
+
+
 \section*{Question 4}
 \section*{Question 5 - Arnaud Dethise}
 \section*{Question 6 - Gil De Grove}
