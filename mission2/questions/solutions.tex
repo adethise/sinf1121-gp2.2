@@ -28,7 +28,7 @@
   frame=single,                    % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
-  language=Octave,                 % the language of the code
+  language=Java,                   % the language of the code
   morekeywords={*,...},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
@@ -39,7 +39,7 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,                       % sets default tabsize to 2 spaces
+  tabsize=4,                       % sets default tabsize to 2 spaces
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -93,6 +93,36 @@
 
 \section*{Question 4}
 \section*{Question 5 - Arnaud Dethise}
+
+	Considérons une variation de la classe LinkedBinaryTree de DSAJ ne contenant pas de méthode \textit{parent} et n'implémentant que l'interface \textit{Iterable<E>}, qui ne permet pas de parcourir l'iterator vers l'arrière.
+	Cela signifie qu'il est impossible de remonter dans l'arbre, et que par conséquent chaque accès à un nœud n'appartenant pas à un sous-arbre doit se faire depuis la racine.
+	Si nous voulons pouvoir nous déplacer dans l'arbre, il faut donc créer la méthode \textit{parent}, ci-après.
+	
+	\begin{lstlisting}
+public Position<E> parent(Position<E> p) throws IllegalArgumentException
+{
+	Node<E> node = validate(p);
+	return getParentDfs(node, root);
+}
+
+private Position<E> getParentDfs(Node<E> node, Node<E> hook)
+{
+	if (hook == null) return null;
+	else
+	{
+		if (node == hook.getLeft() || node == hook.getRight()) return hook;
+		else
+		{
+			Node<E> tmp;
+			tmp = getParentDfs(node, hook.getLeft());
+			return (tmp != null ? tmp : getParentDfs(node,hook.getRight()));
+		}
+	}
+}
+	\end{lstlisting}
+	
+	Cet algorithme parcourt dans le pire cas une fois chaque nœud de l'arbre, et a donc une complexité temporelle O(n), n étant le nombre de nœuds dans l'arbre.
+
 \section*{Question 6 - Gil De Grove}
 \section*{Question 7}
 \section*{Question 8}
