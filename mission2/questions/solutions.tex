@@ -53,9 +53,44 @@
 \begin{document}
 \maketitle
 
-\section*{Question 1 - Henneton Romain}
-\section*{Question 2 - Henneton Romain}
 
+\section*{Question 1 - Henneton Romain}
+
+	La profondeur (\textit{depth}) d'un noeud p est égal au nombre de parents de p. La profondeur de la racine d'un arbre est donc égale à 0.
+	
+L'ensemble des noeuds ayant une profondeur égale sont appelés noeuds d'un même niveau (\textit{level}). Et la valeur de ce niveau est égal à la profondeur commune des noeuds qui le composent.
+
+	La hauteur(\textit{height}) d'un arbre (sous-arbre) est égale à la profondeur maximum de cet arbre (sous-arbre).
+	
+	Ces notions sont valables pour tout type d'arbre et pas uniquement pour les arbres binaires. Elles ne dépendent pas non plus de la structure de données utilisée pour représenter l'arbre, car ces caractéristiques sont propres à l'arbre (la façon dont on représente l'arbre "sur papier" ne dépend pas de l'implémentation informatique qui va suivre) et ne dépendent pas de son implémentation.
+	
+\section*{Question 2 - Henneton Romain}
+	Un arbre binaire est un arbre ordonné ayant les trois propriétés suivantes :
+	
+\begin{itemize}
+\item Chaque noeud a maximum deux enfants.
+\item Chaque enfant est soit un enfant de droite (\textit{left child}), soit un enfant de gauche (\textit{right child}).
+\item Un enfant de gauche précède un enfant de droite pour un parent donné. (=côté ordonné de l'arbre binaire)
+\end{itemize}
+
+Un arbre est ordonné si il y a un ordre entre les enfants de chaque noeud. C'est ordre est en général visualisé en arrangeant "frères" de gauche à droite selon leur ordre. Un arbre impropre n'est pas nécessairement désordonné. (exemple ci-dessous)
+\begin{figure}[!h]
+\center
+\includegraphics[scale=0.5]{q2impropre.png}
+\end{figure}
+
+Pour un arbre de taille connue et fixée, il peut être intéressant d'utiliser une implémentation basée sur un tableau. En effet, le nombre maximal d'éléments d'un arbre binaire de N éléments est $2^N-1$, et la taille peut donc être fixée avant l'insertion des données dans l'arbre.
+
+Avantages :
+\begin{itemize}
+\item Il est aisé de trouver le niveau d'un élément (log(p)), de trouver l'index du parent ( (p-1)/2), de trouver l'index des enfants d'un noeud ( p*2+1 et p*2+2 ).
+\item Dans certain cas précis, l'utilisation d'un tableau pour implémenter un arbre binaire est efficace en terme d'utilisation de mémoire (pour les "heaps" par exemple).
+\end{itemize}
+Inconvénients :
+\begin{itemize}
+\item L'espace utilisé est exponentiel pour le pire des cas 
+\item Les opérations sur arbre sont peu efficace. Par exemple en cas de suppression d'un noeud nécessite de redéplacer l'ensemble de la descendance du noeud supprimé.
+\end{itemize}
 
 \section*{Question 3 - Arnaud Dethise}
 
