@@ -177,7 +177,17 @@ private Position<E> getParentDfs(Node<E> node, Node<E> hook)
 \section*{Question 6 - Gil De Grove}
 \lstinputlisting{LinkedRBinaryTree.java}
 \section*{Question 7}
-\section*{Question 8}
+\section*{Question 8 - Lemaire Jérôme}
+Il faut utiliser l'approche de \textit{Euler TourBinary traversal} sur un arbre binaire.Cette approche peut être vue comme une promenade autour des contours de l'arbre. C'est une approche récursive car nous pouvons décomposer notre parcours en sous parcours pour chacun des sous arbres. Je n'ai malheureusement pas réussi à implémenter correctement dans les temps le pseudo code de la méthode toString(). Mais voici, l'algorithme que je vais utiliser pour l'implémenter d'ici lundi.
+
+\begin{itemize}
+	\item si la position p est interne, on print "`("`
+	\item si la position p a un enfant à gauche lc, alors on fait un appel récursif sur la nouvelle position lc et le sous-arbre de gauche. //Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
+	\item si la position p a un enfant à droite rc, alors on fait un appel récursif sur la nouvelle position rc et le sous-arbre de droite.//Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
+	\item si la position p est interne, on print "`)"`
+\end{itemize}
+
+
 \clearpage
 \section*{Question 9 - Zacharie Kerger}
 
