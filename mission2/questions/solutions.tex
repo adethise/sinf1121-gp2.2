@@ -176,20 +176,7 @@ private Position<E> getParentDfs(Node<E> node, Node<E> hook)
 
 \section*{Question 6 - Gil De Grove}
 \lstinputlisting{LinkedRBinaryTree.java}
-<<<<<<< Updated upstream
-\section*{Question 7}
-\section*{Question 8 - Lemaire Jérôme}
-Il faut utiliser l'approche de \textit{Euler TourBinary traversal} sur un arbre binaire.Cette approche peut être vue comme une promenade autour des contours de l'arbre. C'est une approche récursive car nous pouvons décomposer notre parcours en sous parcours pour chacun des sous arbres. Je n'ai malheureusement pas réussi à implémenter correctement dans les temps le pseudo code de la méthode toString(). Mais voici, l'algorithme que je vais utiliser pour l'implémenter d'ici lundi.
 
-\begin{itemize}
-	\item si la position p est interne, on print "`("`
-	\item si la position p a un enfant à gauche lc, alors on fait un appel récursif sur la nouvelle position lc et le sous-arbre de gauche. //Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
-	\item si la position p a un enfant à droite rc, alors on fait un appel récursif sur la nouvelle position rc et le sous-arbre de droite.//Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
-	\item si la position p est interne, on print "`)"`
-\end{itemize}
-
-
-=======
 \section*{Question 7 - Aurian de Potter}
 
 Une expression arithmétique peut être représentée par un arbre binaire dont les noeuds externes sont associés à des variables ou des constantes, et dont les nœuds internes sont associés à l'un des opérateurs +, -, x, et /.\\
@@ -201,11 +188,18 @@ Voiçi deux expemples de représentation :\\
 \textbf{1 + (2 * 3) :} \includegraphics[scale=1]{arithmetique.png}
 \textbf{sin x + (x / 3) :} \includegraphics[scale=0.5]{analytique.png}\\
 
-Nous pouvons remarquer une caractéristique supplémentaire pour la représentation d'une expression analytique, en effet dans ce cas la fonction sinus n'a qu'un seul enfant.
+Nous pouvons remarquer une caractéristique supplémentaire pour la représentation d'une expression analytique, en effet dans ce cas les fonctions peuvent ne prendre qu'un seul élément, dans notre cas sinus n'a qu'un seul enfant.
 
-\section*{Question 8}
->>>>>>> Stashed changes
-\clearpage
+\section*{Question 8 - Lemaire Jérôme}
+Il faut utiliser l'approche de \textit{Euler TourBinary traversal} sur un arbre binaire.Cette approche peut être vue comme une promenade autour des contours de l'arbre. C'est une approche récursive car nous pouvons décomposer notre parcours en sous parcours pour chacun des sous arbres. Je n'ai malheureusement pas réussi à implémenter correctement dans les temps le pseudo code de la méthode toString(). Mais voici, l'algorithme que je vais utiliser pour l'implémenter d'ici lundi.
+
+\begin{itemize}
+	\item si la position p est interne, on print "`("`
+	\item si la position p a un enfant à gauche lc, alors on fait un appel récursif sur la nouvelle position lc et le sous-arbre de gauche. //Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
+	\item si la position p a un enfant à droite rc, alors on fait un appel récursif sur la nouvelle position rc et le sous-arbre de droite.//Ensuite on print la valeur ou l'opérateur se trouvant à la position p.
+	\item si la position p est interne, on print "`)"`
+\end{itemize}
+
 \section*{Question 9 - Zacharie Kerger}
 
 Chaque arbre représente la dérivée formelle de l'expression présente à sa gauche.\\
