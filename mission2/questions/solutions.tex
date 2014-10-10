@@ -191,4 +191,23 @@ Chaque arbre représente la dérivée formelle de l'expression présente à sa g
 \textbf{cos(f)' =} \includegraphics[scale=1]{q9-cosf.png}
 \textbf{($f^{a}$)' =} \includegraphics[scale=1]{q9-fa.png}\\
 \textbf{($\frac{1}{g}$)' =} \includegraphics[scale=1]{q9-1divg.png} 
+
+Pour chaque cas de dérivation, il est nécessaire de créer une fonction différente qui permettra d'adapter l'arbre de base (généralement composé d'une racine et de 2 feuilles) vers un arbre représentant la dérivée.\\
+
+\underline{Exemple}:\\
+
+Prenons le cas du produit, l'arbre de base est constitué d'une racine "*" et de 2 feuilles "f" et "g". Pour obtenir l'arbre présenté ci-dessus, il faudra appliquer une fonction se présentant comme suit:
+
+\begin{lstlisting}
+produit(Tree T){
+    Modifier la racine "*" par "+" // via la methode set
+	Stocker les feuilles de gauche (f) et de droite (g)
+	Modifier les feuilles de gauche et de droite par "*" // methode set
+	addLeft(sous-arbre gauche, derive(f)) // derive(f) represente la derivee de f
+	addRight(sous-arbre gauche, g)
+	addLeft(sous-arbre droit, f)
+	addRight(sous-arbre droite, derive(g))// derive(g) represente la derivee de g
+	Return T 
+}
+\end{lstlisting}
 \end{document}
