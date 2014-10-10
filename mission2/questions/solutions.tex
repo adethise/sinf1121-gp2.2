@@ -127,7 +127,22 @@ Inconvénients :
 	Attention à ne pas confondre les arbres équilibrés et les arbres AVL, quasi équilibrés.
 
 
-\section*{Question 4}
+\section*{Question 4 - Lemaire Jérôme}
+
+La représentation d'un arbre par une structure chaînée est tel qu'un noeud à une position p maintient des références vers un élément à mémoriser et vers les noeuds associés aux enfants et au parent de p si il existe sinon la référence est \textit{null}. Une liste chaînée est un cas particulier d'un structure chaînée car pour avoir une liste chaînée, l'hypothèse de la linéarité de la séquence de la collection de noeuds a du être émise. Un structure chaînée est qu'en a elle une collection de noeuds relié entre eux de manière quelconque.//
+Ils permettent tous les deux de stocker des éléments à des positions définies. Dans une chacun des modèles, les noeuds sont référencés entre eux. //
+Dans le DSAJ-6, la classe qui implémente un arbre binaire par une structure chaînée est la classe LinkedBinaryTree situé aux pages 297-299.//
+Il est possible d'implémenter un arbre sous forme de liste chaînée mais cela implique beaucoup de travail et rend la compréhension de l'implémentation plus difficile. Voici comment procéder pour l'implémentation d'un arbre binaire en liste chaînée. Premièrement, il faut définir une fonction f tel que : //
+\begin{itemize}
+	\item si p est la racine alors f(p)=0
+	\item si p est l'enfant de droite de la position q alors f(p)=2*f(q)+1
+	\item si p est l'enfant de gauche de la position q alors f(p)=2*f(q)+2
+\end{itemize}
+Où f(p) représente la nouvelle position de p dans la liste chaînée. Ensuite, on crée une liste chaînée contenant un nombre d'élément égale à la valeur maximale du f(p) et on rempli le position calculée (f(p)) avec les éléments de la position p, en laissant de position vide de tout élément. Si on veut travailler sur un arbre général, il faudra définir une autre fonction f.
+
+
+
+
 \section*{Question 5 - Arnaud Dethise}
 
 	Considérons une variation de la classe LinkedBinaryTree de DSAJ ne contenant pas de méthode \textit{parent} et n'implémentant que l'interface \textit{Iterable<E>}, qui ne permet pas de parcourir l'iterator vers l'arrière.
