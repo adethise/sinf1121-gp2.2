@@ -32,23 +32,23 @@ public class OperationTree
 
 	public static void main(String[] args)
 	{
-		if (args.length <= 1) {
+		if (args.length == 0) {
 			printHelp();
 		}
-		else if (args[1].equals("-h") || args[1].equals("--help")) {
+		else if (args[0].equals("-h") || args[1].equals("--help")) {
 			printHelp();
 		}
-		else if (args[1].equals("-e") && args.length == 4) {
-			OperationTree myTree = new OperationTree(args[2]);
-			System.out.println(myTree.evaluate(Double.parseDouble(args[3])));
+		else if (args[0].equals("-e") && args.length == 3) {
+			OperationTree myTree = new OperationTree(args[1]);
+			System.out.println(myTree.evaluate(Double.parseDouble(args[2])));
 		}
-		else if (args[1].equals("-d") && args.length == 4) {
-			OperationTree myTree = new OperationTree(args[2]);
-			System.out.println(myTree.evaluate(Double.parseDouble(args[3])));
+		else if (args[0].equals("-d") && args.length == 3) {
+			OperationTree myTree = new OperationTree(args[1]);
+			System.out.println(myTree.evaluate(Double.parseDouble(args[2])));
 		}
-		else if (args.length == 3) {
-			List<String> equations = FileAccess.ReadFromFile(args[1]);
-			double x = Double.parseDouble(args[2]);
+		else if (args.length == 2) {
+			List<String> equations = FileAccess.ReadFromFile(args[0]);
+			double x = Double.parseDouble(args[1]);
 
 			for (String s : equations) {
 				OperationTree myTree = new OperationTree(s);
@@ -74,7 +74,126 @@ public class OperationTree
 		System.out.println("\tPrint the derivate of <equation> at x=<value>");
 	}
 
-	protected static OperationNode parseEquation(String s) {
-		return null;
+	/*
+	 * @pre s is a correct, fully parenthesed equation
+	 * @post return the first OperationNode of the OperationTree corresponding to s
+	 */
+	protected static OperationNode parseEquation(String s) throws IllegalArgumentException
+	{
+		if ( s.charAt(0) == '(' ) {
+			int end = findMatchingParenthesis(s, 0);
+			if ( end+1 == s.length() ) {
+				// assuming (...)
+				return parseEquation(s.substring(1, end));
+			}
+			else {
+				// assuming (...)'+'(...)
+				OperationNode firstOp = parseEquation(s.substring(1,end));
+				OperationNode secondOp = parseEquation(s.substring(end+2, s.length()));
+				return parseEquation(firstOp, secondOp, s.charAt(end+1));
+			}
+		}
+		else if ( s.substring(0, 4).equals("sin(") ) {
+			int end = findMatchingParenthesis(s, 3);
+			OperationNode firstOp = new SinNode(parseEquation(s.substring(4, end)));
+			if ( end+1 == s.length() ) {
+				// assuming sin(...)
+				return firstOp;
+			}
+			else {
+				// assuming sin(...)'+'(...)
+				OperationNode secondOp = parseEquation(s.substring(end+2, s.length()));
+				return parseEquation(firstOp, secondOp, s.charAt(end+1));
+			}
+		}
+		else if ( s.substring(0, 4).equals("cos(") ) {
+			int end = findMatchingParenthesis(s, 3);
+			OperationNode firstOp = new CosNode(parseEquation(s.substring(4, end)));
+			if ( end+1 == s.length() ) {
+				// assuming cos(...)
+				return firstOp;
+			}
+			else {
+				// assuming cos(...)'+'(...)
+				OperationNode secondOp = parseEquation(s.substring(end+2, s.length()));
+					return parseEquation(firstOp, secondOp, s.charAt(end+1));
+				}
+	
+			}
+		else if ( Character.isDigit(s.charAt(0)) ) {
+			int i;
+			for (i = 0 ; i < s.length() ; i++) {
+				if ( !( Character.isDigit(s.charAt(i)) || s.charAt(i) == '.') ) {
+					break;
+				}
+			}
+			// after this loop, i is either the index of the first non-digit character or s.length()
+			if ( i == s.length() ) {
+				// assuming s is a number
+				return new ConstNode(Double.parseDouble(s));
+			}
+			else {
+				// assuming a+(...) where a is a number
+				OperationNode firstOp = new ConstNode(Double.parseDouble(s.substring(0,i)));
+				OperationNode secondOp = parseEquation(s.substring(i+1, s.length()));
+				return parseEquation(firstOp, secondOp, s.charAt(i));
+			}
+		}
+		else {
+			throw new IllegalArgumentException("Bad string");
+			return null;
+		}
+	}
+
+	/*
+	 * @pre operator if a valid operator for the operands firstOp and secondOp
+	 * @post return the OperationNode corresponding to operator with its operands
+	 */
+	protected static OperationNode parseEquation(OperationNode firstOp, OperationNode secondOp, char operator) throws IllegalArgumentException
+	{
+		switch(operator) {
+		case '+':
+			return new AddNode(firstOp, secondOp);
+			break;
+		case '-':
+			return new SubNode(firstOp, secondOp);
+			break;
+		case '*':
+			return new MulNode(firstOp, secondOp);
+			break;
+		case '/':
+			return new DivNode(firstOp, secondOp);
+			break;
+		case '^':
+			return new PowNode(firstOp, secondOp);
+			break;
+		default:
+			throw new IllegalArgumentException("Bad string");
+			return null;
+		}
+	}
+
+	/*
+	 * @pre s.charAt(index) == '(', a matching parenthesis exists in s
+	 * @post index of the parenthesis matching s[index]
+	 */
+	protected static int findMatchingParenthesis(String s, int index) throws IllegalArgumentException
+	{
+		assert ( s.charAt(index) == '(' );
+		int count = 1;
+		for (int i = index+1 ; i < s.length() ; i++) {
+			if ( s.charAt(i) == '(' ) {
+				count++;
+			}
+			else if ( s.charAt(i) == ')' ) {
+				count--;
+			}
+			if ( count == 0 ) {
+				return i;
+			}
+		}
+
+		// if we reach this point then no mathcing parenthesis has been found
+		throw new IllegalArgumentException("Bad string");
 	}
 }
