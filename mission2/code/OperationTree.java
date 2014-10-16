@@ -93,6 +93,18 @@ public class OperationTree
 				return parseEquation(firstOp, secondOp, s.charAt(end+1));
 			}
 		}
+		else if ( Character.toLowerCase(s.charAt(0)) == 'x' ) {
+			if ( s.length() == 1 ) {
+				// assuming x
+				return new VarNode();
+			}
+			else {
+				// assuming x'+'(...)
+				OperationNode firstOp = new VarNode();
+				OperationNode secondOp = parseEquation(s.substring(2, s.length()));
+				return parseEquation(firstOp, secondOp, s.charAt(1));
+			}
+		}
 		else if ( s.substring(0, 4).equals("sin(") ) {
 			int end = findMatchingParenthesis(s, 3);
 			OperationNode firstOp = new SinNode(parseEquation(s.substring(4, end)));
