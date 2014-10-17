@@ -44,6 +44,7 @@ public class OperationTree
 		}
 		else if (args[0].equals("-d") && args.length == 3) {
 			OperationTree myTree = new OperationTree(args[1]);
+			myTree.derivate();
 			System.out.println(myTree.evaluate(Double.parseDouble(args[2])));
 		}
 		else if (args.length == 2) {
@@ -105,7 +106,7 @@ public class OperationTree
 				return parseEquation(firstOp, secondOp, s.charAt(1));
 			}
 		}
-		else if ( s.substring(0, 4).equals("sin(") ) {
+		else if ( s.length() > 4 && s.substring(0, 4).equals("sin(") ) {
 			int end = findMatchingParenthesis(s, 3);
 			OperationNode firstOp = new SinNode(parseEquation(s.substring(4, end)));
 			if ( end+1 == s.length() ) {
@@ -118,7 +119,7 @@ public class OperationTree
 				return parseEquation(firstOp, secondOp, s.charAt(end+1));
 			}
 		}
-		else if ( s.substring(0, 4).equals("cos(") ) {
+		else if ( s.length() > 4 && s.substring(0, 4).equals("cos(") ) {
 			int end = findMatchingParenthesis(s, 3);
 			OperationNode firstOp = new CosNode(parseEquation(s.substring(4, end)));
 			if ( end+1 == s.length() ) {
