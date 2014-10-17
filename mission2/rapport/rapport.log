@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.25)  14 OCT 2014 12:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.25)  17 OCT 2014 10:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -931,27 +931,55 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 53.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<ExpressionTree.png, id=4, 188.705pt x 223.83624pt>
+File: ExpressionTree.png Graphic file (type png)
+ <use ExpressionTree.png>
+Package pdftex.def Info: ExpressionTree.png used on input line 69.
+(pdftex.def)             Requested size: 94.35226pt x 111.91785pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 70.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 70.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 70.
 
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./rapp
-ort.aux) ) 
+[1
+
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Expre
+ssionTree.png>] <M2_DerivationTree.png, id=20, 2080.77374pt x 1137.24875pt>
+File: M2_DerivationTree.png Graphic file (type png)
+
+<use M2_DerivationTree.png>
+Package pdftex.def Info: M2_DerivationTree.png used on input line 78.
+(pdftex.def)             Requested size: 624.23695pt x 341.17726pt.
+ [2 <./M2_DerivationTree.png>] [3] (./rapport.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 15790 strings out of 493312
- 292273 string characters out of 6137870
- 339555 words of memory out of 5000000
- 18921 multiletter control sequences out of 15000+600000
- 31664 words of font info for 36 fonts, out of 8000000 for 9000
+ 15836 strings out of 493312
+ 292904 string characters out of 6137870
+ 341555 words of memory out of 5000000
+ 18953 multiletter control sequences out of 15000+600000
+ 49488 words of font info for 53 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 55i,6n,54p,388b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2013/texmf-dist/
-fonts/type1/public/lm/lmr17.pfb>
-Output written on rapport.pdf (1 page, 88936 bytes).
+ 55i,9n,54p,388b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
+cal/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
+e/2013/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2013/texmf-d
+ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2013/texmf-dist/fonts/type
+1/public/lm/lmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/l
+m/lmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmmi10.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/l
+ocal/texlive/2013/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on rapport.pdf (3 pages, 259294 bytes).
 PDF statistics:
- 28 PDF objects out of 1000 (max. 8388607)
- 20 compressed objects within 1 object stream
+ 56 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

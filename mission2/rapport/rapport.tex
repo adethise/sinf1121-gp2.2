@@ -52,8 +52,34 @@
 \begin{document}
 \maketitle
 \section*{Introduction}
+Dans cette mission, notre but était d'implémenter un programme permettant de dériver des expressions arithmétiques de manière automatisé. Pour ce faire, il nous était demandé d'implémenté une solution utilisant un arbre.
+
+
 \section*{Description de l'implémentation}
+Chaque expression arithmétique est tout d'abord décomposée en plusieurs opérations, pour ce faire nous avons utilisé la classe OperationNode qui est étendue en plusieurs types de noeuds appelés selon l'operation représentée(AddNode, SubNode, etc.). \\ 
+Cette façon de faire, nous permet de simplifier la gestion des dérivées. En effet, une fois l'arbre arithmétique construit, il nous suffit de dériver celui-ci pour obtenir le résultat désiré.
+
+\subsection*{Pourquoi plusieurs types de noeuds?}
+L'utilisation de plusieurs types de noeuds etait pour nous une évidence a cause du contexte de la mission. Chaque opération se dérive de manière unique et par conséquence la gestion par l'utilisation de classes distinctes représente au mieux la réalité.\\ De plus cela facilite l'ajout de nouvelle opération, qui ne sont pas implémentée en ce moment.
+
+\subsection*{Illustration d'une expression.}
+Comme expliqué au point précédent, nous allons maintenant illustré la décomposition d'une expresison en opération primaire dans notre programme. Dans la \ref{fig:ExpressionTree}, nous voyons qu'il y a une hiérarchie dans la manière dont nous utilisons les noeuds. 
+\begin{figure}[!h]
+    \begin{center}
+    \includegraphics[scale=0.5]{ExpressionTree.png}
+    \caption{Illustration de l'expression $(x+x*sin(x))$}
+    \label{fig:ExpressionTree}
+    \end{center}
+\end{figure}
+\newpage
+\subsection*{Diagramme de classe.}
+\begin{figure}[!h]
+    \begin{center}
+    \includegraphics[scale=0.3,angle = 90]{M2_DerivationTree.png}
+    \caption{Diagramme de classe de notre programme.}
+    \label{fig:ClassDiagram}
+    \end{center}
+\end{figure}
 \section*{Problèmes rencontrés}
-\section*{Test effectués}
 \section*{Conclusion}
 \end{document}
