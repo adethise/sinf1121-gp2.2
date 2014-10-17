@@ -80,6 +80,14 @@ Comme expliqué au point précédent, nous allons maintenant illustré la décom
     \label{fig:ClassDiagram}
     \end{center}
 \end{figure}
+\newpage
+Come expliqué dans les points précédents, la figure\ref{fig:ClassDiagram} représente les différentes classes utilisées. Nous voyons bien que la classe principale (OperationTree) a accès a n'importe quel noeud. Cependant, dans ses attributs, nous avons mis un OperationNode.\\
+La classe FileAccess nous permet l'accès aux fichiers. Elle provient de la mission précédente.
 \section*{Problèmes rencontrés}
+\begin{itemize}
+\item{} Dans notre implémentation, nous avons eu un problème pour créer une structure doublement chainée. Pour descendre dans l'arbre, nous pouvons le faire simplement. Maintenant pour remonter d'un enfant vers un parent le lien est inexistant. Cette implémentation avec un lien vers le parent, serait utile pour la simplification des dérivées(présence de 0 dans l'expression).
+\item{}Tout d'abord, même si cela n'est pas une excuse, le manque d'organisation dans le groupe n'a pas facilité la réalisation de la tâche. Nous nous sommes rendus compte que le travail était mal répartit. Nous mettrons donc l'organisation des taches au centre de nos prochaines réunions pour les missions.
+\end{itemize}
 \section*{Conclusion}
+La décomposition des classes dans notre programme, aurait du faciliter la répartition des taches, l'utilisation de multiple classe permet de pouvoir être plus modulable. Tant au niveau de la repartition du travail, qu'au niveau de l'ajout de nouvelles fonctions pour adapter notre programme.
 \end{document}
