@@ -153,7 +153,7 @@ public class OperationTree
 		}
 		else {
 			throw new IllegalArgumentException("Bad string");
-			return null;
+			//return null;
 		}
 	}
 
@@ -166,22 +166,17 @@ public class OperationTree
 		switch(operator) {
 		case '+':
 			return new AddNode(firstOp, secondOp);
-			break;
 		case '-':
 			return new SubNode(firstOp, secondOp);
-			break;
 		case '*':
 			return new MulNode(firstOp, secondOp);
-			break;
 		case '/':
 			return new DivNode(firstOp, secondOp);
-			break;
 		case '^':
 			return new PowNode(firstOp, secondOp);
-			break;
 		default:
 			throw new IllegalArgumentException("Bad string");
-			return null;
+		
 		}
 	}
 

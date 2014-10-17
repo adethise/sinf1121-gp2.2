@@ -23,4 +23,4 @@ Pour les nodes, regardez l'interface et les exemples. C'est simple comme
 bonjour. ConstNode et VarNode sont déjà faites.
 
 
-TODO : derniers nodes, debug, input
+TODO : debug ET input (Réaliser les tests et tout et tout :) :) )
