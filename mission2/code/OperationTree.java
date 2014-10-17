@@ -8,7 +8,7 @@ public class OperationTree
 	{
 		this.firstNode = parseEquation(s);
 	}
-
+	
 	public double evaluate(double x)
 	{
 		return firstNode.evaluate(x);
