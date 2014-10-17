@@ -13,12 +13,6 @@ import java.util.List;
  *
  */
 public class FileAccess {
-	public static void main(String[] args) {
-		//petit test de la méthode:
-		List<String> list = new ArrayList<String>();
-		list = ReadFromFile("test.txt");
-		System.out.println("voici la liste : \n\n" + list.toString());
-	}
 	public static int WriteInFile(String filePath, String toWrite)
 	{
 
