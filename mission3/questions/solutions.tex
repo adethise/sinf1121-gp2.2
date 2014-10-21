@@ -52,8 +52,24 @@
 \begin{document}
 \maketitle
 
-\section*{Question 1}
-\section*{Question 2}
+\section*{Question 1 : Arnaud Dethise}
+
+	Les \texttt{Maps} sont des tableaux associatifs. Il s'agit d'un ensemble d'\textit{entries} qui sont des paires clé/valeur. Chaque entry associe une clé unique à sa valeur.
+
+	Les méthodes principales sont \texttt{put(k,v)} qui ajoute à la map la valeur \textit{v} associé à la clé \textit{k} ; \texttt{get(k)} qui retourne la valeur associée à la clé \textit{k} ; et \texttt{remove(k)} qui retire l'entry donc la clé est \textit{k}.
+	
+	\vspace{0.35cm}
+
+	Bien qu'il soit normalement possible de mettre un \texttt{null} comme valeur d'une entrée, certaines implémentations de Map en Java l'interdisent explicitement pour éviter les ambiguïtés dans le cas où une clé n'existe pas. En effet, si la clé \textit{k} n'existe pas, \texttt{get(k)} renverra \texttt{null}. Si une entrée (k,\texttt{null}) existe, \texttt{get(k)} renverra \texttt{null} non parce que la clé n'existe pas, mais parce que \texttt{null} est la valeur associée à \textit{k}.
+	
+	\vspace{0.35cm}
+	
+	Certaines applications importantes sont :
+	\begin{itemize}
+		\item TODO : applications (DSAJ6 p.370)	
+	\end{itemize}
+
+\section*{Question 2 : Arnaud Dethise}
 \section*{Question 3}
 \section*{Question 4}
 \section*{Question 5}
