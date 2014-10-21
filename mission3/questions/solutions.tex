@@ -28,7 +28,7 @@
   frame=single,                    % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
-  language=Octave,                 % the language of the code
+  language=Java,                 % the language of the code
   morekeywords={*,...},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
@@ -45,9 +45,9 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
-\date{insert date 2014}
+\date{24 octobre 2014}
 \author{Groupe 2.2}
-\title{Produit Mission X}
+\title{Produit Mission 3}
 
 \begin{document}
 \maketitle
@@ -64,12 +64,63 @@
 	
 	\vspace{0.35cm}
 	
-	Certaines applications importantes sont :
+	Exemples d'applications importantes :
 	\begin{itemize}
-		\item TODO : applications (DSAJ6 p.370)	
+		\item Liste de membre de personnel. Par exemple, l'UCL avec une map, une entry par étudiant, le NOMA comme clé et le nom comme valeur.	
+		\item Un DNS mappe une url avec l'ip qui lui est associée.
+		\item Un programme de graphisme peut associer un alias (\texttt{bleu}) avec une couleur (\texttt{rgb(0,0,255)}).
 	\end{itemize}
 
 \section*{Question 2 : Arnaud Dethise}
+
+	\subsection*{Hash table}
+	
+	Au lieu d'utiliser directement les objets comme clé, on calcule leur hash code qui est ensuite compressé en un entier appartenant au range(0,N-1) et sert de clé pour un tableau statique.
+	
+	Cette structure est celle qui propose la meilleure efficacité et est suffisamment versatile pour être utilisée dans la plupart des situations. Les conditions sont qu'on puisse calculer le hash des clés, et qu'on ne doive pas récupérer lesdites clés (inefficace pour compter le nombre d’occurrences d'un mot, par exemple).
+	
+	Complexité : toutes les fonctions principales de map pour une hash table sont de complexité moyenne O(1). Dans le pire cas (collision à chaque hash) on passe en O(n) (en supposant que les buckets sont remplis comme des unsorted list map).
+	En effet, une fois le hash calculé on peut accéder directement à l'élément (pour le get) sans recherche, et la table a une taille fixe et ne doit donc pas être réorganisée lors de l'ajout ou du retrait d'un élément.
+	
+
+	\subsection*{Sorted map}
+	
+	Basée sur une ArrayList d'objets MapEntry<> triées en fonction de la comparaison des clés.
+	
+	Cette implémentation est efficace si l'on veut pouvoir aisément retrouver une clé (pour récupérer ou modifier sa valeur), mais peu efficace si les clés évoluent souvent (utilisation de \texttt{remove} ou de \texttt{put} sur une clé n'existant pas encore) car le tableau doit être réorganisé.
+	
+	\vspace{0.35cm}	
+	
+	Complexité :
+	
+	\texttt{get(k)} : complexité dépendant de l'algorithme de recherche. Généralement du O(log(n)) (recherche binaire).
+	
+	\texttt{put(k,v)} : complexité de la recherche de la position O(log(n)). Si la clé n'existe pas encore, il faut ajouter la complexité de la réorganisation de la liste O(n).
+	
+	\texttt{remove(k)} : recherche et réorganisation de la liste, O(n).
+
+
+	\subsection*{Skip list}
+	
+	La description complète du principe d'une skip list est assez complexe et n'est pas l'objet de cette question. L'explication peut être trouvée dans le DSAJ6 p.402.
+	
+	Il s'agit d'une sorte de liste simplement chaînée contenant des liens permettant d'avancer plus rapidement que dans une liste chaînée normale (en skippant des éléments).
+	Cette structure impose que la liste soit triée pour pouvoir être naviguée. Par conséquent elle ne peut pas être utilisée pour implémenter un dictionnaire non ordonné.
+	
+	Le fait qu'il s'agisse d'une liste chaînée et non d'une ArrayList a pour conséquence que les opérations d'ajout ou de retrait d'une nouvelle clé sont beaucoup plus efficaces. Cette implémentation est donc strictement supérieure à la sorted array list.
+	
+	La nature aléatoire de la skip list fait que la complexité des opérations doit être évaluée comme une complexité attendue (moyenne), et non comme la borne supérieure de la complexité exacte.
+	La complexité attendue est donc O(log(n)) pour les trois opérations de base.
+	
+	\subsection*{Binary search tree}
+	
+	Il s'agit d'un arbre ordonné trié de telle sorte que chaque nœud possède une valeur, un enfant plus petit et un enfant plus grand que lui.
+	
+	Puisque les nœuds sont chaînés et l'arbre trié, toutes les opérations de recherche s'exécutent en O(h) où h est la hauteur de l'arbre, et les opérations de modifications en O(1). Par conséquent, les méthodes \texttt{put}, \texttt{get} et \texttt{remove} sont de complexité O(h).
+	
+	Cette implémentation est donc aussi efficace qu'une skip list si l'arbre est équilibré (car dans ce cas, h=log(n)). Toutefois, si l'arbre est fortement déséquilibré (par exemple les valeurs sont introduites par ordre croissant), alors h peut augmenter jusqu'à, dans le pire cas, h=n.
+	
+
 \section*{Question 3}
 \section*{Question 4}
 \section*{Question 5}
