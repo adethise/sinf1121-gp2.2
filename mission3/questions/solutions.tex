@@ -126,7 +126,7 @@
 
 La signature de cette nouvelle méthode est \emph{void union(Dictionary D2)}. Vu que cette méthode doit appartenir au type abstrait \emph{Dictionary}, elle doit être appelée comme ceci: D1.union(D2) avec D1 correspondant à un premier dictionnaire dans lequel sera fait l'union des deux dictionnaires. \\
 \newline
-Pour ce faire, il faut copier les éléments du deuxième dictionnaire dans le premier en veillant à ce qu'un  élément ne soit pas déjà présent dans ce premier dictionnaire.
+Pour ce faire, il faut copier les éléments du deuxième dictionnaire dans le premier en veillant à ce qu'une clé ne soit pas déjà présente dans ce premier dictionnaire.
 
 \begin{lstlisting}
 public void union(Dictionary D2)
@@ -167,7 +167,12 @@ Je vais essentiellement me concentrer sur la méthode du sondage linéaire qui c
 Cette approche complexifie fortement l'implémentation des méthodes de base mais prend moins d'espace mémoire que l'autre car elle comble juste les trous de la table. De plus, nous perdons une partie de l'utilité des index de la table de hachage car nous devons malgré tout la parcourir pour essayer de trouver l'entrée voulue.\\
 \section*{Question 7}
 \section*{Question 8 : Kerger Zacharie}
-To do
+
+Pour réaliser le retrait d'une entrée d'une table de hachage utilisant la technique du linear probing mais sans marqueur spécial pour représenter les entrées supprimées, il faudrait tout d'abord trouver et supprimer l'élément désiré. Ensuite, on parcourt le tableau (à partir de l'élément supprimé) jusqu'au prochain bucket: s'il est vide, le programme s'arrête, s'il est plein, on supprime l'élément dans le bucket et on le réajoute dans la table de hachage avec une méthode \emph{add(k)} utilisant la technique du linear probing. On recommence cette démarche tant que l'on ne tombe pas sur un bucket vide.\\
+\newline
+TO DO: Complexité
+
+
 \section*{Question 9}
 % add sections if more questions
 
