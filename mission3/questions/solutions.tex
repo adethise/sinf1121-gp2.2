@@ -135,8 +135,36 @@ public void union(Dictionary D2)
 }
 \end{lstlisting}
 
-\section*{Question 5}
-\section*{Question 6}
+\section*{Question 5 : Lemaire Jérôme}
+
+
+Pour obtenir la liste des entrées mémorisées dans un Map implémenté dans une table de hachage, il suffit de parcourir l'ensemble des cases de la table de hachage et d'ajouter chaque entrée présente dans les cases de la table de hachage. L'implémentation de cette méthode serait différentes pour chacune des approches possibles de la gestion des collisions. L'implémentation de cette méthode serait également différente car les Map ordonnées ne sont pas confrontées aux collision par définition et que chaque case contient une entrée.\\
+D'après la méthode de recherche binaire dans une table ordonnée, nous obtenons la complexité temporelle O(log n), où n est le nombre d'entrées, pour la methode get et toutes les autres méthodes de recherches d'entrées.\\
+
+Il n'est pas intéressant de mémoriser les entrées d'une liste triée fixe dans un table de hachage car celle-ci est plus optmale pour les listes qui subissent de nombreuses modifications grace à l'utilisation des buckets, listes chainées qui permettent d'ajouter/supprimer une entrée sur une liste chainée plus courte et localisable facilement. Mais malheureusement, l'utilisation de strucutes auxiliaires fait que la table utilise plus de mémoire qu'une simple table. La complexité spaciale de la table de hachage serait en O(m*n*p) où p représente la taille spatiale d'une entrée, n est le nombre d'entrée stockées et m est le nombre de case dans la table. 
+ 
+
+\section*{Question 6 : Lemaire Jérôme}
+
+Une collision a lieu lorsque deux clés différentes ont la même valeur de hachage. On peut définir la notion de manière plus rigoureuse, soit $ k_{1}, k_{2} $ deux clés distinctes des entrées respectives $ (k_{1},v_{1}),(k_{2},v_{2}) $ si $ h(k_{1) = k_{2}} $ avec h la fonction de hachage.
+
+Les collisions en tant que tel n'ont pas d'influence sur la complexité des opérations mais c'est la manière dont on gère ces collisions qui influence la complexité des opérations.\\
+Il y a deux grandes manières d'aborder la gestion des collisions, soit on conserve la valeur de la fonction de hachage des deux clés en trouvant un moyen de stocker plusieurs entrées différentes au même index, soit en placant la deuxième entrée à un autre index au alentour de l'index calculer avec la fonction de hachage.\\
+
+\subsection*{Separate chaining}
+
+Cette gestion des collisions consiste à stocker plusieurs entrées au même index de la table de hachage si celles-ci ont la même valeur de hachage. Pour faire en sorte que plusieurs entrées puissent se trouver dans une même case du tableau de hachage, il a fallu faire appel au liste chainée non ordonnée. Chaque case de la table de hachage pointe soit vers null soit vers un liste chainée non ordonnée contenant les entrées ayant pour valeur de hachage l'index de la case. 
+Cette apporche modifie l'implémentation des différentes méthodes d'opérations. Pour la méthode,containsKey(k) qui recherche d'existence d'une clé k dans la table de hachage, nous aurons dans le pire des cas une complexité O(n) où n est le nombre d'élément présent dans la liste chainée non ordonnée de la case correpondant à la valeur de la fonction de hachage. 
+
+Le grand désavantage de cette méthode est l'utilisation de stuctures auxiliaires qui prennent de la place en mémoire.
+ 
+ \subsection*{Open addressing}
+ 
+ Cette approche consiste à modifier chercher une autre case dans le voisinage de la case dont l'index est désigné par la table de hachage qui serait prête à accepter l'entrée désirée. Il y a différentes manières de réaliser cette approche, le sondage linéaire (linear probing), le sondage quadratique et le double hachage. \\
+
+Je vais essentiellement me concentrer sur la méthode du sondage linéaire qui consiste à se déplacer de case en case à partir de la case dont l'index correspond à la valeur calculer par la fonction de hachage jusqu'à trouver un case vide et y ajouter l'entrée. Cette méthode modifie fortement l'implémentation des fonctions de base. Lorsque je recherche un entrée dont la clé est k, je dois parcourir la table à partir de la case dont l'index correspond à la valeur calculée par la fonction de hachage jusqu'à la case où se trouve l'entrée ayant pour clé k ou jusqu'à une case vide. Mais imaginons que l'on désire supprimer une entrée dans la table, on va créer un trou dans le tableau et on n'arrivera donc plus à atteindre le valeurs se trouvant après ce trou. On doit donc indiquer que la case a été occupé et que l'on peut continué notre recherche après cette case.\\
+
+Cette approche complexifie fortement l'implémentation des méthodes de base mais prend moins d'espace mémoire que l'autre car elle comble juste les trous de la table. De plus, nous perdons une partie de l'utilité des index de la table de hachage car nous devons malgré tout la parcourir pour essayer de trouver l'entrée voulue.\\
 \section*{Question 7}
 \section*{Question 8 : Kerger Zacharie}
 To do
