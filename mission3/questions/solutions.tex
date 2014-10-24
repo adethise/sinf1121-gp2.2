@@ -166,6 +166,27 @@ Je vais essentiellement me concentrer sur la méthode du sondage linéaire qui c
 
 Cette approche complexifie fortement l'implémentation des méthodes de base mais prend moins d'espace mémoire que l'autre car elle comble juste les trous de la table. De plus, nous perdons une partie de l'utilité des index de la table de hachage car nous devons malgré tout la parcourir pour essayer de trouver l'entrée voulue.\\
 \section*{Question 7}
+
+Hashtable est une variante de table de hash utilisant l'interface Map, et donc des clés associées à des valeurs. La spécificité de cette implémentation est que les clés et valeurs ne peuvent pas correspondre à null. Les deux éléments principaux composant cette classe sont : un bucket array et une fonction de Hashage. Le bucket array est un tableau dans lequel chaque cellule contient un ensemble de paire clé-valeur. Et la fonction de hashage est une fonction permettant de "convertir" une clé en une clé hashée (voir explications sur le hash dans les sections ci-dessus).
+\\
+
+D'autres implémentations de l'interface Map sont aussi fournies par Java, comme : AbstractMap,HashMap, LinkedHashMap,WeakHashMap et IdentityHashMap (voir diagramme ci-dessous):
+\\
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{diagramme.jpg}
+\end{figure}
+
+
+Voici les différentes caractéristiques de ces implémentations :
+\begin{itemize}
+\item AbstractMap : Squelette d'implémentation de Map permettant une réutilisation ultérieure plus facile pour l'utilisateur.
+\item HashMap : Permet l'utilisation de clés et valeurs initialisées à null
+\item LinkedHashMap : Classe indentique à HashMap si ce n'est qu'elle maintient une double liste contenant toutes les entrées de la HashMap
+\item WeakHasMap : Lorsqu'une clé n'est pas utilisée, elle est automatiquement supprimée par le Garbage Collector.
+\item IdentityHashMap : Les comparaisons se font par référence (==) et pas par comparaison d'objets (equals).
+\end{itemize}
+
 \section*{Question 8 : Kerger Zacharie}
 
 Pour réaliser le retrait d'une entrée d'une table de hachage utilisant la technique du linear probing mais sans marqueur spécial pour représenter les entrées supprimées, il faudrait tout d'abord trouver et supprimer l'élément désiré. Ensuite, on parcourt le tableau (à partir de l'élément supprimé) jusqu'au prochain bucket: s'il est vide, le programme s'arrête, s'il est plein, on supprime l'élément dans le bucket et on le réajoute dans la table de hachage avec une méthode \emph{add(k)} utilisant la technique du linear probing. On recommence cette démarche tant que l'on ne tombe pas sur un bucket vide.\\
