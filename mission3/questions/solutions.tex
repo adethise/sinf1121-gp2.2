@@ -121,7 +121,49 @@
 	Cette implémentation est donc aussi efficace qu'une skip list si l'arbre est équilibré (car dans ce cas, h=log(n)). Toutefois, si l'arbre est fortement déséquilibré (par exemple les valeurs sont introduites par ordre croissant), alors h peut augmenter jusqu'à, dans le pire cas, h=n.
 	
 
-\section*{Question 3}
+\section*{Question 3 : Aurian de Potter}
+\begin{lstlisting}
+public class Q3
+{
+	public static int CountOne(int[][] A)
+	{
+		int result = 0;
+		for (int i = 0; i < A.length; i++) 
+		{
+			int temp = Search(A[i],0,A[0].length/2,A[0].length-1);
+			result += temp;
+		}
+		return result;
+	}
+	
+	public static int Search(int[] ligne, int debut, int milieu, int fin)
+	{
+		if(ligne[milieu] == 0)
+		{
+			if(milieu == 0)
+				return 0;
+			else if (ligne[milieu-1] == 1)
+				return milieu;
+			else
+				return Search(ligne, debut, (milieu-debut)/2, milieu);
+		}
+		else
+		{
+			if(milieu == ligne.length-1)
+				return ligne.length;
+			else if(milieu == ligne.length-2)
+				return ligne.length;
+			else if (ligne[milieu+1] == 0)
+				return milieu+1;
+			else
+				return Search(ligne, milieu, milieu+(fin-milieu)/2, fin);
+		}
+	}
+}
+\end{lstlisting}
+
+Dans le cas de cette algorithme nous avons bien une complexité de O(n log(n)). En effet, pour chaque ligne du tableau, la recherche du nombre de 1 se fait via un parcours logarithmique. Le but de l’algorithme va être de trouver le dernier 1 de la ligne. Si on voit que le dernier 1 se trouve à la 3eme position du tableau, c’est qu’il y a 3 « 1 » dans la ligne. Pour rechercher ce dernier 1, à chaque appel récursif, on va diviser par 2 la taille du sous tableau à parcourir. Du coup, on peut voir une complexité logarithmique pour trouver le nombre de 1 d’une ligne. Vu qu’il y a n ligne dans le tableau, la complexité total ne va pas dépasser O(n log(n)). Il s’agit ici d’une borne supérieur, car la complexité peut descendre jusqu’à theta(n) dans les meilleurs cas.
+
 \section*{Question 4 : Kerger Zacharie}
 
 \begin{lstlisting}
