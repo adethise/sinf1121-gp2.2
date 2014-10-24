@@ -124,14 +124,52 @@
 \section*{Question 3}
 \section*{Question 4 : Kerger Zacharie}
 
-La signature de cette nouvelle méthode est \emph{void union(Dictionary D2)}. Vu que cette méthode doit appartenir au type abstrait \emph{Dictionary}, elle doit être appelée comme ceci: D1.union(D2) avec D1 correspondant à un premier dictionnaire dans lequel sera fait l'union des deux dictionnaires. \\
-\newline
-Pour ce faire, il faut copier les éléments du deuxième dictionnaire dans le premier en veillant à ce qu'une clé ne soit pas déjà présente dans ce premier dictionnaire.
-
 \begin{lstlisting}
+/**
+ * @pre :  -
+ * @post : Effectue l'union de deux dictionnaires implementes par des tables ordonnees dans 
+ *         le premier dictionnaire contenant les entrees des deux dictionnaires.
+ */
 public void union(Dictionary D2)
 {
-  //TO DO
+  Enumeration<K> EK1 = this.keys(); //Utilisation des methodes de la classe Dictionary
+  Enumeration<K> EK2 = D2.keys();
+  Enumeration<V> EV2 = D2.elements();
+  int i = 0;
+  int j = 0;
+  while(i < this.size() && j < D2.size())
+	{
+	    K key1 = EK1.nextElement(); 
+	    K key2 = EK2.nextElement();
+	    V val2 = EV2.nextElement();
+	    while(key2 n est pas ajoute dans le dictionnaire)
+	    {
+	          if (key1.compareTo(key2) == 0)
+	          {
+	              //Vu qu'une cle peut contenir plusieurs valeurs, on utilise une methode "merge" qui va fusionner les deux valeurs (par exemple dans une liste)
+	              V newVal = merge(val1, val2); 
+		          this.put(key1, newVal);
+              }
+		      else if (key1.compareTo(key2) > 0)
+		      {
+		          this.put(key2, val2) 
+		      }
+		      else
+		      {
+		          //Vu que key2 n'a pas ete ajoute, on doit avancer dans le dictionnaire
+			      key1 = EK1.nextElement();
+			      i++; //Pour ne pas tomber sur une NoSuchElementException
+		      }
+	    }
+	    j++;
+	 }	
+	 
+   while(EK2.hasMoreElements) //On ajoute les cles restantes du deuxieme dictionnaire
+   {
+        K key2 = EK2.nextElement();
+        V val2 = EV2.nextElement();
+        this.put(key2, val2); 
+   }		
 }
 \end{lstlisting}
 
@@ -191,7 +229,7 @@ Voici les différentes caractéristiques de ces implémentations :
 
 Pour réaliser le retrait d'une entrée d'une table de hachage utilisant la technique du linear probing mais sans marqueur spécial pour représenter les entrées supprimées, il faudrait tout d'abord trouver et supprimer l'élément désiré. Ensuite, on parcourt le tableau (à partir de l'élément supprimé) jusqu'au prochain bucket: s'il est vide, le programme s'arrête, s'il est plein, on supprime l'élément dans le bucket et on le réajoute dans la table de hachage avec une méthode \emph{add(k)} utilisant la technique du linear probing. On recommence cette démarche tant que l'on ne tombe pas sur un bucket vide.\\
 \newline
-TO DO: Complexité
+Comme dit précédemment, lorsque l'on supprime un élément, on va ensuite parcourir la table pour supprimer et réajouter tous les éléments présents dans les buckets qui suivent s'ils ne sont pas vides. Par conséquent, dans le pire des cas, on devrait parcourir toute la table de hachage, ce qui équivaudrait à une complexité de O(n). Par contre, en moyenne, la complexité serait plutot de O(1) vu que l'on applique des opérations constantes sur peu d'éléments.
 
 
 
