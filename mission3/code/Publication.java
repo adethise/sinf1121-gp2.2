@@ -7,7 +7,7 @@ public class Publication {
 		
 		Publication(String line)
 		{
-			String []splitted =line.split(",");
+			String[] splitted = line.split(",");
 			
 			setName(splitted[1]);
 			setRank(splitted[0]);
@@ -43,11 +43,4 @@ public class Publication {
 		{
 			return table;
 		}
-		
-		
-		
-		
-		
-		
-		
 }

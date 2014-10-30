@@ -19,19 +19,6 @@ public class PublicationMap {
 	{
 		principal = new HashMap<String,LightPublication>();
 		references = new HashMap<Integer,String>();
-		/*
-		List<String> liste = ReadFromFile("journals.txt");
-		System.out.println(liste.size());
-		for(String s:liste)
-		{
-			System.out.println(s);
-			put(s);
-		}
-		put("A*,Monthly Notices of the Royal Astronomical Society: Letters,201,Astronomical and Space Sciences,,,,");
-		put("C,Journal of Global Business Management,1503,Business and Management,,,,");
-		put("B,American Journal of Criminal Law,1801,Law,,,,");
-		put("A,Neuroimage,1103,Clinical Sciences,1702,Cognitive Science,1109,Neurosciences");
-		*/
 	}
 
 	/*
@@ -105,7 +92,8 @@ public class PublicationMap {
 	{
 		PublicationMap pubmap = new PublicationMap();
 
-		List<String> liste = ReadFromFile("journals.txt");
+		List<String> liste = FileAccess.ReadFromFile("Journals.csv");
+		liste.remove(0);
 		System.out.println(liste.size());
 		for(String s : liste)
 		{
@@ -113,27 +101,6 @@ public class PublicationMap {
 			pubmap.put(s);
 		}
 
-
 		System.out.println(pubmap.getString("Neuroimage"));
-		
 	}
-	
-	
-	public static List<String> ReadFromFile(String filePath)
-	{
-		List<String> text = new ArrayList<String>();
-		Path file = Paths.get(filePath);
-		if(! file.toFile().exists())
-		{
-			return text;
-		}
-
-		try {
-			text = Files.readAllLines(file, Charset.forName("US-ASCII"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return text;
-	}
-
 }

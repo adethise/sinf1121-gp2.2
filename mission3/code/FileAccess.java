@@ -37,7 +37,7 @@ public class FileAccess {
 		}
 
 		try {
-			Files.write(file,toWrite.getBytes("US-ASCII"));
+			Files.write(file,toWrite.getBytes("ISO-8859-1"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -56,7 +56,7 @@ public class FileAccess {
 		}
 
 		try {
-			text = Files.readAllLines(file, Charset.forName("US-ASCII"));
+			text = Files.readAllLines(file, Charset.forName("ISO-8859-1"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
