@@ -12,6 +12,9 @@ public class PublicationMap {
 	private HashMap<String,LightPublication> principal;
 	private HashMap<Integer,String> references;
 	
+	/*
+	 * Class constructor
+	 */
 	PublicationMap()
 	{
 		principal = new HashMap<String,LightPublication>();
@@ -24,18 +27,26 @@ public class PublicationMap {
 			System.out.println(s);
 			put(s);
 		}
-		*/
 		put("A*,Monthly Notices of the Royal Astronomical Society: Letters,201,Astronomical and Space Sciences,,,,");
 		put("C,Journal of Global Business Management,1503,Business and Management,,,,");
 		put("B,American Journal of Criminal Law,1801,Law,,,,");
 		put("A,Neuroimage,1103,Clinical Sciences,1702,Cognitive Science,1109,Neurosciences");
-		
+		*/
 	}
+
+	/*
+	 * Put the publication represented by <line>
+	 * in the Map (see instructions for format).
+	 */
 	public void put(String line)
 	{
-
 		put(new Publication(line));
 	}
+
+	/*
+	 * Put a light version of <pub> in the Map
+	 * and memorize the FoR names.
+	 */
 	public void put(Publication pub)
 	{
 		LightPublication lp = new LightPublication(pub);
@@ -53,12 +64,19 @@ public class PublicationMap {
 		
 	}
 	
+	/*
+	 * Get the publication with name <key>
+	 * from the Map.
+	 */
 	public Publication get(String key)
 	{
-		
-		
 		return new Publication(getString(key));
 	}
+
+	/*
+	 * Get a string representation of the
+	 * publication with name <key> from the Map.
+	 */
 	public String getString(String key)
 	{
 		LightPublication lp = principal.get(key);
@@ -86,9 +104,17 @@ public class PublicationMap {
 	public static void main(String[]args)
 	{
 		PublicationMap pubmap = new PublicationMap();
+
+		List<String> liste = ReadFromFile("journals.txt");
+		System.out.println(liste.size());
+		for(String s : liste)
+		{
+			System.out.println(s);
+			pubmap.put(s);
+		}
+
+
 		System.out.println(pubmap.getString("Neuroimage"));
-		
-		
 		
 	}
 	
