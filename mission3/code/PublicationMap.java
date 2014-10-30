@@ -92,8 +92,16 @@ public class PublicationMap {
 	{
 		PublicationMap pubmap = new PublicationMap();
 
-		List<String> liste = FileAccess.ReadFromFile("Journals.csv");
-		liste.remove(0);
+		List<String> liste;
+		System.out.println(args.length);
+	       	if ( args.length > 0 ) {
+			liste = FileAccess.ReadFromFile(args[0]);
+		}
+		else {
+			liste = FileAccess.ReadFromFile("Journals.csv");
+			liste.remove(0);
+		}
+
 		System.out.println(liste.size());
 		for(String s : liste)
 		{
