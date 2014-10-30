@@ -42,11 +42,9 @@ public class PublicationMap {
 		
 		String[][] refs = pub.getTable();
 		
-		for(int i = 0;i<3 && refs[0][i]!=null;i++)
+		for(int i = 0 ; i<3 && !(refs[0][i].equals("")) ; i++)
 		{
-			
 			references.put(Integer.parseInt(refs[0][i]), refs[1][i]);
-			
 		}
 		
 	}
@@ -105,10 +103,13 @@ public class PublicationMap {
 		System.out.println(liste.size());
 		for(String s : liste)
 		{
-			System.out.println(s);
-			pubmap.put(s);
+			if ( s.length() > 0 ) {
+				//System.out.println(s);
+				pubmap.put(s);
+			}
 		}
 
 		System.out.println(pubmap.getString("Neuroimage"));
+		System.out.println(pubmap.getString("Cardozo Public Law, Policy and Ethics Journal"));
 	}
 }

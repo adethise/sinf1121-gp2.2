@@ -11,12 +11,9 @@ public class LightPublication {
 			this.setRank(publication.getRank());
 			String[][] ref = publication.getTable();
 			reference = new int[3];
-			for(int i = 0; i<3 && ref[0][i]!=null;i++)
+			for (int i = 0 ; i<3 && !(ref[0][i].equals("")) ; i++)
 			{
-				
-				
 				reference[i] = Integer.parseInt(ref[0][i]);
-				
 			}
 			
 			
