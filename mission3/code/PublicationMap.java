@@ -7,7 +7,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/*
+ * Class PublicationMap
+ * This class allow the user to put Publication objects
+ * in a HashTable and retrieve them, in object or String form.
+ *
+ * It actually doesn't put the Publication, but only a LightPublication
+ * object in the Map in order to save memory space. But that part
+ * is invisible to the user.
+ */
 public class PublicationMap {
 	private HashMap<String,LightPublication> principal;
 	private HashMap<Integer,String> references;
@@ -109,6 +117,7 @@ public class PublicationMap {
 			}
 		}
 
+		// Tests
 		System.out.println(pubmap.getString("Neuroimage"));
 		System.out.println(pubmap.getString("Cardozo Public Law, Policy and Ethics Journal"));
 	}
