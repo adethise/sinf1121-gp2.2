@@ -1,0 +1,261 @@
+\documentclass[a4paper,10pt]{article}
+% Packages usuels
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+%\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage[french,english]{babel}
+\usepackage[indentfirst]{titlesec}
+\usepackage{float}
+%\usepackage{fancybox}
+\usepackage{multicol}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------
+%Informatics Package
+
+%%%%%%%%%%%%
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage[options]{algorithm2e}
+
+%\usepackage{qtree}
+%\usepackage{tikz}
+%\usetikzlibrary{arrows}
+
+%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+  language=Java,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom%  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+%AI - INGI2261
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{todonotes}
+
+
+
+%-------------------------------------------------------------
+
+\begin{document}
+\floatstyle{plain}
+%\newfloat{graphique}{!hb}{lgr}[chapter]
+\floatname{graphique}{Graph}
+
+%%Numerotaion alternative
+
+%\setcounter{chapter}{1}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+
+%%
+
+\begin{titlepage}
+
+
+\title{ \parbox{10 cm }{\vspace{5cm}
+\begin{center}\sf\huge
+\rule{10 cm}{1 pt}
+\medskip
+Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
+\rule{10 cm }{1 pt}
+\end{center}
+}}
+\author {Groupe 2.2}
+\end{titlepage}
+
+
+
+\maketitle
+\thispagestyle{empty} 
+% ne pas mettre de numéro de page (juste pour celle-ci)
+% à mettre après maketitle
+
+\newpage
+
+\section{Introduction}
+
+	Il nous a été demandé de prendre le temps d'étudier la production faite par le groupe 2.1 lors de la mission 3. Nous avons analysé leur travail de manière critique et l'avons comparé avec le travail effectué par notre groupe pour en tirer des conclusions pour la suite du cours.
+
+\section{Analyse critique du travail du groupe 2.1 }
+
+\subsection{Qualité de l'apprentissage}
+
+	L'implémentation de leur groupe est l'usage d'une HashMap. Ce choix est logique car il s'agit de la structure la plus simple et efficace d'une Map, comme nous l'avons vu en étudiant la complexité de différentes Maps au cours.
+	
+	Notons tout de même que la simplicité de la réalisation limite peut-être l'utilisation des acquis dans des configurations un peu plus exotiques.
+
+\subsection{Qualité de la conception générale}
+
+	Leur conception de programme est simple et directe. Il n'y a pas de grosse originalité à commenter ici. L'usage de la HashMap est tout à fait correct et leur permet de stocker les objets Revue aisément.
+	
+	Il y a tout de même des remarques à faire sur la portabilité de leur code. En effet, le constructeur de leur classe principale (\texttt{OperationRevue}) impose l'usage d'un fichier - on ne peut donc pas, par exemple, créer une instance vide de OperationRevue, pour la remplir ensuite manuellement.
+	
+	De plus, les méthodes \texttt{addRevue} et \texttt{searchRevue} utilisent d'office des objets Revue. Bien que ce ne soit pas un mal, l'utilisateur pourrait souhaiter plus d'abstraction.
+
+\subsection{Qualité du code Java}
+
+	Il n'y a rien à dire ici. Le code est simple, clair et aéré. Les commentaires sont complets et formés de façon compatible Javadoc. Les conventions sont respectées.
+	
+	Il n'y a qu'une seule remarque, un détail, qui nous vienne à l'esprit, c'est de suggérer l'usage de JUnit pour les tests.
+
+\subsection{Complexité calculatoire}
+
+	La complexité temporelle est de O(n), n le nombre de publications, pour la création de la Map, puis de O(1) pour les opérations d'ajout, recherche et retrait d'élément, comme on pouvait s'y attendre avec l'usage d'une HashMap.
+	
+	Ils ont également choisi de calculer d'abord le nombre d'entrées pour initialiser la HashMap a la bonne taille. C'est un choix pertinent, mais nos tests indiquent que cela n'apporte pas de différence notable. Sans doute la réorganisation de la HashMap est-elle négligeable par rapport aux autres opérations nécessaires à la création d'une Map de cette taille.
+	
+	Au niveau de la complexité spatiale, comme prévu, elle est en O(n) pour leur code. Ce résultat est logique.
+
+\subsection{Qualité du rapport}
+
+	Le rapport est de très bonne qualité, car il est clair, concis, explique les choix d'implémentation et indique les résultats des tests qu'ils ont effectués. 
+	
+	Il comprend également un diagramme de classe, même si celui-ci contient peut-être un peu trop d'informations (avoir la liste des getters et setters n'est pas forcément intéressant et pourrait masquer des méthodes plus pertinentes).
+
+\subsection{Conclusion}
+
+	Si nous devions donner un avis concis : leur travail est simple, efficace, et assez classique.
+
+
+
+\section{Analyse comparative}
+
+	Dans cette partie du rapport, nous allons essentiellement comparer notre travail avec celui remis par le groupe 2.1.
+	
+\subsection{Analyse générale}
+
+	Notre code est plus complexe que le leur car la structure que nous utilisons est plus exotique et est censée réduire la complexité spatiale de notre code.
+	
+	Nous nous sommes également plus attachés à l'abstraction de la classe \texttt{Publication} (notre pendant de leur Revue), afin que l'utilisateur puisse (s'il le souhaite) n'utiliser que des Strings ayant le format standard du fichier \texttt{csv} lorsqu'il fait appel à \texttt{PublicationMap}.
+
+	La Map peut être aisément remplie avec une simple boucle :
+	
+	\vspace{0.4cm}
+	\begin{lstlisting}
+	for ( String s : lines ) {
+		publicationMap.put(s);
+	}
+	\end{lstlisting}
+	
+	En terme de qualité directe, toutefois, nous reconnaissons que la clarté et la propreté de leur code et rapport sont supérieures aux nôtres.
+
+\subsection{Analyse des performances spatiales et temporelles}
+
+\subsubsection{Description de la méthode}
+
+	Nous avons dans un premier temps spécifié ce que nous désirions analyser. Après réflexion, nous avons décidé de faire nos tests à partir du fichier \texttt{Journals.csv} donné dans le cadre de l'exercice mais aussi avec ce même fichier réduit à sa moitié et à son quart (suivant l'exemple du groupe 2.1). 
+	
+	Il nous a paru évident que nous avions trois fonctionnalités du code à analyser : la construction d'une base de données contenant l'ensemble des informations d'un fichier, l'ajout d'un élément à la base de données, et la recherche d'un élément dans la base de données (contenant déjà l'ensemble des informations liées aux revues scientifiques).
+
+Voici la liste des différents cas analysés :
+
+\begin{itemize}
+\item Le temps mis lors de la création de la base de données
+\item L'espace utilisé par la base de données
+\item Le temps mis lors de l'ajout d'un élément à la base de données
+\item Le temps mis lors de l'ajout d'un élément existant à la base de données
+\item Le temps mis lors de la recherche d'un élément à la base de données
+\item Le temps mis lors de la recherche d'un élément inexistant dans la base de données
+\end{itemize}
+ 
+	Pour ces analyses, nous avons utilisé des différences de temps mesurées avec \texttt{System.nanoTime}. Malheureusement, cette méthode d'analyse mesure le temps total entre le début et la fin des calculs, et non le temps CPU accordé à cette tâche spécifiquement. 
+	
+	On peut donc avoir des différences de résultats en fonction de la puissance et de la charge de travail de la machine sur laquelle les tests sont effectués.
+	
+	Pour l'analyse spatiale, nous avons ajouté une pause dans le programme via l'instruction \texttt{(new Scanner(System.in)).nextLine()}. Pendant cette pause, nous avons ouvert \texttt{jconsole} et avons demandé l'exécution du garbage collector, puis avons observé la mémoire totale consommée par le programme.
+
+	Nous avons également effectué ce test avec une Map vide, pour mesurer que les deux programmes utilisaient environ 2.4MB de mémoire dans ce cas.
+
+ 
+
+\subsubsection{Résultats}
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+   \hline 
+    & \multicolumn{3}{c|}{{\tiny Groupe 2.1}} &\multicolumn{3}{c|}{{\tiny Groupe 2.2}} \\ 
+   \hline 
+    &{\tiny  Journal entier} &{\tiny  1/2 journal }& {\tiny 1/4 journal} &{\tiny  Journal entier} & {\tiny 1/2 journal }&{\tiny  1/4 journal} \\ 
+   \hline 
+  {\tiny  Temps de création ($\mu s$)} & 600 & 250 & 70 & 417 & 200 & 400 \\ 
+   \hline 
+   {\tiny espace en mémoire (MB)} & 12  & 8,4  & 5,372  & 10,4  & 9,9  & 10,6  \\ 
+   \hline 
+   {\tiny ajout($\mu s$)}& 7 & 2,5 & 9,3 & 8,7 & 9,7 & 8,5 \\ 
+   \hline 
+   {\tiny ajout élément présent ($\mu s$)} & 3 & 2,6 & 1,4 & 0,9 & 0,98 & 0,88 \\ 
+   \hline 
+  {\tiny  rechercher élément ($\mu s$)} & 15 & 2,3 & 1,8 & 58 & 61,8 & 66 \\ 
+   \hline 
+  {\tiny  rechercher élément inexistan ($\mu s$)} & 5 & 1 & 0,97 & 2,4 & 2,47 & 2,5 \\ 
+   \hline 
+   \end{tabular}   
+     
+\end{center} 
+
+\subsubsection{Interprétations des résultats}
+
+	- Création de la HashMap :
+	
+	Alors que nous nous attendions à ce que notre programme, qui doit remplir deux HashMaps en parallèle et en plus n'initialise pas la taille de la HashMap, prenne plus de temps, il semble que ce ne soit pas le cas et que le contraire soit vrai.
+	
+	Cela est probablement dû aux méthodes utilisées. Peut-être notre création d'objets est-elle plus simple pour Java ou, plus probablement, c'est le parsing qui est plus simple pour nous : nous utilisons l'instruction \texttt{String.indexOf} alors qu'eux utilisent un \texttt{String.split} avec une expression régulière quelque peu complexe.
+	
+	Pour les résultats 1/4 journal, nous arrivons à un temps plus élevé que pour 1/2 journal, cela est donc certainement lié à des erreurs de mesure.
+	
+	\vspace{0.4cm}
+	- Espace mémoire :
+	
+	Là, nous avons eu notre plus grosse surprise. Alors que nous avons tenté de minimiser la mémoire utilisée, l'effet inverse se produit : nous utilisons toujours 10MB de mémoire, quelle que soit la taille de la liste.
+	
+	Ce résultat est assez aberrant mais nous pensons pouvoir l'imputer à Java et au garbage collecting. Peut-être avons nous oublié quelque part une référence à nos objets qui restent donc en mémoire même après le passage du garbage collector ?
+	
+	\vspace{0.4cm}
+	- Recherche d'un élément :
+	
+	Ici, nous avons très clairement un temps plus élevé que le groupe 2.1. C'est tout à fait normal car notre implémentation impose de faire une recherche dans deux Maps, puis de reconstruire l'objet Publication.
+	
+	Notons tout de même que les temps incriminés sont de l'ordre d'une soixantaine de microsecondes, et ne seraient un problème que si le programme devait supporter plusieurs milliers de recherches par seconde.
+
+	\vspace{0.4cm}
+	- Autres opérations :
+	
+	Pour les autres opérations, tous les temps d'opération sont extrêmement faibles et de complexité O(1). Remarquons tout de même quelques différences, peut-être dues à la création ou modification d'objets plus ou moins simple par Java.
+
+
+\end{document}
+
