@@ -1,0 +1,235 @@
+\documentclass[a4paper ,12pt]{article}
+% Packages usuels
+%\usepackage{etex} % pour circuitikz
+%\usepackage{tikz}
+%\usepackage{circuitikz} % pour les circuits électriques
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+%\usepackage{u
+\usepackage{enumerate}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage[french,english]{babel}
+\usepackage[indentfirst]{titlesec}
+\usepackage[dvips]{graphicx}
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage[table,dvipsnames,svgnames]{xcolor}
+\usepackage{xspace}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage[version=3]{mhchem}
+%\usepackage{chemist}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{wrapfig} %écrire txt et image côte à côte
+\usepackage[rightcaption]{sidecap}
+\usepackage{amsthm}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage[absolute]{textpos}%positionnement de cadres
+\usepackage[final]{pdfpages} %traitement des pdf
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}%pour traiter le code matlab
+%\usepackage{setspace}% pour les interlignes
+%\onehalfspacing %interligne 1.5
+%\doublespacing %interligne 2
+%\renewcommand{\baselinestretch}{1.5}  %interligne défini
+%\usepackage{vmargin}% pour les marges
+%\setmarginsrb{2.5}{2.5}{2.5}{2.5}{}{}{}{} % marges de 2.5 cm 
+%\addto\captionsfrench{\def\tablename{Tableau}} % pour avoir TABLEAU et pas TABLE dans la légende des tableaux..
+%\setlength{\parskip}{1cm}   %espacement fixe entre chaque paragraphe
+\setlength{\parindent}{1.5cm}  %modifie la valeur de l'alinéas
+%\addtolength{\voffset}{-1.5cm} % (diminue la marge du haut)
+%\addtolength{\textheight}{4cm} % (augmente la longueur du texte)
+%\addtolength{\hoffset}{-1cm} (diminue la marge de gauche)
+%\addtolength{\textwidth}{2cm}  (augmente la largeur du texte)
+%\addtocounter{secnumdepth}{1}  si jamais on veut utiliser \subsubsubsecion
+\usepackage[hang,center,bf,font=small]{caption} %pour les légendes
+\setlength{\captionmargin}{30pt}
+\usepackage[hang,flushmargin]{footmisc} %à mettre avec ENGLISH dans babel pour avoir les notes de bas de page à gauche et non indentées
+\usepackage[nonumberlist,style=altlist,toc]{glossaries} % Pour faire un glossaire
+%\makeglossaries
+%\addto\captionsfrench{\renewcommand*{\glossaryname}{Glossary}}
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------
+%Informatics Package
+
+%%%%%%%%%%%%
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage[options]{algorithm2e}
+
+\usepackage{qtree}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+  language=Java,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom%  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+%AI - INGI2261
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{todonotes}
+
+
+
+%-------------------------------------------------------------
+
+\begin{document}
+\floatstyle{plain}
+%\newfloat{graphique}{!hb}{lgr}[chapter]
+\floatname{graphique}{Graph}
+
+%%Numerotaion alternative
+
+%\setcounter{chapter}{1}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+
+%%
+
+\begin{titlepage}
+\begin{center}
+\begin{textblock}{12}(2,1.5)
+%\includegraphics[scale=0.35]{images/lc.png}
+\hspace{3cm} % espace horizontal (facultatif)
+%\includegraphics[scale=0.3]{images/epllogo.jpg}
+\end{textblock} 
+\end{center}
+
+
+\title{ \parbox{10 cm }{\vspace{5cm}
+\begin{center}\sf\huge
+\rule{10 cm}{1 pt}
+\medskip
+Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
+\rule{10 cm }{1 pt}
+\end{center}
+}}
+\author {Groupe 2.2}
+\end{titlepage}
+
+
+
+\maketitle
+\thispagestyle{empty} 
+% ne pas mettre de numéro de page (juste pour celle-ci)
+% à mettre après maketitle
+
+\newpage
+
+\section{Introduction}
+
+Il nous a été demandé de prendre le temps d'étudier la production faite par le groupe 2.1 lors de la mission 3. Dans une premier temps, nous avons analysé leur travail de manière critique pour ensuite l'analyser de manière comparative avec le travail effectuer par notre groupe et en tirer des conclusions pour la suite du cours.
+
+\section{Analyse critique du travail du groupe 2.1 }
+
+\subsection{Qualité de l'apprentissage}
+
+\subsection{Qualité de la conception générale}
+
+\subsection{Qualité du code Java}
+
+\subsection{Complexité calculatoire}
+
+\subsection{Qualité du rapport}
+
+\subsection{Conclusion}
+
+\section{Analyse comparative}
+Dans cette partie du rapport, nous allons essentiellement comparer notre travail avec celui remis par le groupe 2.1.
+\subsection{Analyse générale}
+
+\subsection{Analyse des performances spaciales et temporelles}
+
+\subsubsection{Description de la méthode}
+
+Nous avons dans un premier temps spécifié ce que l'on voulait analyser. Après réflexion, nous avons décider de faire nos tests à partir du fichier initialement remis mais aussi avec ce même fichier réduit de moitier et de $3/4$. Il nous a paru évident que nous avions trois fonctionnalités du code à analyer, la construction d'une base de données contenant l'ensemble des informations d'un fichier, l'ajout d'un élément à la base de données, la recherche d'un élément dans la base de données, où la base de données est l'ensemble des structures utiliséees pour stocker les informations associées aux revues scientifiques. \\
+Voici la liste des différents cas analysé :
+
+- Le temps mis lors de la création de la base de données\\
+- L'espace utilisé par la base de données\\
+- Le temps mis lors de l'ajout d'un élément à la base de données\\
+- Le temps mis lors de l'ajout d'un élément existant à la base de données\\
+- Le temps mis lors de la recherche d'un élément à la base de données\\
+- Le temps mis lors de la recherche d'un élément inexistant dans la base de données\\
+ 
+
+ 
+
+\subsubsection{Résultats}
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+   \hline 
+    & \multicolumn{3}{c|}{{\tiny Groupe 2.1}} &\multicolumn{3}{c|}{{\tiny Groupe 2.2}} \\ 
+   \hline 
+    &{\tiny  Journal entier} &{\tiny  1/2 journal }& {\tiny 1/4 journal} &{\tiny  Journal entier} & {\tiny 1/2 journal }&{\tiny  1/4 journal} \\ 
+   \hline 
+  {\tiny  Temps de création ($\mu s$)} & 600 & 250 & 70 & 417 & 200 & 400 \\ 
+   \hline 
+   {\tiny espace en mémoire (MB)} & 12  & 8,4  & 5,372  & 10,4  & 9,9  & 10,6  \\ 
+   \hline 
+   {\tiny ajout($\mu s$)}& 7 & 2,5 & 9,3 & 8,7 & 9,7 & 8,5 \\ 
+   \hline 
+   {\tiny ajout élément présent ($\mu s$)} & 3 & 2,6 & 1,4 & 0,9 & 0,98 & 0,88 \\ 
+   \hline 
+  {\tiny  rechercher élément ($\mu s$)} & 15 & 2,3 & 1,8 & 58 & 61,8 & 66 \\ 
+   \hline 
+  {\tiny  rechercher élément inexistan ($\mu s$)} & 5 & 1 & 0,97 & 2,4 & 2,47 & 2,5 \\ 
+   \hline 
+   \end{tabular}   
+     
+\end{center} 
+
+\subsubsection{Interprétations des résultats}
+
+\subsection{Conclusion}
+
+
+
+\end{document}
+
