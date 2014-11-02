@@ -157,7 +157,7 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 	
 \subsection{Analyse générale}
 
-	Notre code est plus complexe que le leur car la structure que nous utilisons est plus singulier et est censée réduire la complexité spatiale de notre code.
+	Notre code est plus complexe que le leur car la structure que nous utilisons est plus singulière et est censée réduire la complexité spatiale de notre code.
 	
 	Nous nous sommes également plus attachés à l'abstraction de la classe \texttt{Publication} (notre pendant de leur Revue), afin que l'utilisateur puisse (s'il le souhaite) n'utiliser que des Strings ayant le format standard du fichier \texttt{csv} lorsqu'il fait appel à \texttt{PublicationMap}.
 
@@ -180,6 +180,7 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 	
 	Il nous a paru évident que nous avions trois fonctionnalités du code à analyser : la construction d'une base de données contenant l'ensemble des informations d'un fichier, l'ajout d'un élément à la base de données, et la recherche d'un élément dans la base de données (contenant déjà l'ensemble des informations liées aux revues scientifiques).
 
+\vspace{0.35cm}
 Voici la liste des différents cas analysés :
 
 \begin{itemize}
@@ -231,7 +232,7 @@ Voici la liste des différents cas analysés :
 
 	- Création de la HashMap :
 	
-	Alors que nous nous attendions à ce que notre programme, qui doit remplir deux HashMaps en parallèle et en plus n'initialise pas la taille de la HashMap, prenne plus de temps. Il semble que ce ne soit pas le cas et que le contraire soit vrai.
+	Nous nous attendions à ce que notre programme, qui doit remplir deux HashMaps en parallèle et en plus n'initialise pas la taille de la HashMap, prenne plus de temps. Il semble que ce ne soit pas le cas et que le contraire soit vrai.
 	
 	Cela est probablement dû aux méthodes utilisées. Peut-être notre création d'objets est-elle plus simple pour Java ou, plus probablement, c'est le parsing qui est plus simple pour nous : nous utilisons l'instruction \texttt{String.indexOf} alors qu'eux utilisent un \texttt{String.split} avec une expression régulière quelque peu complexe.
 	
