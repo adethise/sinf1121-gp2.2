@@ -115,15 +115,15 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 
 	L'implémentation de leur groupe est l'usage d'une HashMap. Ce choix est logique car il s'agit de la structure la plus simple et efficace d'une Map, comme nous l'avons vu en étudiant la complexité de différentes Maps au cours.
 	
-	Notons tout de même que la simplicité de la réalisation limite peut-être l'utilisation des acquis dans des configurations un peu plus exotiques.
+	Notons tout de même que la simplicité de la réalisation limite peut-être l'utilisation des acquis dans des configurations un peu plus singulières.
 
 \subsection{Qualité de la conception générale}
 
-	Leur conception de programme est simple et directe. Il n'y a pas de grosse originalité à commenter ici. L'usage de la HashMap est tout à fait correct et leur permet de stocker les objets Revue aisément.
+	Leur conception de programme est simple et directe. Il n'y a pas de grande originalité à commenter ici. L'usage de la HashMap est tout à fait correct et leur permet de stocker les objets Revue aisément.
 	
-	Il y a tout de même des remarques à faire sur la portabilité de leur code. En effet, le constructeur de leur classe principale (\texttt{OperationRevue}) impose l'usage d'un fichier - on ne peut donc pas, par exemple, créer une instance vide de OperationRevue, pour la remplir ensuite manuellement.
+	Il y a tout de même des remarques à faire sur la portabilité de leur code. En effet, le constructeur de leur classe principale (\texttt{OperationRevue}) impose l'usage d'un fichier : on ne peut donc pas, par exemple, créer une instance vide de OperationRevue pour la remplir ensuite manuellement.
 	
-	De plus, les méthodes \texttt{addRevue} et \texttt{searchRevue} utilisent d'office des objets Revue. Bien que ce ne soit pas un mal, l'utilisateur pourrait souhaiter plus d'abstraction.
+	De plus, les méthodes \texttt{addRevue} et \texttt{searchRevue} utilisent d'office des objets Revue. Bien que ce ne soit pas une erreur, l'utilisateur pourrait souhaiter plus d'abstraction.
 
 \subsection{Qualité du code Java}
 
@@ -133,21 +133,21 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 
 \subsection{Complexité calculatoire}
 
-	La complexité temporelle est de O(n), n le nombre de publications, pour la création de la Map, puis de O(1) pour les opérations d'ajout, recherche et retrait d'élément, comme on pouvait s'y attendre avec l'usage d'une HashMap.
+	La complexité temporelle est de O(n), n le nombre de publications, pour la création de la Map, puis de O(1) pour les opérations d'ajout, recherche et retrait d'éléments, comme on peut s'y attendre avec l'usage d'une HashMap.
 	
-	Ils ont également choisi de calculer d'abord le nombre d'entrées pour initialiser la HashMap a la bonne taille. C'est un choix pertinent, mais nos tests indiquent que cela n'apporte pas de différence notable. Sans doute la réorganisation de la HashMap est-elle négligeable par rapport aux autres opérations nécessaires à la création d'une Map de cette taille.
+	Ils ont également choisi de calculer d'abord le nombre d'entrées pour initialiser la HashMap à la bonne taille. C'est un choix pertinent mais nos tests indiquent que cela n'apporte pas de différence notable. Sans doute la réorganisation de la HashMap est-elle négligeable par rapport aux autres opérations nécessaires à la création d'une Map de cette taille.
 	
 	Au niveau de la complexité spatiale, comme prévu, elle est en O(n) pour leur code. Ce résultat est logique.
 
 \subsection{Qualité du rapport}
 
-	Le rapport est de très bonne qualité, car il est clair, concis, explique les choix d'implémentation et indique les résultats des tests qu'ils ont effectués. 
+	Le rapport est de très bonne qualité car il est clair, concis, explique les choix d'implémentation et indique les résultats des tests qu'ils ont effectués. 
 	
 	Il comprend également un diagramme de classe, même si celui-ci contient peut-être un peu trop d'informations (avoir la liste des getters et setters n'est pas forcément intéressant et pourrait masquer des méthodes plus pertinentes).
 
 \subsection{Conclusion}
 
-	Si nous devions donner un avis concis : leur travail est simple, efficace, et assez classique.
+	Si nous devions donner un avis concis : leur travail est simple, efficace, mais assez classique.
 
 
 
@@ -157,7 +157,7 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 	
 \subsection{Analyse générale}
 
-	Notre code est plus complexe que le leur car la structure que nous utilisons est plus exotique et est censée réduire la complexité spatiale de notre code.
+	Notre code est plus complexe que le leur car la structure que nous utilisons est plus singulier et est censée réduire la complexité spatiale de notre code.
 	
 	Nous nous sommes également plus attachés à l'abstraction de la classe \texttt{Publication} (notre pendant de leur Revue), afin que l'utilisateur puisse (s'il le souhaite) n'utiliser que des Strings ayant le format standard du fichier \texttt{csv} lorsqu'il fait appel à \texttt{PublicationMap}.
 
@@ -170,7 +170,7 @@ Algorithmique et structures de données\\Correction Mission 3\\[-4 mm]
 	}
 	\end{lstlisting}
 	
-	En terme de qualité directe, toutefois, nous reconnaissons que la clarté et la propreté de leur code et rapport sont supérieures aux nôtres.
+	En terme de qualité directe, nous reconnaissons que la clarté et la propreté de leur code et rapport sont supérieurs aux nôtres.
 
 \subsection{Analyse des performances spatiales et temporelles}
 
@@ -197,7 +197,7 @@ Voici la liste des différents cas analysés :
 	
 	Pour l'analyse spatiale, nous avons ajouté une pause dans le programme via l'instruction \texttt{(new Scanner(System.in)).nextLine()}. Pendant cette pause, nous avons ouvert \texttt{jconsole} et avons demandé l'exécution du garbage collector, puis avons observé la mémoire totale consommée par le programme.
 
-	Nous avons également effectué ce test avec une Map vide, pour mesurer que les deux programmes utilisaient environ 2.4MB de mémoire dans ce cas.
+	Nous avons également effectué ce test avec une Map vide pour mesurer que les deux programmes utilisaient environ 2.4MB de mémoire dans ce cas.
 
  
 
@@ -231,7 +231,7 @@ Voici la liste des différents cas analysés :
 
 	- Création de la HashMap :
 	
-	Alors que nous nous attendions à ce que notre programme, qui doit remplir deux HashMaps en parallèle et en plus n'initialise pas la taille de la HashMap, prenne plus de temps, il semble que ce ne soit pas le cas et que le contraire soit vrai.
+	Alors que nous nous attendions à ce que notre programme, qui doit remplir deux HashMaps en parallèle et en plus n'initialise pas la taille de la HashMap, prenne plus de temps. Il semble que ce ne soit pas le cas et que le contraire soit vrai.
 	
 	Cela est probablement dû aux méthodes utilisées. Peut-être notre création d'objets est-elle plus simple pour Java ou, plus probablement, c'est le parsing qui est plus simple pour nous : nous utilisons l'instruction \texttt{String.indexOf} alors qu'eux utilisent un \texttt{String.split} avec une expression régulière quelque peu complexe.
 	
@@ -242,7 +242,7 @@ Voici la liste des différents cas analysés :
 	
 	Là, nous avons eu notre plus grosse surprise. Alors que nous avons tenté de minimiser la mémoire utilisée, l'effet inverse se produit : nous utilisons toujours 10MB de mémoire, quelle que soit la taille de la liste.
 	
-	Ce résultat est assez aberrant mais nous pensons pouvoir l'imputer à Java et au garbage collecting. Peut-être avons nous oublié quelque part une référence à nos objets qui restent donc en mémoire même après le passage du garbage collector ?
+	Ce résultat est assez aberrant mais nous pensons pouvoir l'imputer à Java et au garbage collecting. Peut-être avons-nous oublié quelque part une référence à nos objets qui restent donc en mémoire même après le passage du garbage collector ?
 	
 	\vspace{0.4cm}
 	- Recherche d'un élément :
@@ -254,7 +254,7 @@ Voici la liste des différents cas analysés :
 	\vspace{0.4cm}
 	- Autres opérations :
 	
-	Pour les autres opérations, tous les temps d'opération sont extrêmement faibles et de complexité O(1). Remarquons tout de même quelques différences, peut-être dues à la création ou modification d'objets plus ou moins simple par Java.
+	Pour les autres opérations, tous les temps d'opération sont extrêmement faibles et de complexité O(1). Remarquons tout de même quelques différences, peut-être dues à la création ou modification d'objets plus ou moins simples par Java.
 
 
 \end{document}
