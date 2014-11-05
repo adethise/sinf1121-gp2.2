@@ -1,7 +1,4 @@
 sinf1121-gp2.2
 ==============
 
-Pour limiter le nombre de fichiers, mettez vos réponses directement dans le solution.tex. Merci
-Arnaud, 08/10
-
-N'utilisez PAS git add --all. Merci
+J'ai ajouté l'utilisation du paquet qtree pour la mission 4. Si vous ne l'avez pas, il se trouve dans le package texlive-humanities dans les dépôts Debian.

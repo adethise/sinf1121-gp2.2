@@ -6,10 +6,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{qtree}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -45,22 +45,70 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
-\date{insert date 2014}
+\date{7 novembre 2014}
 \author{Groupe 2.2}
-\title{Produit Mission X}
+\title{Produit Mission 4}
 
 \begin{document}
 \maketitle
 
 \section*{Question 1}
-\section*{Question 2}
-\section*{Question 3}
+\section*{Question 2 : Arnaud Dethise}
+
+	Un arbre binaire de recherche possède deux avantages par rapport à une HashMap :
+	\begin{itemize}
+		\item Il est trié.
+		\item Il ne contient pas de "case" vide et pas de problème de \textit{load factor}.
+	\end{itemize}
+	On peut donc, par exemple, facilement récupérer tous les éléments ou une séquence d'élément.
+	
+	Il n'a en revanche pas vraiment d'avantage sur une skip list, mis à part le fait qu'il soit plus simple et non-probabiliste.
+	
+	\vspace{0.5cm}
+	La forme de l'arbre et, par conséquent, l'efficacité des recherches à l'intérieur de celui-ci dépend de l'ordre dans lequel les entrées sont introduites.
+	
+	\begin{figure}[!h]
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.1 ~ [.2 ~ 3 ] ]
+		\caption{Clés introduites : 1, 2, 3}
+		\label{order_keys_ex1}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.2 1 3 ]
+		\caption{Clé introduites : 2, 1, 3}
+		\label{order_keys_ex2}
+	\end{minipage}
+	\end{figure}
+	
+	En revanche, la nécessité de garder l'arbre trié lorsque l'on supprime une clé, imposant parfois de remonter un nœud de plusieurs niveaux, fait que l'ordre de suppression d'une série de nœuds n'a pas d'importance sur sa forme après que toutes les clés de la série aient été supprimées.
+	
+	\vspace{0.5cm}
+	En supposant que lorsque l'on veut insérer une clé ayant la même valeur qu'un nœud externe, on l'ajoute systématique du même côté, la structure résultante sera la suivante :
+	
+	\begin{figure}[!h]
+		\Tree [.A [.A [.A [.A ] ~ ] ~ ] ~ ]
+		\caption{Arbre binaire contenant 4 nœuds identiques}
+		\label{multiple_identical_keys}
+	\end{figure}
+	
+	Puisqu'il faut à chaque fois parcourir tous les nœuds déjà créés pour atteindre le bas de l'arbre et ajouter le suivant, la complexité pour l'ajout d'une clé supplémentaire est O($n$), n étant le nombre de nœuds déjà ajoutés.
+	
+	Par conséquent, la complexité pour l'ajout de n nœuds est O($n^2$).
+	
+	Remarque : on peut bien sûr optimiser l'insertion si on sait à l'avance que les clés sont identiques.
+	
+	\vspace{0.5cm}
+	Comme illustré à la figure \ref{multiple_identical_keys}, la hauteur d'un arbre contenant n nœuds peut varier de log(n) à n, selon qu'il soit plus ou moins équilibré.
+	
+	Étant donné que la recherche dans un arbre binaire se fait en temps O($h$), il est souhaitable que la hauteur soit proche de log(n). C'est à cela que servent les arbres AVL et les arbres (2,4).
+
+\section*{Question 3 : Arnaud Dethise}
 \section*{Question 4}
 \section*{Question 5}
 \section*{Question 6}
 \section*{Question 7}
 \section*{Question 8}
-\section*{Question 9}
 % add sections if more questions
 
 \end{document}
