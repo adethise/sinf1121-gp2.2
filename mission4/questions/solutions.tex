@@ -28,7 +28,7 @@
   frame=single,                    % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
-  language=Octave,                 % the language of the code
+  language=Java,                 % the language of the code
   morekeywords={*,...},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
@@ -39,7 +39,7 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,                       % sets default tabsize to 2 spaces
+  tabsize=4,                       % sets default tabsize to 2 spaces
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -99,11 +99,68 @@
 	Remarque : on peut bien sûr optimiser l'insertion si on sait à l'avance que les clés sont identiques.
 	
 	\vspace{0.5cm}
-	Comme illustré à la figure \ref{multiple_identical_keys}, la hauteur d'un arbre contenant n nœuds peut varier de log(n) à n, selon qu'il soit plus ou moins équilibré.
+	La hauteur d'un arbre contenant n nœuds peut varier de log(n) à n, selon qu'il soit plus ou moins équilibré.
 	
-	Étant donné que la recherche dans un arbre binaire se fait en temps O($h$), il est souhaitable que la hauteur soit proche de log(n). C'est à cela que servent les arbres AVL et les arbres (2,4).
+	Étant donné que la recherche dans un arbre binaire se fait en temps O($h$), il est souhaitable que la hauteur soit proche de log(n). C'est à cela que servent les arbres AVL et les arbres (2,4). 
 
 \section*{Question 3 : Arnaud Dethise}
+
+	\begin{lstlisting}
+	/**
+	 * return the entry with the smallest key value
+	 */
+	Entry firstEntry()
+	{
+		return _firstEntry(root);
+	}
+	
+	Entry _firstEntry(Node n)
+	{
+		if ( n.left == null ) {
+			return n.entry;
+		}
+		else {
+			return _firstEntry(n.left);
+		}
+	}
+	\end{lstlisting}
+	
+	\begin{lstlisting}
+	/**
+	 * return the entry with the least key value strictly greater than k 
+	 * (or null if no such entry exists)
+	 * Note : k does not need to be present in the tree
+	 */
+	Entry higherEntry(Key k)
+	{
+		return _higherEntry(k, root);
+	}
+	
+	Entry _higherEntry(Key k, Node n)
+	{
+		if ( n.key <= k ) {
+			if ( n.right == null ) {
+				return null;
+			}
+			else {
+				return _higherEntry(k, n.right);
+			}
+		}
+		else {
+			if ( n.left == null || _higherEntry(k, n.left) == null ) {
+				return n.entry;
+			}
+			else {
+				return _higherEntry(k, n.left);
+			}
+		}
+	}
+	\end{lstlisting}
+	
+	Ces deux algorithmes s'appellent récursivement sur un et un seul des nœuds enfants. Ils sont donc limités à un nombre d'itérations égal à la hauteur de l'arbre, O($h$).
+	
+	La relation entre h et n, le nombre total de nœuds, dépend de la construction de l'arbre. la complexité peut donc varier entre O($log(n)$) dans le cas d'un arbre équilibré et O($n$) dans le cas d'un arbre totalement déséquilibré.
+	
 \section*{Question 4}
 \section*{Question 5}
 \section*{Question 6}
