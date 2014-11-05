@@ -10,7 +10,6 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{qtree}
-
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
@@ -164,7 +163,37 @@
 \section*{Question 4}
 \section*{Question 5}
 \section*{Question 6}
-\section*{Question 7}
+\section*{Question 7 - Henneton Romain}
+Face à l'ajout d'un élément dans un arbre AVL, deux cas de figure s'offrent à nous :
+\subsection*{Après insertion, l'arbre est toujours équilibré}
+Dans ce cas, il ne faut pas rééquilibrer l'arbre, qui est toujours un arbre AVL. 
+
+Si les deux sous-arbres ont la même hauteur, on peut ajouter l'élément au choix dans l'arbre de gauche ou dans l'arbre de droite.
+
+Si par contre le sous arbre de gauche (resp droite) est "plus haut de 1 élément", alors l'ajout se fait dans le sous arbre de droite (resp gauche), sinon un équilibrage est nécessaire \footnote{Cas 1a et 1b}.
+\subsection*{Après insertion, l'arbre est déséquilibré}
+Dans ce cas, pas le choix, il faut rééquilibrer l'arbre pour récupérer un arbre AVL. Pour cela, nous effectuons un rééquilibrage par trinode, ce trinode est défini comme tel :
+\begin{itemize}
+\item Soit z le premier noeud rencontré depuis la racine étant déséquilibré
+\item Soit y le plus haut enfant de z
+\item Soit x le plus haut enfant de x
+\end{itemize}
+On procède ensuite comme tel (voir figure \ref{avleq} pour illustrer ces 3 opérations):
+\begin{enumerate}
+
+\item Soit $T_0,T_1,T_2,T_3$ les 4 sous arbres de ces 3 noeuds et a,b,c les noeuds parents de ces sous arbres (a a comme enfant de gauche $T_0$,c a comme enfant de droite $T_3$ et b est le noeud restant.
+\item On réarrange les noeuds afin que a soit l'enfant de gauche de b et c soit l'enfant de droite de b.
+\item Nous avons donc $T_0,T_1$(resp $T_2,T_3$) qui sont désormais les sous arbres de gauche et de droite de a (resp b).
+\end{enumerate}
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{equilibrage.jpg}
+\caption{Méthodes d'équilibrages d'arbres AVL}
+\label{avleq}
+\end{figure}
+
+
+
 \section*{Question 8}
 % add sections if more questions
 
