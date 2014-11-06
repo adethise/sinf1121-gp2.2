@@ -202,6 +202,11 @@ On procède ensuite comme tel (voir figure \ref{avleq} pour illustrer ces 3 opé
 
 
 \section*{Question 8 : Zacharie Kerger}
+
+Dans un arbre AVL, les hauteurs des deux sous arbres d'un même noeud diffèrent au plus de un. De plus, pour chaque noeud d'un arbre AVL, il faut que les sous arbres de gauche et de droite soient respectivement inférieurs et supérieurs à ce noeud. \\
+Sur base de ces propriétés, nous pouvons conclure que la première et la quatrième séquences sont inexactes puisqu'elles ne respectent pas la première propriété citée ci-dessus. En effet, la racine de ces séquences est 2, ce qui implique d'avoir comme unique sous arbre de gauche 1 alors que vu la taille de la séquence, la hauteur du sous arbre de droite est bien plus élevée que 2.\\
+On constate que la troisième séquence est aussi erronée car lorsque l'on arrive au troisième élément (911), on descend ensuite dans le sous arbre de gauche (240) et puis dans le sous arbre de droite de ce même élément (912). Étant donné qu'il est impossible d'obtenir une valeur plus élevée que 911 à cet endroit, la troisième séquence est donc bien inexacte. Ce raisonnement équivaut aussi pour la cinquième séquence vu que l'on fait un cheminement similaire (347 -> 621 -> 299).\\
+La deuxième séquence est donc la seule séquence possible pour correspondre à un arbre AVL.
 % add sections if more questions
 
 \end{document}
