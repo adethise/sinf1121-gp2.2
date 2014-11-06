@@ -53,11 +53,11 @@
 
 \section*{Question 1 : Zacharie Kerger}
 
-Les clés mémorisées dans les noeuds d'un arbre binaire de recherche ne doivent pas être forcément des nombres. En effet, du moment que l'on a une notion d'ordre entre les différentes clés, c'est suffisant.  Autrement dit, tant qu'une classe implémente l'interface \emph{Comparable}, les objets de cette même classe peuvent servir de clés.\\
+Les clés mémorisées dans les noeuds d'un arbre binaire de recherche ne doivent pas être forcément des nombres. En effet, du moment que l'on a une notion d'ordre entre les différentes clés, c'est suffisant.  Autrement dit, tant qu'une classe implémente l'interface \emph{Comparable}, les objets de cette même classe peuvent servir de clés. Par exemple, nous pourrions utiliser des chaines de caractère comme clés.\\
 \newline
-Pour énumérer toutes les clés en ordre croissant, il faut effectuer un parcours préfixe de l'arbre qui a une complexité temporelle $\Theta(n)$ où n représente le nombre total de noeuds. On obtient cette complexité puisque l'on va visiter chaque noeud de l'arbre sans exception.\\
+Pour énumérer toutes les clés en ordre croissant, il faut effectuer un parcours préfixe de l'arbre qui a une complexité temporelle en $\Theta(n)$ où n représente le nombre total de noeuds. On obtient cette complexité puisque l'on va visiter chaque noeud de l'arbre sans exception.\\
 \newline
-TO DO
+Si une même clé est mémorisée deux fois dans un arbre binaire, alors les noeuds correspondant seront placés en relation père-fils.
 
 \section*{Question 2 : Arnaud Dethise}
 
