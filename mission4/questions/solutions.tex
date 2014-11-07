@@ -279,8 +279,57 @@ Voici, l'application de l'exemple sur un B-arbre d'ordre 4.
  \subsection*{Conclusion}
  Ce n'est pas avec un seul exemple que l'on peut illuster l'ensemble des propriétés des ces différentes structures d'arbre mais cela nous permet de comprendre le fonctionnement général de l'ajout d'un élément à ces structures. On peut se rendre compte l'ajout d'un élément dans un arbre splay demande beaucoup de manipulations dans l'arbre. De plus comme les clés insérées sont croissantes, la structure d'arbre splay est moins intéressante à étudier.
  
-\section*{Question 5}
-\section*{Question 6}
+\section*{Question 5 - Aurian de Potter}
+L'ordre d'insertion des clés dans un AVL n'a jamais d'influence sur la forme finale l'arbre car par la définition de celui-ci il faut qu'il soit équilibré. Peu importe l'ordre d'insertion des clés, au final nous devons équilibrer l'arbre si ce n'est pas le cas, ce qui replacera correctement chaque clé à la bonne position.
+\section*{Question 6 - Aurian de Potter}
+Plaçons d'abord les deux arbres cotes à cotes tel que leurs feuilles soient à une même hauteur (voir Figure~\ref{TU}).
+
+Le premier temps de l'algorithme consiste à transférer tous les éléments de U dans T. Pour cela, nous allons à chaque fois détacher le noeud le plus à gauche de U (avec ses éventuels enfants de droites) et ajouter ses clefs dans l'élément le plus à droite de T au même étage, sans se préoccuper des overflows (voir Figures~\ref{1} et \ref{2}).
+
+Dans un deuxième temps, lorsqu'on a vidé tout U, nous allons remonter dans l'arbre T à partir de son ancien élément le plus à droite pour faire les splits nécessaires (voir Figures \ref{3} et \ref{4}).\\
+
+Pour ce qui est de la complexité, la première étape est en $\mathcal{O}(\log m)$ puisque le nombre de fusions correspond au pire à la hauteur de l'arbre U. La deuxième étape est en $\mathcal{O}(\log n)$ puisque le nombre de splits correspond au pire à la hauteur de l'arbre T. Au total, l'algorithme est donc bien en $\mathcal{O}(\log n + \log m)$ comme demandé.
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{TU.png}
+		\caption{T et U}
+		\label{TU}
+	\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{1.png}
+		\caption{Fusion avec l'élément le plus à gauche de U}
+		\label{1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{2.png}
+		\caption{Fusion avec le nouvel élément le plus à gauche de U}
+		\label{2}
+	\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{3.png}
+		\caption{Split de l'élément le plus à droite de T au départ}
+		\label{3}
+	\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{4.png}
+		\caption{Split de son père}
+		\label{4}
+	\end{center}
+\end{figure}
+
 \section*{Question 7 - Henneton Romain}
 Face à l'ajout d'un élément dans un arbre AVL, deux cas de figure s'offrent à nous :
 \subsection*{Après insertion, l'arbre est toujours équilibré}
@@ -309,8 +358,6 @@ On procède ensuite comme tel (voir figure \ref{avleq} pour illustrer ces 3 opé
 \caption{Méthodes d'équilibrages d'arbres AVL}
 \label{avleq}
 \end{figure}
-
-
 
 \section*{Question 8 : Zacharie Kerger}
 
