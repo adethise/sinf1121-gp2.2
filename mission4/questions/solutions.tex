@@ -167,7 +167,118 @@ Si une même clé est mémorisée deux fois dans un arbre binaire, alors les noe
 	
 	La relation entre h et n, le nombre total de nœuds, dépend de la construction de l'arbre. la complexité peut donc varier entre O($log(n)$) dans le cas d'un arbre équilibré et O($n$) dans le cas d'un arbre totalement déséquilibré.
 	
-\section*{Question 4}
+\section*{Question 4 - Lemaire Jérôme}
+
+Dans un premier temps, on va définir l'algorithme utiliser pour insérer un élément dans les différents types d'arbres et ensuite on verra le résultat de l'exemple de l'insertion des clés 12,5,10,3,13,14,15,17,18,15 et dans certains cas des résultats intermédiaires.
+
+\subsection*{Arbre binaire de recherche}
+
+Premièrement, on recherche la clé du noeud à insérer jusqu'à ce qu'on rencontre une feuille. Ensuite, on compare la valeur de la clé à ajouter à celle de la feuille si elle est plus petite on l'ajoute à gauche, si elle est plus grande on l'ajoute à droite. Le cas où les valeurs des clés sont égales est particulier et dépend du choix d'implémentation, elle peut être soit ignorer soit ajouter à gauche ou à droite de la feuille dans notre exemple en cas de clé égale la clé se trouvera à gauche.
+
+	\begin{figure}[!h]
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.12 [.5 3 10 ][.13 ~ [.14 ~ [.15 15 [.17 ~ 18  ] ] ]  ] ]
+		\caption{Insertion arbre de recherche binaire}
+		
+	\end{minipage}
+	\end{figure}
+
+\subsection*{B-arbre d'ordre m}
+
+Premièrement, on recherche la feuille d'insertion. Si la feuille n'est pas pleine alors on l'insère. Si la feuille est pleine, nombre de clé égal à 2*m, alors on crée un nouveau noeud contenant les m-1 plus grandes clés, on laisse les m plus petits noeuds dans le noeud initiale et on remonte la clé médiane au père et on effectue la même vérification de manière récussive juqu'à la racine si besoin.
+
+\subsubsection*{Arbre (2,4) ou B-arbre d'ordre 2}
+
+	\begin{figure}[!h]
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.10 [.5;3 ][.12;14;15 ~ ] ]
+		\caption{Insertion arbre (2,4) après l'insertion de 15}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.10 [.5;3 ][.12;14;15;17  ] ]
+		\caption{Insertion arbre (2,4) intermédiaire lors de l'insertion de 17}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.10;15  [.5;3 ] [.12;14  ] [.17  ] ]
+		\caption{Insertion arbre (2,4) résultat de l'insertion de 17}
+		
+	\end{minipage}
+	
+		\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.10;15  [.5;3 ] [.12;14  ] [.17;18  ] ]
+		\caption{Insertion arbre (2,4) résultat final}
+		
+	\end{minipage}
+	\end{figure}
+ 
+ \subsubsection*{B-arbre d'ordre 4}
+ 
+Voici, l'application de l'exemple sur un B-arbre d'ordre 4.
+ 
+ 	\begin{figure}[!h]
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.3;5;10;12;13;14;15 ~ ~ ]
+		\caption{Insertion B-arbre d'ordre 4  après l'insertion de 15}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.3;5;10;12;13;14;15;17 ~ ~ ]
+		\caption{Insertion B-arbre d'ordre 4 intermédiaire lors de l'insertion de 17}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.13  3;5;10;12 14;15;17 ]
+		\caption{Insertion B-arbre d'ordre 4 résultat de l'insertion de 17}
+		
+	\end{minipage}
+	
+		\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.13  3;5;10;12 14;15;17;18 ]
+		\caption{Insertion B-arbre ordre 4 résultat final}
+		
+	\end{minipage}
+	\end{figure}
+ 
+ \subsection*{ Arbre Splay}
+ Lors de l'ajout, d'un élément dans un arbre splay, on remonte le noeud ajouté pour en faire la racine de l'arbre et on réorganise l'arbre en fonction.
+  	\begin{figure}[!h]
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.12 ~ ~ ]
+		\caption{Insertion arbre splay  après l'insertion de 12}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.12 5 ~ ]
+		\caption{Insertion arbre splay  intermédiaire de l'insertion de 5}
+		
+	\end{minipage}
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.5 12 ~ ]
+		\caption{Insertion arbre splay  après l'insertion de 5}
+	\end{minipage}
+	
+		\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.5  ~ [.12 10 ~ ] ]
+		\caption{Insertion arbre splay  intermédiaire de l'insertion de 10}
+	\end{minipage}
+	
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.10  5 12 ]
+		\caption{Insertion arbre splay  après l'insertion de 10}
+	\end{minipage}
+	
+	\begin{minipage}[b]{0.45\linewidth}
+		\Tree [.18 [.17 [.15 [.14 [.13 [.12 [.10 [.5 [.3 ] ~ ] ~ ] ~ ] ~ ] ~ ] ~ ] ~ ]  ~ ]
+		\caption{Insertion arbre splay  résultat final}
+	\end{minipage}
+	\end{figure}
+ 
+ 
+ \subsection*{Conclusion}
+ Ce n'est pas avec un seul exemple que l'on peut illuster l'ensemble des propriétés des ces différentes structures d'arbre mais cela nous permet de comprendre le fonctionnement général de l'ajout d'un élément à ces structures. On peut se rendre compte l'ajout d'un élément dans un arbre splay demande beaucoup de manipulations dans l'arbre. De plus comme les clés insérées sont croissantes, la structure d'arbre splay est moins intéressante à étudier.
+ 
 \section*{Question 5}
 \section*{Question 6}
 \section*{Question 7 - Henneton Romain}
