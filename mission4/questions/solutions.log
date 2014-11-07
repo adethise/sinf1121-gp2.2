@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.26)  7 NOV 2014 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.26)  7 NOV 2014 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -803,14 +803,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 247--261
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
 <TU.png, id=25, 2424.05624pt x 554.07pt>
 File: TU.png Graphic file (type png)
  <use TU.png>
-Package pdftex.def Info: TU.png used on input line 295.
+Package pdftex.def Info: TU.png used on input line 297.
 (pdftex.def)             Requested size: 338.58632pt x 77.39172pt.
 
 
@@ -819,7 +824,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <1.png, id=27, 1607.00375pt x 485.815pt>
 File: 1.png Graphic file (type png)
  <use 1.png>
-Package pdftex.def Info: 1.png used on input line 303.
+Package pdftex.def Info: 1.png used on input line 305.
 (pdftex.def)             Requested size: 338.58632pt x 102.35774pt.
 
 
@@ -828,7 +833,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <2.png, id=28, 1970.36125pt x 500.87125pt>
 File: 2.png Graphic file (type png)
  <use 2.png>
-Package pdftex.def Info: 2.png used on input line 311.
+Package pdftex.def Info: 2.png used on input line 313.
 (pdftex.def)             Requested size: 338.58632pt x 86.0641pt.
 
 
@@ -837,7 +842,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <3.png, id=29, 1908.12875pt x 487.8225pt>
 File: 3.png Graphic file (type png)
  <use 3.png>
-Package pdftex.def Info: 3.png used on input line 319.
+Package pdftex.def Info: 3.png used on input line 321.
 (pdftex.def)             Requested size: 338.58632pt x 86.56117pt.
 
 
@@ -846,7 +851,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <4.png, id=30, 1653.17625pt x 496.85625pt>
 File: 4.png Graphic file (type png)
  <use 4.png>
-Package pdftex.def Info: 4.png used on input line 327.
+Package pdftex.def Info: 4.png used on input line 329.
 (pdftex.def)             Requested size: 338.58632pt x 101.75763pt.
 
 
@@ -856,7 +861,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: equilibrage.jpg Graphic file (type jpg)
 
 <use equilibrage.jpg>
-Package pdftex.def Info: equilibrage.jpg used on input line 357.
+Package pdftex.def Info: equilibrage.jpg used on input line 359.
 (pdftex.def)             Requested size: 417.3564pt x 237.48563pt.
 
 
@@ -887,7 +892,7 @@ t/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
 1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/
 lmri10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on solutions.pdf (7 pages, 483039 bytes).
+Output written on solutions.pdf (7 pages, 484354 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  66 compressed objects within 1 object stream
