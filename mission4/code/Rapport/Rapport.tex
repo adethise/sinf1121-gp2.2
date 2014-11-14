@@ -72,16 +72,11 @@ Nous avons pris la décision de favoriser la complexité temporelle par rapport 
 Nous avons scindé l'ensemble des publications en sous-ensemble selon leur rang. Dans notre cas, nous avons donc 5 sous-ensembles ($A*$,A,B,C,D). La recherche dans un des sous-ensembles sera plus efficace que dans l'ensemble complet par le simple fait qu'il y a moins d'élément. Les sous-ensembles sont représentés par des TreeMap qui contiennent comme clé des noms de domaines et comme valeur des listes de référence de publication lié au nom de domaine. L'utilisation de référence n'augmente pas significativement notre complexité spatiale.
 
 \section*{Diagramme de classe}
-
-\section*{Resultat des tests}
-
-A venir
-
-\section*{Limitations et améliorations}
-
+\begin{center}
+    \includegraphics[scale=0.5]{UML.png}
+\end{center}
 
 \section*{Conclusion}
-
- 
+La décomposition des classes dans notre programme, nous a facilité la répartition des taches, l'utilisation de multiple classe permet aussi de pouvoir être plus modulable. Tant au niveau de la repartition du travail, qu'au niveau de l'ajout de nouvelles fonctions pour adapter notre programme.
 
 \end{document}
