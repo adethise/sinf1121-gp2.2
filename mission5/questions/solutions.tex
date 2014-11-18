@@ -54,6 +54,12 @@
 
 \section*{Question 1 Aurian de Potter}
 \section*{Question 2 Romain Henneton}
+L'algorithme de Knuth-Morris-Pratt (KMP) un un algorithme permettant de résoudre un problème appelé "pattern matching problem" sur un String, en général. Soit un texte P (pattern) de longeur m et un autre texte T de longueur n (avec m$\leq$n). L'algorithme KMP va permettre soit de déterminer si le pattern P figure dans le texte T et à quelle position, soit, le cas échéant, de déternimer que P ne figure pas dans T.
+
+
+
+L'algorithme de brute force correspondant à cette recherche de pattern matching est constitué de deux boucles impriquées. La première (externe) parcourant les indices de T de 0 à n-m (via l'incrément i par exemple). La seconde (interne à la première), parcourant tous les éléments de P et comparant $T[i+j]$ ($0\leq j\leq n$) avec P$[j]$. La complexité de cette algorithme dans le pire des cas est donc O((n-m+1)n), donc O(nm).\\
+L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthode de brute force. Lorsqu'un caractère ne correspondant pas au texte P est rencontré, plutot que de retourner à l'élément i+1 et de relancer la comparaison sur m, l'algorithme KMP va exploiter les comparaisons déjà réalisées et lancer la nouvelle recherche à un indice plus approprié et déterminé grâce à un pré-traitement de P. Ce pré-traitement est réalisé via une fonction appelée "Failure Function" qui associe à chaque indice de P une valeur définie comme le plus long préfixe P correspondant au sufixe de P[1..j]. Cela permet de redémarrer à un indice plus intéressant et d'éviter des comparaisons inutiles. La complexitée  est de O(n+m).
 \section*{Question 3 Jérôme Lemaire}
 \section*{Question 4 Zacharie Kerger}
 \section*{Question 5 Arnaud Dethise}
