@@ -60,7 +60,13 @@ L'algorithme de Knuth-Morris-Pratt (KMP) un un algorithme permettant de résoudr
 L'algorithme de brute force correspondant à cette recherche de pattern matching est constitué de deux boucles impriquées. La première (externe) parcourant les indices de T de 0 à n-m (via l'incrément i par exemple). La seconde (interne à la première), parcourant tous les éléments de P et comparant $T[i+j]$ ($0\leq j\leq n$) avec P$[j]$. La complexité de cette algorithme dans le pire des cas est donc O((n-m+1)n), donc O(nm).\\
 L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthode de brute force. Lorsqu'un caractère ne correspondant pas au texte P est rencontré, plutot que de retourner à l'élément i+1 et de relancer la comparaison sur m, l'algorithme KMP va exploiter les comparaisons déjà réalisées et lancer la nouvelle recherche à un indice plus approprié et déterminé grâce à un pré-traitement de P. Ce pré-traitement est réalisé via une fonction appelée "Failure Function" qui associe à chaque indice de P une valeur définie comme le plus long préfixe P correspondant au sufixe de P[1..j]. Cela permet de redémarrer à un indice plus intéressant et d'éviter des comparaisons inutiles. La complexitée  est de O(n+m).
 \section*{Question 3 Jérôme Lemaire}
+
 \section*{Question 4 Zacharie Kerger}
+
+Une file de priorité adaptable est une file de priorité possédant 3 méthodes supplémentaires: remove(e), replaceKey(e,k) et replaceValue(e,v). Il n'est pas plus avantageux d'utiliser ce type de file de priorité pour la construction d'un code de Huffman parce que le calcul de la fréquence est réalisé dès le début de l'algorithme et donc avant la création de la file de priorité. Dès lors, ces trois méthodes n'auront aucune utilité puisque les entrées, les valeurs et les clés des entrées sont connues et ne changeront pas.\\
+
+L’utilisation d’une file de priorité n’est pas indispensable pour construire un code de Huffman. [TO DO]
+
 \section*{Question 5 Arnaud Dethise}
 
 	Le code de Huffman permet de compresser un texte encodé par exemple en ASCII ou en Unicode en un fichier binaire plus léger. Cette compression se base sur des mots-code qui représentent chaque caractère sur un nombre variable de bits, et non sur 7, 8, 16 ou même 64 bits.
