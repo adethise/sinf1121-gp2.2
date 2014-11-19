@@ -6,7 +6,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{color}
@@ -45,9 +44,9 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
-\date{insert date 2014}
+\date{21 novembre 2014}
 \author{Groupe 2.2}
-\title{Produit Mission X}
+\title{Produit Mission 5}
 
 \begin{document}
 \maketitle
@@ -63,7 +62,54 @@ L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthod
 \section*{Question 3 Jérôme Lemaire}
 \section*{Question 4 Zacharie Kerger}
 \section*{Question 5 Arnaud Dethise}
+
+	Le code de Huffman permet de compresser un texte encodé par exemple en ASCII ou en Unicode en un fichier binaire plus léger. Cette compression se base sur des mots-code qui représentent chaque caractère sur un nombre variable de bits, et non sur 7, 8, 16 ou même 64 bits.
+	
+	Pour cela, il faut d'abord construire l'arbre de Huffman. L'algorithme complet se trouve dans le DSAJ6-p519. Les étapes et complexités associées sont les suivantes ($n$ est la longueur de la chaîne de caractères ; $d$ est le nombre de caractères différents).
+	\vspace{0.3cm}
+	
+	\begin{enumerate}
+	\item[1.] Calculer la fréquence d'apparition de chaque caractère de l'input : $\Theta(n)$.
+	\item[2.] Créer la \textit{file de priorité}. Il faut créer un arbre d'un seul nœud par caractère pour $d$ caractères et l'ajouter à la file avec sa fréquence comme clé : $\Theta(d)$.
+	\item[3.] Récupérer $E_1$ et $E_2$, les deux éléments de la file dont la clé est minimale : $\Theta(2d)$.
+	\item[4.] Créer un nouvel arbre dont la racine est un nœud ayant $E_1$ et $E_2$ comme enfants et le replacer dans la file avec pour clé la somme des anciennes clés de $E_1$ et $E_2$ : $\mathcal{O}(1)$.
+	\item[5.] S'il y a plus d'un élément dans la file, recommencer à [3]. Sinon, retourner le dernier élément : $\Theta(d*[3-5])$.
+	\end{enumerate}
+	\vspace{0.3cm}
+	
+	La complexité de cet algorithme est de $\Theta(n + d^2)$. On peut toutefois l'optimiser :
+	\vspace{0.3cm}
+	
+	\begin{enumerate}
+	\item[2.5] Trier la file de priorité : $\mathcal{O}(d $ log $d)$.
+	\item[4.] Devient : Placer le nouvel arbre dans la file en gardant celle-ci triée : $\mathcal{O}($log $d)$.
+	\item[3.] Devient : $\mathcal{O}(1)$.
+	\end{enumerate}
+	\vspace{0.3cm}
+	
+	Et on obtient alors une complexité pour la création de l'arbre de $\mathcal{O}(n + d $ log $ d)$.
+	
+	Une fois l'arbre construit, on peut le parcourir pour créer un mapping entre chaque caractère et le mot-code qui lui est associé. 
+	Il s'agit d'un simple parcours de chaque nœud de l'arbre et une implémentation efficace aura une complexité $\Theta(d)$. 
+	Il est logique d'utiliser une HashMap à cette étape puisque l'on voudra accéder à chaque élément indépendamment en $\mathcal{O}(1)$.
+	
+	Enfin, on peut maintenant parcourir la chaîne de caractère d'entrée caractère par caractère et concaténer à la chaîne de bits de sortie à chaque fois la séquence de bit correspondante (récupérée depuis la HashMap). 
+	On peut évaluer cette opération comme étant en $\Theta(n)$ (bien qu'il soit possible  d'affiner l'analyse en fonction de l'encodage ou du nombre de caractères différents, on considère ici que le décodage d'un caractère et l'ajout d'une séquence de bits sont des opérations en temps constant).
+	
+	\vspace{0.3cm}
+	Au final, la complexité de la compression complète est de $\mathcal{O}(n + d $ log $ d) + \Theta(d) + \Theta(n)$, soit en suivant la notation asymptotique $\mathcal{O}(n + d $ log $ d)$.
+	
+
 \section*{Question 6 Arnaud Dethise}
+
+	Pour la décompression d'un texte, il y a deux étapes principales : reconstruire la table d'association caractère~/~mot-code, puis utiliser celle-ci pour lire le fichier binaire.
+	
+	La première étape dépend de la façon dont la table est transmise. Intuitivement, on peut supposer qu'il soit possible de recréer une table avec une complexité en $\Theta(d)$, $d$ le nombre de caractères différents.
+	
+	Ensuite il faut lire le fichier, bit par bit, et en extraire les séquences qui sont présentes dans le dictionnaire.
+	Il faut dans ce cas vérifier à chaque bit lu si on peut extraire un caractère des derniers bits lus. Autrement dit, il faut vérifier si on match un caractère à chaque bit, ce qui donne une complexité de $\Theta(l)$ où $l$ est la longueur du fichier en bits.
+
+
 %\section*{Question 7 Romain Henneton}
 %\section*{Question 8 Zacharie Kerger}
 %\section*{Question 9 Aurian de Potter}
