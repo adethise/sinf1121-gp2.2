@@ -63,9 +63,20 @@ L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthod
 
 \section*{Question 4 Zacharie Kerger}
 
-Une file de priorité adaptable est une file de priorité possédant 3 méthodes supplémentaires: remove(e), replaceKey(e,k) et replaceValue(e,v). Il n'est pas plus avantageux d'utiliser ce type de file de priorité pour la construction d'un code de Huffman parce que le calcul de la fréquence est réalisé dès le début de l'algorithme et donc avant la création de la file de priorité. Dès lors, ces trois méthodes n'auront aucune utilité puisque les entrées, les valeurs et les clés des entrées sont connues et ne changeront pas.\\
+Une file de priorité adaptable est une file de priorité possédant 3 méthodes supplémentaires: remove(e), replaceKey(e,k) et replaceValue(e,v). Il n'est pas plus avantageux d'utiliser ce type de file de priorité pour la construction d'un code de Huffman parce que le calcul de la fréquence est réalisé dès le début de l'algorithme. Dès lors, ces trois méthodes n'auront aucune utilité puisque les entrées, les valeurs et les clés des entrées sont connues et ne changeront pas. Le code de Huffman va juste fusionner les différents noeuds sans les modifier.\\
 
-L’utilisation d’une file de priorité n’est pas indispensable pour construire un code de Huffman. [TO DO]
+L’utilisation d’une file de priorité n’est pas indispensable pour construire un code de Huffman. Il est possible d'en construire un avec un algorithme de tri. 
+
+\begin{enumerate}
+\item On calcule la fréquence de chaque caractère (complexité de $\Theta(n)$ où n représente la taille du String à compresser) et on les ajoute dans une liste triée dans un ordre croissant (complexité de $O(d^{2})$ où d représente les caractères distincts du String à compresser).
+\item On additionne les fréquences des deux premières entrées (que l'on retire de la liste) et on construit un noeud possédant comme fils gauche, l'entrée qui a la plus petite fréquence et comme fils droit, l'entrée qui a la plus grande fréquence.
+\item Le noeud créé est représenté par une entrée ayant comme clé l'addition réalisée à l'étape précédente. 
+\item On ajoute l'entrée créée précédemment, à la liste triée.
+\item On répète les étapes 2, 3 et 4 tant qu'il reste plus d'un élément dans la liste (complexité de $O(d^{2})$). 
+\item A cette étape, il ne reste qu'une seule entrée qui représente la racine de l'arbre de Huffman.
+\end{enumerate}
+
+La complexité calculatoire sera plus élevée que celle de l'algorithme original. En effet, pour insérer \underline{un} élément dans une liste triée, nous avons une complexité temporelle de $O(n)$ vu que dans le pire des cas, on devra parcourir toute la liste de n éléments. Dès lors, on obtient une complexité temporelle équivalente à $O(n + d^2)$ (voir calculs dans la description de la méthode ci-dessus) alors que nous avons une complexité de $O(n+d\log d)$ avec l'algorithme original.
 
 \section*{Question 5 Arnaud Dethise}
 
