@@ -52,6 +52,24 @@
 \maketitle
 
 \section*{Question 1 Aurian de Potter}
+Il est plus avantageux d'implémenter une PriorityQueue par un Heap plutôt que par une List. Pour la méthode insert(k,x)/removeMin() les complexités pour une SortedList sont en $\mathcal{O}(n)/\mathcal{O}(1)$ et $\mathcal{O}(1)/\mathcal{O}(n)$ pour une UnsortedList. Pour chaque sorte de liste on a une méthode rapide et une méthode lente. Alors que pour un Heap, ces deux méthodes s'exécutent toutes deux en $\mathcal{O}(log(n))$. (avec n les nombre de noeuds de l'arbre)\\
+
+L'inconvénient avec un Heap est que nous devons toujours assurer que: 
+\begin{enumerate}
+\item Heap-Order Property (p.346) : Dans un heap T, pour chaque noeud v autre que la racine, la clé stockée à v est plus grande ou égale à la clé stockée au parent de v. Le noeud racine renferme donc la clé minimum.
+\item Complete Binary Tree Property (p.347): Un heap T avec une hauteur h est un arbre binaire complet si les niveau 1,2,3,…,h-1 de T ont le nombre maximum de noeuds possible et dans le niveau h-1, tous les noeuds internes sont à la gauche des noeuds externes et il y a au plus un noeud avec un enfant, qui doit être un enfant gauche.
+\end{enumerate}
+Pour chaque ajout/suppression, il faut s'assurer de respecter ces deux propriétés et si besoin procéder au «Up-Heap Bubbling» ou du «Down-Heap Bubbling». Ces méthodes dépendent de la hauteur de l'arbre et s'exécutent donc en $\mathcal{O}(log(n))$.\\
+
+Existe-t-il un tas T mémorisant 7 éléments distincts tel qu'un parcours infixe du
+tas renvoie les éléments de T en ordre décroissant ? Qu'en est-il avec un parcours
+préfixe ou post-fixe ?
+
+\begin{enumerate}
+\item{Postfixe}:Oui, pour cela il faut en plus des deux propriétés citées ci-dessus que chaque enfant de gauche d'un noeud ait une clé supérieure à celui de l'enfant droit de ce noeud.
+\item{Préfixe}: Non, ce n'est pas possible, les parents devraient avoir des clés supérieures à leurs enfants, ce qui violerait la Heap-Order Priority.
+\item{Infixe}: Non, ce n'est pas possible, les parents devraient avoir des clés supérieures à leur enfant de droite, ce qui violerait la Heap-Order Priority.
+\end{enumerate}
 \section*{Question 2 Romain Henneton}
 L'algorithme de Knuth-Morris-Pratt (KMP) un un algorithme permettant de résoudre un problème appelé "pattern matching problem" sur un String, en général. Soit un texte P (pattern) de longeur m et un autre texte T de longueur n (avec m$\leq$n). L'algorithme KMP va permettre soit de déterminer si le pattern P figure dans le texte T et à quelle position, soit, le cas échéant, de déternimer que P ne figure pas dans T.
 
