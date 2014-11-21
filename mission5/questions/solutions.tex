@@ -61,6 +61,27 @@ L'algorithme de brute force correspondant à cette recherche de pattern matching
 L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthode de brute force. Lorsqu'un caractère ne correspondant pas au texte P est rencontré, plutot que de retourner à l'élément i+1 et de relancer la comparaison sur m, l'algorithme KMP va exploiter les comparaisons déjà réalisées et lancer la nouvelle recherche à un indice plus approprié et déterminé grâce à un pré-traitement de P. Ce pré-traitement est réalisé via une fonction appelée "Failure Function" qui associe à chaque indice de P une valeur définie comme le plus long préfixe P correspondant au sufixe de P[1..j]. Cela permet de redémarrer à un indice plus intéressant et d'éviter des comparaisons inutiles. La complexitée  est de O(n+m).
 \section*{Question 3 Jérôme Lemaire}
 
+Nous adoptons une approche complémentaire à la résolution du problème de la question 2. Car nous utilisons une approche de recherche de chaîne qui prétraite le texte, plutôt que le pattern. Cette approche est approprié pour des applications dans lesquelles de nombreuses requêtes sont effectuées sur un texte \textbf{fixe}, de sorte que le coût initial de prétraitement du texte soit amorti par une recherche plus rapide lors de chaque requête ultérieur.\\
+Par exemple, lors d'une recherche du mot "Hamlet" dans les oeuvres de Shakespeare.\\
+\\
+Un Trie est une structure de données abstraite sous forme d'arbre qui permet de stocker des chaînes de caractères de manière ordonnée. L'application principale pour les Tries est la recherche d'information. \\
+Soit S un ensemble de s chaîne de l'alphabet tel qu'aucun chaîne en S est un préfixe d'une autre chaîne. A Trie norme S est un arbre ordonné T aux propriétés suivantes:
+\begin{itemize}
+
+\item Chaque noeud de T, sauf la racine, est marquée avec un caractère de A.
+\item Les enfants d'un noeud interne de T ont des étiquettes distinctes.
+\item Les feuilles de T a, associés chacun à une chaîne de S, de telle sorte que la concaténation des étiquettes des nœuds sur le chemin de la racine à une feuille de T V donne la chaîne de S associé à V.
+
+\end{itemize}
+
+Ainsi, un Trie T représente les chaînes de S avec les chemins de la racine aux feuilles de T.
+Notez l'importance de supposer que l'absence de chaîne en S est un préfixe d'une autre chaîne.Nous pouvons toujours satisfaire cette hypothèse en ajoutant un caractère spécial qui ne sont pas dans l'alphabet d'origine A à la fin de chaque chaîne.  \\\\
+
+Un Trie comprimé est semblable à un Trie mais il assure que chaque nœud interne dans le Trie a au moins deux enfants. Il applique cette règle en comprimant les chaînes de nœuds enfants célibataires en bords individuels.
+Ce schéma de compression nous permet de réduire l'espace total de la Trie lui-même à partir de O (n) pour le Trie à O (s) pour le Trie comprimé, où n est la longueur totale des chaînes de caractère de S et s est le nombre de chaînes de caractères de S. Nous devons encore stocker les différents chaînes en S, mais nous réduisons néanmoins l'espace de Trie.\\
+
+Nous utilisons un suffixe Trie lorsque les chaînes de caractères de la collection S sont toutes des suffixes de la chaînes de caractères X. Pour ce faire, nous utilisons une amélioration d’un Trie compressé.\\
+
 \section*{Question 4 Zacharie Kerger}
 
 Une file de priorité adaptable est une file de priorité possédant 3 méthodes supplémentaires: remove(e), replaceKey(e,k) et replaceValue(e,v). Il n'est pas plus avantageux d'utiliser ce type de file de priorité pour la construction d'un code de Huffman parce que le calcul de la fréquence est réalisé dès le début de l'algorithme. Dès lors, ces trois méthodes n'auront aucune utilité puisque les entrées, les valeurs et les clés des entrées sont connues et ne changeront pas. Le code de Huffman va juste fusionner les différents noeuds sans les modifier.\\
