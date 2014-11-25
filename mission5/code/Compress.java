@@ -60,9 +60,26 @@ public class Compress
 	/**
 	 *
 	 */
-	public static Set<Map.Entry<Character,Integer>> computeFrequency(Reader in)
+	public static Set<Map.Entry<Character,Integer>> computeFrequency(Reader in) throws IOException
 	{
-		
+		HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+		int r;
+		char ch;
+		Integer freq = new Integer(null);
+		while((r = in.read())!=-1)
+		{
+			ch = (char)r;
+			freq = map.get(ch);
+			if(freq.compareTo(null)!=0)
+			{
+				map.put(ch,freq+1);
+			}
+			else
+			{
+				map.put(ch,1);
+			}
+		}
+		return map.entrySet();
 	}
 
 }
