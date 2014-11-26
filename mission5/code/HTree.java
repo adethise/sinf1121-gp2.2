@@ -4,9 +4,6 @@ import java.util.*;
  */
 public class HTree
 {
-
-	private PriorityQueue queue;
-
 	private class Node implements Comparable<Node>
 	{
 		private Node left;
@@ -34,29 +31,48 @@ public class HTree
 			this.right = null;
 		}
 
-		public void createMap(String s, Map m)
-		{}
+		public void createMap(String s, Map<Character,String> m)
+		{
+		}
 
 		public int compareTo(Node n)
 		{
 			return Integer.valueOf(this.value).compareTo(Integer.valueOf(n.value));
 		}
+
+		public int getValue()
+		{
+			return value;
+		}
 	}
+
+	private Node root;
+	private int size;
+
 
 	/**
 	 *
 	 */
 	public HTree(Set<Map.Entry<Character,Integer>> set)
 	{
+		PriorityQueue<Node> queue;
 		queue = new PriorityQueue<Node>(set.size());
+		size = set.size();
 
 		Iterator<Map.Entry<Character,Integer>> iter = set.iterator();
 		
 		while (iter.hasNext()) {
 			Map.Entry<Character,Integer> entry = iter.next();
-			queue.add(new Node(entry.getKey(), entry.getValue()));
+			queue.offer(new Node(entry.getKey(), entry.getValue()));
 		}
 
+		while (queue.size() > 1) {
+			Node e1 = queue.poll();
+			Node e2 = queue.poll();
+			queue.offer(new Node(e1, e2, e1.getValue() + e2.getValue() ) );
+		}
+
+		root = queue.poll();
 	}
 
 	/**
@@ -64,7 +80,11 @@ public class HTree
 	 */
 	public Map<Character,String> makeMap()
 	{
-		return null;
+		Map<Character,String> map = new HashMap<Character,String>(this.size);
+
+		this.root.createMap("", map);
+
+		return map;
 	}
 
 	/**
