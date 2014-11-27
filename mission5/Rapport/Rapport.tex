@@ -58,7 +58,11 @@ Il nous a été demandé de réaliser un programme de compression et de décompr
 Le programme comporte 5 classes, InputBitStream, OutputBitStream, Compress, Decompress, HTree. Les deux premières classes citées, nous ont été fournies. Vous trpuverez ci-dessous une explication pour chacune d'elles.
 
 \subsection*{InputBitStream et OutputBitStream (Question 7)}
+De manière générale, des données textuelles sont codées soit en utilisant la norme ASCII, soit la norme UNICODE, qui font toutes deux correspondre un code binaire de 7 ou 16 bits à chaque caractère. L'algorithme d'Huffman va remplacer cette suite de bits de taille fixe par une suite de taille variable en fonction de la fréquence de chaque caractère dans le texte à traiter, et cela de manière optimale (les chaines de bits les plus courtes correspondront aux caractères apparaissant le plus souvent dans le texte et inversément).\\
 
+	Les deux classes InputBitStream et OutputBitStream permettent d'écrire un fichier directement en binaire, donc de contourner l'encodage ASCII ou UNICODE par défaut, et sont de ce fait nécessaire à la réalisation de l'algorithme d'Huffman.\\
+	
+	Cependant, le fait d'utiliser des correspondances de taille variable entraine que la taille totale peut ne pas etre un multiple de 8 bits (1byte) et donc etre complété par des 0 pour terminer le dernier byte entammé. Pour gérer ce problème, nous avons intégré au header une suite de bits indiquant le nombre de caractères dans le fichier. Lorsque ce nombre de caractères déchiffrés est atteint à la décompression, cela signifie que l'ensemble des données ont été décompressées, et le programme ne tient donc pas compte des bits additionnels.
 \subsection*{Compress}
 
 
