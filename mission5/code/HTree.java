@@ -1,6 +1,8 @@
 import java.util.*;
 /**
- *
+ * This class build a Huffman Tree from an Entry Set.
+ * @author Arnaud Dethise <arnaud.dethise@student.uclouvain.be>
+ * @version 1.0
  */
 public class HTree
 {
@@ -31,8 +33,15 @@ public class HTree
 			this.right = null;
 		}
 
-		public void createMap(String s, Map<Character,String> m)
+		public void createMap(String s, Map<Character,String> map)
 		{
+			if ( this.isLeaf ) {
+				map.put(this.character, s);
+			}
+			else {
+				this.left.createMap(s + "0", map);
+				this.right.createMap(s + "1", map);
+			}
 		}
 
 		public int compareTo(Node n)
@@ -72,7 +81,7 @@ public class HTree
 			queue.offer(new Node(e1, e2, e1.getValue() + e2.getValue() ) );
 		}
 
-		root = queue.poll();
+		this.root = queue.poll();
 	}
 
 	/**
@@ -94,5 +103,31 @@ public class HTree
 	{
 		HTree t = new HTree(set);
 		return t.makeMap();
+	}
+
+	/**
+	 *
+	 */
+	public static void main(String[] args)
+	{
+		Map<Character,Integer> testMapIn;
+		testMapIn = new HashMap<Character,Integer>();
+		testMapIn.put('a', 18);
+		testMapIn.put('z', 42);
+		testMapIn.put('e', 2);
+		testMapIn.put('r', 8);
+		testMapIn.put('t', 12);
+		testMapIn.put('y', 12);
+
+		Map<Character,String> testMapOut;
+
+		testMapOut = buildMap(testMapIn.entrySet());
+
+		System.out.println(testMapOut.get('a'));
+		System.out.println(testMapOut.get('z'));
+		System.out.println(testMapOut.get('e'));
+		System.out.println(testMapOut.get('r'));
+		System.out.println(testMapOut.get('t'));
+		System.out.println(testMapOut.get('y'));
 	}
 }
