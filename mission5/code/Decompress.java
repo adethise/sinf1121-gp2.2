@@ -41,6 +41,10 @@ public class Decompress {
 			   numChar = (short) in.readShort();
 			   fileSize = in.readLong();
 		   }
+		   else {
+			   System.out.println("Unsupported version compressed file");
+			   System.exit(0);
+		   }
 		   
 		   HashMap<String, Character> map;
 		   map = readHeader(in, numChar);
@@ -90,7 +94,9 @@ public class Decompress {
    public static void translateData(InputBitStream in, HashMap<String,Character> map, long fileSize, FileWriter fw) throws IOException
    {	
 	  StringBuffer sb = new StringBuffer();
-	  for(int i=0; i<fileSize; i++)
+
+	  long charNum = 0;
+	  while ( charNum < fileSize )
 	  {
 		  sb.append(in.readBoolean() ? '1' : '0');
 		  if(map.containsKey(sb.toString()))
@@ -98,7 +104,7 @@ public class Decompress {
 			 fw.write(map.get(sb.toString()));
 			 sb = null;
 			 sb = new StringBuffer();
-			 //sb.delete(0, sb.length()-1);
+			 charNum++;
 		  }
 	  }
    }
