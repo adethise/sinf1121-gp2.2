@@ -80,7 +80,28 @@ public class Compress
 	public static void writeHeader(OutputBitStream out, Set<Map.Entry<Character,String>> set, long filelen, int version) throws IOException
 	{
 		if ( version == 2 ) {
-			// This version is currently unsupported
+			out.write( (byte)2 );
+			out.write( (short)set.size() );
+			out.write( filelen );
+
+			Iterator<Map.Entry<Character,String>> iter;
+			iter = set.iterator();
+
+			while ( iter.hasNext() ) {
+				Map.Entry<Character,String> entry;
+				entry = iter.next();
+
+				out.write(entry.getKey());
+				String codeword = entry.getValue();
+				out.write( (byte) codeword.length() );
+
+				for ( int i = 32 ; i > codeword.length() ; i-- ) {
+					out.write(false);
+				}
+				for ( int i = 0 ; i < codeword.length() ; i++ ) {
+					out.write( codeword.charAt(i) != '0' );
+				}
+			}
 		}
 		else if ( version == 3 ) {
 			out.write( (byte)3 );
