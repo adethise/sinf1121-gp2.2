@@ -1,31 +1,114 @@
 /**
- *
+ * Compress a file using a Huffman Tree.A
+ * @authors Arnaud Dethise <arnaud.dethise@student.uclouvain.be>,
+ * 		Romain Henneton <romain.henneton@student.uclouvain.be>
  */
 import java.io.*;
 import java.util.*;
+
 public class Compress
 {
-	/*
+	/**
 	 *
 	 */
 	public static void main(String[] args)
 	{
-		
+		if ( args.length < 2 ) {
+			usage();
+			System.exit(0);
+		}
+
+		FileReader in;
+		OutputBitStream out;
+
+		try {
+			in = new FileReader(args[0]);
+
+			Set<Map.Entry<Character,Integer>> set;
+			set = computeFrequency(in);
+
+			in.close();
+
+			Map<Character,String> map;
+			map = HTree.buildMap(set);
+
+			in = new FileReader(args[0]);
+			out = new OutputBitStream(args[1]);
+
+			writeHeader(out, map.entrySet(), computeTotal(set), 3);
+			writeData(out, in, map);
+
+			in.close();
+			out.close();
+		}
+		catch ( IOException e ) {
+			e.printStackTrace(System.err);
+			System.exit(1);
+		}
+
+	}
+
+	/**
+	 *
+	 */
+	public static long computeTotal(Set<Map.Entry<Character,Integer>> set)
+	{
+		Iterator<Map.Entry<Character,Integer>> iter;
+		iter = set.iterator();
+
+		long total = 0;
+
+		while ( iter.hasNext() ) {
+			total += iter.next().getValue();
+		}
+
+		return total;
 	}
 
 	/**
 	 * Help
 	 */
 	public static void usage()
-	{}
+	{
+		System.out.println("USAGE:");
+		System.out.println("\tjava Compress <input file> <output file>");
+	}
 
 	/**
 	 *
 	 */
-	public static void writeHeader(OutputBitStream out, Set<Map.Entry<Character,String>> set, int filelen, int version) throws IOException
+	public static void writeHeader(OutputBitStream out, Set<Map.Entry<Character,String>> set, long filelen, int version) throws IOException
 	{
-		
-	
+		if ( version == 2 ) {
+			// This version is currently unsupported
+		}
+		else if ( version == 3 ) {
+			out.write( (byte)3 );
+			out.write( (short)set.size() );
+			out.write( filelen );
+
+			Iterator<Map.Entry<Character,String>> iter;
+			iter = set.iterator();
+
+			while ( iter.hasNext() ) {
+				Map.Entry<Character,String> entry;
+				entry = iter.next();
+
+				out.write(entry.getKey());
+				String codeword = entry.getValue();
+
+				for ( int i = 32 ; i > codeword.length()+1 ; i-- ) {
+					out.write(false);
+				}
+				out.write(true);
+				for ( int i = 0 ; i < codeword.length() ; i++ ) {
+					out.write( codeword.charAt(i) != '0' );
+				}
+			}
+		}
+		else {
+			// No such version supported
+		}
 	}
 
 	/**
@@ -35,12 +118,17 @@ public class Compress
 	{
 		int r;
 		String codeword;
-		boolean b;
 		char ch;
 		while((r = in.read())!=-1)
 		{
 			ch = (char) r;
 			codeword = map.get(ch);
+
+			if ( codeword == null ) {
+				System.err.println("An unknown error occured while reading the file");
+				System.exit(2);
+			}
+
 			for(int i = 0;i<codeword.length();i++)
 			{
 				if(codeword.charAt(i)=='1')
@@ -65,14 +153,14 @@ public class Compress
 		HashMap<Character,Integer> map = new HashMap<Character,Integer>();
 		int r;
 		char ch;
-		Integer freq = new Integer(null);
+		Integer freq;
 		while((r = in.read())!=-1)
 		{
 			ch = (char)r;
 			freq = map.get(ch);
-			if(freq.compareTo(null)!=0)
+			if( freq != null )
 			{
-				map.put(ch,freq+1);
+				map.put(ch, freq+1);
 			}
 			else
 			{
