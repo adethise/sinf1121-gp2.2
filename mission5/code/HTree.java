@@ -58,7 +58,6 @@ public class HTree
 	private Node root;
 	private int size;
 
-
 	/**
 	 *
 	 */
