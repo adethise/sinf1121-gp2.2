@@ -75,14 +75,16 @@ Nous avons pris la décision d'implémenter complétement la classe HTree et don
 
 
 \section*{Diagramme de classe (Question 8)}
-%\begin{center}
-%    \includegraphics[scale=0.5]{}
-%\end{center}
+\begin{center}
+    \includegraphics[scale=0.4]{Class_Diagram.png}
+\end{center}
 
 \section*{Test (Question 9 et 10)}
 
-\section*{Conclusion}
-La décomposition des classes dans notre programme, nous a facilité la répartition des taches, l'utilisation de multiple classe permet aussi de pouvoir être plus modulable. Tant au niveau de la repartition du travail, qu'au niveau de l'ajout de nouvelles fonctions pour adapter notre programme.\\
+Vu que nous avons utilisé l'algorithme de compression par codage de Huffman pour notre code, nous pouvons supposer que notre implémentation est normalement sans perte. Mais qu'est-ce que ça signifie un compression sans perte ? \\ Une compression est sans perte lorsqu'il y a autant d'informations avant et après la compression. Les fichiers compressés et ensuite décompressés doivent être en tout point identique.\\
+L'approche que nous utilisons pour compresser les fichiers nous permet d'affirmer que la compression est sans perte. En effet, nous gardons dans l'entête du fichier compressé différentes informations permettant la bonne décompression de ce fichier, dans cette entête se trouve une table de traduction nous permettant de faire correspondre chacun des caractères compressés avec son caractère source. La table de traduction a été construite avec l'ensemble des caractères rencontrées dans le fichier source. \\La méthode la plus fastidieuse de vérifié que notre implémentation de compression et de décompression est sans perte serait de comparer caractère par caractère le fichier source et le fichier décompressé. D'après nous, la manière la plus efficace de tester la validité de cette affirmation est de comparer le nombre de caractères du fichier source et de fichier décompresser.
 
+\section*{Conclusion}
+La décomposition des classes dans notre programme, nous a facilité la répartition des taches, l'utilisation de multiple classe permet aussi de pouvoir être plus modulable. Tant au niveau de la repartition du travail, qu'au niveau de l'ajout de nouvelles fonctions pour adapter notre programme.\\ 
 
 \end{document}
