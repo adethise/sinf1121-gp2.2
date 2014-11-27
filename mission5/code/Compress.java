@@ -160,10 +160,8 @@ public class Compress
 				{
 					out.write(false);
 				}
-	
 			}
 		}
-		
 	}
 
 	/**
@@ -190,5 +188,4 @@ public class Compress
 		}
 		return map.entrySet();
 	}
-
 }
