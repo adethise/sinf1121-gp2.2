@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.11.21)  28 NOV 2014 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.11.21)  28 NOV 2014 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -960,12 +960,12 @@ File: UML.png Graphic file (type png)
  <use UML.png>
 Package pdftex.def Info: UML.png used on input line 91.
 (pdftex.def)             Requested size: 413.13618pt x 190.7091pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+ [2 <./UML.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
-[2 <./UML.png>] [3] (./Rapport.aux) ) 
+[3] (./Rapport.aux) ) 
 Here is how much of TeX's memory you used:
  15837 strings out of 493117
  292819 string characters out of 6135432
@@ -974,17 +974,16 @@ Here is how much of TeX's memory you used:
  46693 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,6n,54p,925b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/
-enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/l
-m-mathit.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.e
-nc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local
-/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/lm/lmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/lm/lmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10
-.pfb>
-Output written on Rapport.pdf (3 pages, 185774 bytes).
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-
+rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/u
+sr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/t
+exlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/
+lmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr17.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on Rapport.pdf (3 pages, 186875 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
