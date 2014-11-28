@@ -9,53 +9,126 @@
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{color}
-
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
-
 \lstset{ %
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  frame=single,                    % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  language=Octave,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,                       % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+backgroundcolor=\color{white}, % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+basicstyle=\footnotesize, % the size of the fonts that are used for the code
+breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+breaklines=true, % sets automatic line breaking
+captionpos=b, % sets the caption-position to bottom
+commentstyle=\color{mygreen}, % comment style
+deletekeywords={...}, % if you want to delete keywords from the given language
+escapeinside={\%*}{*)}, % if you want to add LaTeX within your code
+extendedchars=true, % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+frame=single, % adds a frame around the code
+keepspaces=true, % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{blue}, % keyword style
+language=Octave, % the language of the code
+morekeywords={*,...}, % if you want to add more keywords to the set
+numbers=left, % where to put the line-numbers; possible values are (none, left, right)
+numbersep=5pt, % how far the line-numbers are from the code
+numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+rulecolor=\color{black}, % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false, % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false, % underline spaces within strings only
+showtabs=false, % show tabs within strings adding particular underscores
+stepnumber=2, % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{mymauve}, % string literal style
+tabsize=2, % sets default tabsize to 2 spaces
+title=\lstname % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-
-
-
+\date{21 novembre 2014}
+\author{Groupe 2.2}
+\title{Produit Mission 5}
 \begin{document}
 \maketitle
-
-\section*{Exemple n°3}
-
-Intérressons-nous à la manière dont prolog exécute l'instruction \textbf{$|?-$ append (L1,L2,[1])} en nous basant sur la syntaxe définie lors de l'exemple n°2.\\
-La forme clausale est la suivante : \\
-append(nil, l',l')\\
-^(\urcorner append(l_{1},l_{2},l_{3}) v append(cons(l_{1},l_{2}),cons(l_{1},l_{3})\\
-
-
-
-
+\section*{Question 1 Aurian de Potter}
+Il est plus avantageux d'implémenter une PriorityQueue par un Heap plutôt que par une List. Pour la méthode insert(k,x)/removeMin() les complexités pour une SortedList sont en $\mathcal{O}(n)/\mathcal{O}(1)$ et $\mathcal{O}(1)/\mathcal{O}(n)$ pour une UnsortedList. Pour chaque sorte de liste on a une méthode rapide et une méthode lente. Alors que pour un Heap, ces deux méthodes s'exécutent toutes deux en $\mathcal{O}(log(n))$. (avec n les nombre de noeuds de l'arbre)\\
+L'inconvénient avec un Heap est que nous devons toujours assurer que:
+\begin{enumerate}
+\item Heap-Order Property (p.346) : Dans un heap T, pour chaque noeud v autre que la racine, la clé stockée à v est plus grande ou égale à la clé stockée au parent de v. Le noeud racine renferme donc la clé minimum.
+\item Complete Binary Tree Property (p.347): Un heap T avec une hauteur h est un arbre binaire complet si les niveau 1,2,3,…,h-1 de T ont le nombre maximum de noeuds possible et dans le niveau h-1, tous les noeuds internes sont à la gauche des noeuds externes et il y a au plus un noeud avec un enfant, qui doit être un enfant gauche.
+\end{enumerate}
+Pour chaque ajout/suppression, il faut s'assurer de respecter ces deux propriétés et si besoin procéder au «Up-Heap Bubbling» ou du «Down-Heap Bubbling». Ces méthodes dépendent de la hauteur de l'arbre et s'exécutent donc en $\mathcal{O}(log(n))$.\\
+Existe-t-il un tas T mémorisant 7 éléments distincts tel qu'un parcours infixe du
+tas renvoie les éléments de T en ordre décroissant ? Qu'en est-il avec un parcours
+préfixe ou post-fixe ?
+\begin{enumerate}
+\item{Postfixe}:Oui, pour cela il faut en plus des deux propriétés citées ci-dessus que chaque enfant de gauche d'un noeud ait une clé supérieure à celui de l'enfant droit de ce noeud.
+\item{Préfixe}: Non, ce n'est pas possible, les parents devraient avoir des clés supérieures à leurs enfants, ce qui violerait la Heap-Order Priority.
+\item{Infixe}: Non, ce n'est pas possible, les parents devraient avoir des clés supérieures à leur enfant de droite, ce qui violerait la Heap-Order Priority.
+\end{enumerate}
+\section*{Question 2 Romain Henneton}
+L'algorithme de Knuth-Morris-Pratt (KMP) un un algorithme permettant de résoudre un problème appelé "pattern matching problem" sur un String, en général. Soit un texte P (pattern) de longeur m et un autre texte T de longueur n (avec m$\leq$n). L'algorithme KMP va permettre soit de déterminer si le pattern P figure dans le texte T et à quelle position, soit, le cas échéant, de déternimer que P ne figure pas dans T.
+L'algorithme de brute force correspondant à cette recherche de pattern matching est constitué de deux boucles impriquées. La première (externe) parcourant les indices de T de 0 à n-m (via l'incrément i par exemple). La seconde (interne à la première), parcourant tous les éléments de P et comparant $T[i+j]$ ($0\leq j\leq n$) avec P$[j]$. La complexité de cette algorithme dans le pire des cas est donc O((n-m+1)n), donc O(nm).\\
+L'algorithme de Knuth-Morris-Pratt est une variante améliorée de cette méthode de brute force. Lorsqu'un caractère ne correspondant pas au texte P est rencontré, plutot que de retourner à l'élément i+1 et de relancer la comparaison sur m, l'algorithme KMP va exploiter les comparaisons déjà réalisées et lancer la nouvelle recherche à un indice plus approprié et déterminé grâce à un pré-traitement de P. Ce pré-traitement est réalisé via une fonction appelée "Failure Function" qui associe à chaque indice de P une valeur définie comme le plus long préfixe P correspondant au sufixe de P[1..j]. Cela permet de redémarrer à un indice plus intéressant et d'éviter des comparaisons inutiles. La complexitée est de O(n+m).
+\section*{Question 3 Jérôme Lemaire}
+Nous adoptons une approche complémentaire à la résolution du problème de la question 2. Car nous utilisons une approche de recherche de chaîne qui prétraite le texte, plutôt que le pattern. Cette approche est approprié pour des applications dans lesquelles de nombreuses requêtes sont effectuées sur un texte \textbf{fixe}, de sorte que le coût initial de prétraitement du texte soit amorti par une recherche plus rapide lors de chaque requête ultérieur.\\
+Par exemple, lors d'une recherche du mot "Hamlet" dans les oeuvres de Shakespeare.\\
+\\
+Un Trie est une structure de données abstraite sous forme d'arbre qui permet de stocker des chaînes de caractères de manière ordonnée. L'application principale pour les Tries est la recherche d'information. \\
+Soit S un ensemble de s chaîne de l'alphabet tel qu'aucun chaîne en S est un préfixe d'une autre chaîne. A Trie norme S est un arbre ordonné T aux propriétés suivantes:
+\begin{itemize}
+\item Chaque noeud de T, sauf la racine, est marquée avec un caractère de A.
+\item Les enfants d'un noeud interne de T ont des étiquettes distinctes.
+\item Les feuilles de T a, associés chacun à une chaîne de S, de telle sorte que la concaténation des étiquettes des nœuds sur le chemin de la racine à une feuille de T V donne la chaîne de S associé à V.
+\end{itemize}
+Ainsi, un Trie T représente les chaînes de S avec les chemins de la racine aux feuilles de T.
+Notez l'importance de supposer que l'absence de chaîne en S est un préfixe d'une autre chaîne.Nous pouvons toujours satisfaire cette hypothèse en ajoutant un caractère spécial qui ne sont pas dans l'alphabet d'origine A à la fin de chaque chaîne. \\\\
+Un Trie comprimé est semblable à un Trie mais il assure que chaque nœud interne dans le Trie a au moins deux enfants. Il applique cette règle en comprimant les chaînes de nœuds enfants célibataires en bords individuels.
+Ce schéma de compression nous permet de réduire l'espace total de la Trie lui-même à partir de O (n) pour le Trie à O (s) pour le Trie comprimé, où n est la longueur totale des chaînes de caractère de S et s est le nombre de chaînes de caractères de S. Nous devons encore stocker les différents chaînes en S, mais nous réduisons néanmoins l'espace de Trie.\\
+Nous utilisons un suffixe Trie lorsque les chaînes de caractères de la collection S sont toutes des suffixes de la chaînes de caractères X. Pour ce faire, nous utilisons une amélioration d’un Trie compressé.\\
+\section*{Question 4 Zacharie Kerger}
+Une file de priorité adaptable est une file de priorité possédant 3 méthodes supplémentaires: remove(e), replaceKey(e,k) et replaceValue(e,v). Il n'est pas plus avantageux d'utiliser ce type de file de priorité pour la construction d'un code de Huffman parce que le calcul de la fréquence est réalisé dès le début de l'algorithme. Dès lors, ces trois méthodes n'auront aucune utilité puisque les entrées, les valeurs et les clés des entrées sont connues et ne changeront pas. Le code de Huffman va juste fusionner les différents noeuds sans les modifier.\\
+L’utilisation d’une file de priorité n’est pas indispensable pour construire un code de Huffman. Il est possible d'en construire un avec un algorithme de tri.
+\begin{enumerate}
+\item On calcule la fréquence de chaque caractère (complexité de $\Theta(n)$ où n représente la taille du String à compresser) et on les ajoute dans une liste triée dans un ordre croissant (complexité de $O(d^{2})$ où d représente les caractères distincts du String à compresser).
+\item On additionne les fréquences des deux premières entrées (que l'on retire de la liste) et on construit un noeud possédant comme fils gauche, l'entrée qui a la plus petite fréquence et comme fils droit, l'entrée qui a la plus grande fréquence.
+\item Le noeud créé est représenté par une entrée ayant comme clé l'addition réalisée à l'étape précédente.
+\item On ajoute l'entrée créée précédemment, à la liste triée.
+\item On répète les étapes 2, 3 et 4 tant qu'il reste plus d'un élément dans la liste (complexité de $O(d^{2})$).
+\item A cette étape, il ne reste qu'une seule entrée qui représente la racine de l'arbre de Huffman.
+\end{enumerate}
+La complexité calculatoire sera plus élevée que celle de l'algorithme original. En effet, pour insérer \underline{un} élément dans une liste triée, nous avons une complexité temporelle de $O(n)$ vu que dans le pire des cas, on devra parcourir toute la liste de n éléments. Dès lors, on obtient une complexité temporelle équivalente à $O(n + d^2)$ (voir calculs dans la description de la méthode ci-dessus) alors que nous avons une complexité de $O(n+d\log d)$ avec l'algorithme original.
+\section*{Question 5 Arnaud Dethise}
+Le code de Huffman permet de compresser un texte encodé par exemple en ASCII ou en Unicode en un fichier binaire plus léger. Cette compression se base sur des mots-code qui représentent chaque caractère sur un nombre variable de bits, et non sur 7, 8, 16 ou même 64 bits.
+Pour cela, il faut d'abord construire l'arbre de Huffman. L'algorithme complet se trouve dans le DSAJ6-p519. Les étapes et complexités associées sont les suivantes ($n$ est la longueur de la chaîne de caractères ; $d$ est le nombre de caractères différents).
+\vspace{0.3cm}
+\begin{enumerate}
+\item[1.] Calculer la fréquence d'apparition de chaque caractère de l'input : $\Theta(n)$.
+\item[2.] Créer la \textit{file de priorité}. Il faut créer un arbre d'un seul nœud par caractère pour $d$ caractères et l'ajouter à la file avec sa fréquence comme clé : $\Theta(d)$.
+\item[3.] Récupérer $E_1$ et $E_2$, les deux éléments de la file dont la clé est minimale : $\Theta(2d)$.
+\item[4.] Créer un nouvel arbre dont la racine est un nœud ayant $E_1$ et $E_2$ comme enfants et le replacer dans la file avec pour clé la somme des anciennes clés de $E_1$ et $E_2$ : $\mathcal{O}(1)$.
+\item[5.] S'il y a plus d'un élément dans la file, recommencer à [3]. Sinon, retourner le dernier élément : $\Theta(d*[3-5])$.
+\end{enumerate}
+\vspace{0.3cm}
+La complexité de cet algorithme est de $\Theta(n + d^2)$. On peut toutefois l'optimiser :
+\vspace{0.3cm}
+\begin{enumerate}
+\item[2.5] Trier la file de priorité : $\mathcal{O}(d $ log $d)$.
+\item[4.] Devient : Placer le nouvel arbre dans la file en gardant celle-ci triée : $\mathcal{O}($log $d)$.
+\item[3.] Devient : $\mathcal{O}(1)$.
+\end{enumerate}
+\vspace{0.3cm}
+Et on obtient alors une complexité pour la création de l'arbre de $\mathcal{O}(n + d $ log $ d)$.
+Une fois l'arbre construit, on peut le parcourir pour créer un mapping entre chaque caractère et le mot-code qui lui est associé.
+Il s'agit d'un simple parcours de chaque nœud de l'arbre et une implémentation efficace aura une complexité $\Theta(d)$.
+Il est logique d'utiliser une HashMap à cette étape puisque l'on voudra accéder à chaque élément indépendamment en $\mathcal{O}(1)$.
+Enfin, on peut maintenant parcourir la chaîne de caractère d'entrée caractère par caractère et concaténer à la chaîne de bits de sortie à chaque fois la séquence de bit correspondante (récupérée depuis la HashMap).
+On peut évaluer cette opération comme étant en $\Theta(n)$ (bien qu'il soit possible d'affiner l'analyse en fonction de l'encodage ou du nombre de caractères différents, on considère ici que le décodage d'un caractère et l'ajout d'une séquence de bits sont des opérations en temps constant).
+\vspace{0.3cm}
+Au final, la complexité de la compression complète est de $\mathcal{O}(n + d $ log $ d) + \Theta(d) + \Theta(n)$, soit en suivant la notation asymptotique $\mathcal{O}(n + d $ log $ d)$.
+\section*{Question 6 Arnaud Dethise}
+Pour la décompression d'un texte, il y a deux étapes principales : reconstruire la table d'association caractère~/~mot-code, puis utiliser celle-ci pour lire le fichier binaire.
+La première étape dépend de la façon dont la table est transmise. Intuitivement, on peut supposer qu'il soit possible de recréer une table avec une complexité en $\Theta(d)$, $d$ le nombre de caractères différents.
+Ensuite il faut lire le fichier, bit par bit, et en extraire les séquences qui sont présentes dans le dictionnaire.
+Il faut dans ce cas vérifier à chaque bit lu si on peut extraire un caractère des derniers bits lus. Autrement dit, il faut vérifier si on match un caractère à chaque bit, ce qui donne une complexité de $\Theta(l)$ où $l$ est la longueur du fichier en bits.
+%\section*{Question 7 Romain Henneton}
+%\section*{Question 8 Zacharie Kerger}
+%\section*{Question 9 Aurian de Potter}
+%\section{Question 10 Jérome Lemaire}
+% add sections if more questions
 \end{document}
