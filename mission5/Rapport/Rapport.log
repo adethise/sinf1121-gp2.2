@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.11.21)  28 NOV 2014 00:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.11.21)  28 NOV 2014 15:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,36 +941,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-<UML.png, id=4, 1032.85875pt x 476.78125pt>
-File: UML.png Graphic file (type png)
- <use UML.png>
-Package pdftex.def Info: UML.png used on input line 79.
-(pdftex.def)             Requested size: 413.13618pt x 190.7091pt.
- [1
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 71.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 71.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 71.
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 71--77
 
  []
 
-[2 <./UML.png>] (./Rapport.aux) ) 
+[1
+
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<UML.png, id=16, 1032.85875pt x 476.78125pt>
+File: UML.png Graphic file (type png)
+ <use UML.png>
+Package pdftex.def Info: UML.png used on input line 91.
+(pdftex.def)             Requested size: 413.13618pt x 190.7091pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+[2 <./UML.png>] [3] (./Rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 15807 strings out of 493117
- 292501 string characters out of 6135432
- 343322 words of memory out of 5000000
- 18944 multiletter control sequences out of 15000+600000
- 34662 words of font info for 37 fonts, out of 8000000 for 9000
+ 15837 strings out of 493117
+ 292819 string characters out of 6135432
+ 345325 words of memory out of 5000000
+ 18964 multiletter control sequences out of 15000+600000
+ 46693 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,54p,931b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/
-dvips/lm/lm-ec.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lm
-bx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr10.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
-Output written on Rapport.pdf (2 pages, 172105 bytes).
+ 55i,6n,54p,925b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/
+enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/l
+m-mathit.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.e
+nc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/lm/lmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
+c/lm/lmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10
+.pfb>
+Output written on Rapport.pdf (3 pages, 185774 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
+ 50 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
