@@ -36,18 +36,11 @@ public class Decompress {
 		   byte version = in.readByte();
 		   short numChar = 0;
 		   long fileSize = 0;
-		   if(version == 3) 
-		   {
-			   numChar = (short) in.readShort();
-			   fileSize = in.readLong();
-		   }
-		   else {
-			   System.out.println("Unsupported version compressed file");
-			   System.exit(0);
-		   }
-		   
-		   HashMap<String, Character> map;
-		   map = readHeader(in, numChar);
+		   numChar = (short) in.readShort();
+		   fileSize = in.readLong();
+		   Map<String,Character> map;
+
+		   map = readHeader(in, numChar, version);
 		   translateData(in, map, fileSize, fw);
 		   in.close();
 		   fw.close();
@@ -64,34 +57,46 @@ public class Decompress {
 	   
    }
    
-   public static HashMap<String, Character> readHeader(InputBitStream in, short numChar) throws IOException
+   public static Map<String, Character> readHeader(InputBitStream in, short numChar, int version) throws IOException
    {
-	   HashMap<String, Character> map = new HashMap<String, Character>();
-	   char c;
-	   for(int i = 0; i < numChar; i++)
-	   {
-		   c = in.readChar();
-		   StringBuffer sb = new StringBuffer();
-		   boolean padding = true;
-		   for (int j=0; j<32; j++)
+	   if ( version == 3 ) {
+		   HashMap<String, Character> map = new HashMap<String, Character>();
+		   char c;
+		   for(int i = 0; i < numChar; i++)
 		   {
-			   if (padding) 
+			   c = in.readChar();
+			   StringBuffer sb = new StringBuffer();
+			   boolean padding = true;
+			   for (int j=0; j<32; j++)
 			   {
-				   if (in.readBoolean())
+				   if (padding) 
 				   {
-					   padding = false;
+					   if (in.readBoolean())
+					   {
+						   padding = false;
+					   }
+				   }
+				   else {
+					   sb.append(in.readBoolean() ? '1' : '0');
 				   }
 			   }
-			   else {
-				   sb.append(in.readBoolean() ? '1' : '0');
-			   }
+			   map.put(sb.toString(), c);
 		   }
-		   map.put(sb.toString(), c);
+		   return map;
 	   }
-	   return map;
+	   else if ( version == 2 ) {
+		   System.out.println("Files compressed with version 1.4a (aka v1.2) are currently not supported");
+		   System.exit(2);
+		   return null;
+	   }
+	   else {
+		   System.out.println("The version of the archive is not a valid, officially validated version");
+		   System.exit(2);
+		   return null;
+	   }
    }
    
-   public static void translateData(InputBitStream in, HashMap<String,Character> map, long fileSize, FileWriter fw) throws IOException
+   public static void translateData(InputBitStream in, Map<String,Character> map, long fileSize, FileWriter fw) throws IOException
    {	
 	  StringBuffer sb = new StringBuffer();
 

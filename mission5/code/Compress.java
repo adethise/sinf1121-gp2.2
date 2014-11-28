@@ -1,7 +1,5 @@
 /**
  * Compress a file using a Huffman Tree.A
- * @authors Arnaud Dethise <arnaud.dethise@student.uclouvain.be>,
- * 		Romain Henneton <romain.henneton@student.uclouvain.be>
  */
 import java.io.*;
 import java.util.*;
@@ -18,8 +16,8 @@ public class Compress
 			System.exit(0);
 		}
 
-		FileReader in;
-		OutputBitStream out;
+		FileReader in = null;
+		OutputBitStream out = null;
 
 		try {
 			in = new FileReader(args[0]);
@@ -42,6 +40,14 @@ public class Compress
 			out.close();
 		}
 		catch ( IOException e ) {
+			try {
+				in.close();
+			}
+			catch ( Exception f ) {}
+			try {
+				out.close();
+			}
+			catch ( Exception f ) {}
 			e.printStackTrace(System.err);
 			System.exit(1);
 		}
