@@ -46,14 +46,14 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
-\date{5 Novembre 2014}
+\date{5 Décembre 2014}
 \author{Groupe 2.2}
 \title{Réponse aux questions de la mission 6}
 
 \begin{document}
 \maketitle
 
-\section*{Question 1 Romain Henneton}
+\section*{Question 1 - Romain Henneton}
 Un vertex est un noeud dans notre structure et un edge est une arête. Nous considérons n noeuds et m arêtes.
 \begin{itemize}
 \item revomeVertex retire un noeud, et les différentes étapes de suppression de ce noeud sont :
@@ -78,8 +78,61 @@ L'algorithme proposé ne fonctionnera que dans quelque cas, en effet à chaque f
     \includegraphics[scale=0.7]{ex.png}
 \end{center}
 
-\section*{Question 5}
-\section*{Question 6}
+\section*{Question 5 - Arnaud Dethise}
+
+	L'objectif de cette question est d'écrire un algorithme permettant de trouver le meilleur chemin dans un graphe. 
+	Il est donc logique d'utiliser l'algorithme de Dijkstra, modifié pour tenir compte des méthodes spécifiques à ce problème dans le calcul du meilleur chemin.
+	
+	Les deux différences suivantes sont à prendre en compte :
+	\begin{itemize}
+	\item Le meilleur chemin est celui ayant \textit{la plus grande} bande passante.
+	\item Le coût d'un chemin est égal au \textit{coût de l'arête la plus faible} sur ce chemin.
+	\end{itemize}
+	
+	\begin{lstlisting}
+	MaxBandWidth(G, a, b) :
+		Initialize D[a] = %*$\infty$*) and D[v] = 0 for each vertex v %*$\neq$*) a
+		Let a priority queue Q contain all the vertices of G using the D labels as keys
+		while b is in Q do
+			u = Q.removeMax()
+			for each edge (u,v) such that v is in Q do
+				if min(D[u], bw(u,v)) > D[v] then
+					D[v] = min(D[u], bw(u,v))
+					Change the key of vertex v in Q to D[v]
+		return D[b]
+	\end{lstlisting}
+
+\section*{Question 6 - Arnaud Dethise}
+
+	Remarque : la complexité justifiée ci-dessous est la même que celle de l'algorithme de Dijkstra.
+
+	Soit G contenant $n$ nœuds et $m$ arêtes.
+	
+	\vspace{0.3cm}
+	Première solution :
+	\begin{itemize}
+	\item Initialiser les valeurs de la liste D : $\mathcal{O}(n)$
+	\item Initialiser la priorityQueue Q (heap) : $\mathcal{O}(n~log~n)$
+	\item Récupérer $n$ fois l'élément maximal de Q : $\mathcal{O}(n)$
+	\item Trouvez tous les vecteurs reliant u à un nœud encore dans Q (matrice d'adjacence) : $\mathcal{O}(m)$
+	\item Mettre à jour $m$ fois les clés des vecteurs de Q : $\mathcal{O}(m~log~n)$
+	\end{itemize}
+	Total : $\mathcal{O}((n+m)~log~n)$, avec $m \leq n^2$.
+	
+	\vspace{0.3cm}	
+	Deuxième solution :
+	\begin{itemize}
+	\item Initialiser les valeurs de la liste D : $\mathcal{O}(n)$
+	\item Initialiser la priorityQueue Q (unsorted list, location aware) : $\mathcal{O}(n)$
+	\item Récupérer $n$ fois l'élément maximal de Q : $\mathcal{O}(n^2)$
+	\item Trouvez tous les vecteurs reliant u à un nœud encore dans Q (matrice d'adjacence) : $\mathcal{O}(m)$
+	\item Mettre à jour $m$ fois les clés des vecteurs de Q : $\mathcal{O}(m)$
+	\end{itemize}
+	Total : $\mathcal{O}(n^2 + m)$, avec $m \leq n^2$, soit $\mathcal{O}(n^2)$.
+	
+	\vspace{0.5cm}
+	Remarque : Le DSAJ-6 indique qu'une implémentation utilisant la structure \textit{Fibonacci heap} permettrait d'obtenir une complexité asymptotique en $\mathcal{O}(m + n~log~n)$, mais une rapide recherche sur le web indique que cette structure, bien que asymptotiquement plus efficace, est en pratique plus lourde par clé à cause de ses facteurs constants.
+
 % add sections if more questions
 
 \end{document}
