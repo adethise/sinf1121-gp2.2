@@ -71,7 +71,13 @@ La réponse à cette question dépend de la structure de données utilisée pour
 Le concept de location-aware entry est important pour justifier ces complexités. En effet, on sait retrouver la position d'une arête dans l'objet grâce au pointeur contenu dans l'objet vertex. L'ajout et la suppression d'un sommet dans le conteneur se fait donc en O(1) au lieu du O(n) nécessaire en cas de parcours de l'ensemble des éléments.
 \section*{Question 2}
 \section*{Question 3}
-\section*{Question 4}
+\section*{Question 4 - Aurian de Potter}
+L'algorithme proposé ne fonctionnera que dans quelque cas, en effet à chaque fois que l'algorithme choisit un chemin avec le poids le plus court il va se déplacer vers le noeud suivant et perdre le noeud précédent ce qui va créer des situations on il sera bloqué. Comme illustré ci-dessous.
+
+\begin{center}
+    \includegraphics[scale=0.7]{ex.png}
+\end{center}
+
 \section*{Question 5}
 \section*{Question 6}
 % add sections if more questions
