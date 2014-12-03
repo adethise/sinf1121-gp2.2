@@ -1,3 +1,4 @@
+
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
@@ -45,22 +46,34 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 
-\date{insert date 2014}
+\date{5 Novembre 2014}
 \author{Groupe 2.2}
-\title{Produit Mission X}
+\title{Réponse aux questions de la mission 6}
 
 \begin{document}
 \maketitle
 
-\section*{Question 1}
+\section*{Question 1 Romain Henneton}
+Un vertex est un noeud dans notre structure et un edge est une arête. Nous considérons n noeuds et m arêtes.
+\begin{itemize}
+\item revomeVertex retire un noeud, et les différentes étapes de suppression de ce noeud sont :
+\begin{enumerate}
+\item Supprimer le lien allant de tous les noeuds vers le noeud en question
+\item Supprimer le noeud en question
+\end{enumerate}
+Nous voyons donc que la complexité dans le pire des cas est O(n) car il est nécessaire de parcourir tous les noeuds dans le cas où le noeud en question est connecté à tous les autres noeuds.
+\item removeEdge supprime une arrête. Cependant, comme une arête relie nécessairement 2 noeuds, la complexité est O(1) vu qu'il suffit de supprimer les références dans ces deux noeuds.
+\item insertVertex ajoute un noeud dans le graphe. Pour réaliser cette opération, il faut créer le noeud et le lier à un autre noeud. Nous avons donc encore une complexité O(1)
+\end{itemize}
+
+La réponse à cette question dépend de la structure de données utilisée pour mémoriser les objets contenant les sommets et les arêtes. Si ces objets contiennent des tableaux, alors chaque suppression ou ajout d'une arête entrainerait un redimensionnement d'un tableau, opération ayant comme complexité O(m) au lieu de O(1).
+
+Le concept de location-aware entry est important pour justifier ces complexités. En effet, on sait retrouver la position d'une arête dans l'objet grâce au pointeur contenu dans l'objet vertex. L'ajout et la suppression d'un sommet dans le conteneur se fait donc en O(1) au lieu du O(n) nécessaire en cas de parcours de l'ensemble des éléments.
 \section*{Question 2}
 \section*{Question 3}
 \section*{Question 4}
 \section*{Question 5}
 \section*{Question 6}
-\section*{Question 7}
-\section*{Question 8}
-\section*{Question 9}
 % add sections if more questions
 
 \end{document}
