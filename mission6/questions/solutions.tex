@@ -69,7 +69,11 @@ Nous voyons donc que la complexité dans le pire des cas est O(n) car il est né
 La réponse à cette question dépend de la structure de données utilisée pour mémoriser les objets contenant les sommets et les arêtes. Si ces objets contiennent des tableaux, alors chaque suppression ou ajout d'une arête entrainerait un redimensionnement d'un tableau, opération ayant comme complexité O(m) au lieu de O(1).
 
 Le concept de location-aware entry est important pour justifier ces complexités. En effet, on sait retrouver la position d'une arête dans l'objet grâce au pointeur contenu dans l'objet vertex. L'ajout et la suppression d'un sommet dans le conteneur se fait donc en O(1) au lieu du O(n) nécessaire en cas de parcours de l'ensemble des éléments.
-\section*{Question 2}
+\section*{Question 2 - Zacharie Kerger}
+Un parcours en largeur permet de parcourir un graphe de manière itérative à l'aide d'une file. Cet algorithme va procéder de façon à ce que le parcours débute à un sommet initial et va ensuite visiter les sommets voisins, puis les autres sommets accessibles à partir de ces derniers, etc... Il est important de préciser qu'un sommet ne peut être visité qu'une seule fois.\\
+
+Pour une matrice d'adjacence, ...[TO DO]
+
 \section*{Question 3}
 \section*{Question 4 - Aurian de Potter}
 L'algorithme proposé ne fonctionnera que dans quelque cas, en effet à chaque fois que l'algorithme choisit un chemin avec le poids le plus court il va se déplacer vers le noeud suivant et perdre le noeud précédent ce qui va créer des situations on il sera bloqué. Comme illustré ci-dessous.
