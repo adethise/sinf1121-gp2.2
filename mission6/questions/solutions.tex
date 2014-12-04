@@ -70,9 +70,9 @@ La réponse à cette question dépend de la structure de données utilisée pour
 
 Le concept de location-aware entry est important pour justifier ces complexités. En effet, on sait retrouver la position d'une arête dans l'objet grâce au pointeur contenu dans l'objet vertex. L'ajout et la suppression d'un sommet dans le conteneur se fait donc en O(1) au lieu du O(n) nécessaire en cas de parcours de l'ensemble des éléments.
 \section*{Question 2 - Zacharie Kerger}
-Un parcours en largeur permet de parcourir un graphe de manière itérative à l'aide d'une file. Cet algorithme va procéder de façon à ce que le parcours débute à un sommet initial et va ensuite visiter les sommets voisins, puis les autres sommets accessibles à partir de ces derniers, etc... Il est important de préciser qu'un sommet ne peut être visité qu'une seule fois.\\
+Un parcours en largeur permet de parcourir un graphe de manière itérative. Cet algorithme va procéder de façon à ce que le parcours débute à un sommet initial et va ensuite visiter les sommets voisins, puis les autres sommets accessibles à partir de ces derniers, etc... Il est important de préciser qu'un sommet ne peut être visité qu'une seule fois.\\
 
-Pour une matrice d'adjacence, ...[TO DO]
+Pour une matrice d'adjacence, l'algorithme va tout d'abord trouver le noeud initial dans la matrice. Ensuite, l'algorithme va devoir parcourir la ligne du noeud initial pour trouver les sommets voisins de celui-ci (complexité en $\Theta(n)$. Comme il y a $n$ sommets et que la matrice d'adjacence est une matrice carrée, l'algorithme va réaliser $n$ fois ce parcours de la ligne de chaque sommet. Par conséquent, la complexité temporelle de cet algorithme sera de $\Theta(n^{2})$
 
 \section*{Question 3}
 \section*{Question 4 - Aurian de Potter}
