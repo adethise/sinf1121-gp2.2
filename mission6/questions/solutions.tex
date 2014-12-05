@@ -74,7 +74,20 @@ Un parcours en largeur permet de parcourir un graphe de manière itérative. Cet
 
 Pour une matrice d'adjacence, l'algorithme va tout d'abord trouver le noeud initial dans la matrice. Ensuite, l'algorithme va devoir parcourir la ligne du noeud initial pour trouver les sommets voisins de celui-ci (complexité en $\Theta(n)$. Comme il y a $n$ sommets et que la matrice d'adjacence est une matrice carrée, l'algorithme va réaliser $n$ fois ce parcours de la ligne de chaque sommet. Par conséquent, la complexité temporelle de cet algorithme sera de $\Theta(n^{2})$
 
-\section*{Question 3}
+\section*{Question 3 - Lemaire Jérôme}
+Les files peuvent être utilisées comme structure de données auxiliaire lors d'un tri topologique d'un graphe.\\
+
+
+Premièrement, définissons un tri topologique, \\
+Soit G un graphe orienté avec N sommets. Un ordre topologique de G est un ordre V1, V2, ... Vn des sommets de G tel que, pour chaque arête (Vi, Vj) de G, tel que i <j. Autrement dit, un ordre topologique est un ordre de telle sorte que ne importe quel trajet dirigé dans G traverse les sommets dans l'ordre croissant. Un graphe orienté peut avoir plus d'un ordre topologique.
+Un tri topologique peut aussi être défini comme un ordre de visite des sommets tel qu'un sommet est toujours visité avec ses successeurs.\\
+
+Etant donné qu'il existe différents tri topologique pour un même graphe acyclique, il se peut que le résultat du tri ne soit pas identique lors de l'utilisation d'une pile ou d'une file. Pour l'algorithme de tri topologique utilisant une file, le résultat peut différer pour un même arbre, par exemple si on ne démarre pas le tri par le même sommet. \\
+Vous trouverez ci-dessous une brève explication d'une approche possible justifiant la faisabilité de celle-ci.\\
+\subsection*{Explication de l'algorithme de tri topologique d'une file}
+Le concept est le suivant, si on travaille sur un arbre acyclique, il existe toujours un sommet du graphe ne possédant pas de vecteur entrant. Une fois que l'on a repéré ce sommet, on le supprime du graphe et on l'ajoute dans la file de tri. Nous avons un nouveau (sous)-graphe, toujours acyclique et donc contenant un nouveau sommet sans vecteur entrant, on le supprime du graphe et on l'ajoute dans la file de tri. On répète cette opération jusqu'à ce que le sous-graphe soit vide. La file de tri contient bien les sommets trier de manière topologique.
+
+
 \section*{Question 4 - Aurian de Potter}
 L'algorithme proposé ne fonctionnera que dans quelque cas, en effet à chaque fois que l'algorithme choisit un chemin avec le poids le plus court il va se déplacer vers le noeud suivant et perdre le noeud précédent ce qui va créer des situations on il sera bloqué. Comme illustré ci-dessous.
 
