@@ -8,7 +8,7 @@ public class Graph
 
 	//Edge = arete
 	//Vertex = Sommet
-	public class Edge implements Comparable
+	public class Edge implements Comparable<Edge>
 	{
 		public int cost;
 		public int origin, destination;
@@ -21,6 +21,7 @@ public class Graph
 		}
 		public int compareTo(Edge sommet)
 		{
+			
 			return (this.cost-sommet.cost);
 			
 		}
