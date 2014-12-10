@@ -5,6 +5,8 @@ public class Graph
 {
 	private List<List<Edge>> main;
 
+	//Edge = arete
+	//Vertex = Sommet
 	private class Edge
 	{
 		private int cost;
