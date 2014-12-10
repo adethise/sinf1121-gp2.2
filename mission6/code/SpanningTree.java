@@ -3,7 +3,7 @@ public class SpanningTree
 {
 	public static void main(String[] args)
 	{
-		assert (args.length == 2);
+		assert (args.length == 1);
 
 		Graph g = new Graph(args[0]);
 
@@ -41,7 +41,7 @@ public class SpanningTree
 
 
 		for ( Graph.Edge edge : solution ) {
-			System.out.println(e.toString());
+			System.out.println(edge.toString());
 		}
 	}
 }
