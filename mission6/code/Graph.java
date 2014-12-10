@@ -55,7 +55,10 @@ public class Graph
 	{
 		return main.get(number);
 	}
-	
+	public int size()
+	{
+		return main.size();
+	}
 	
 	public static void main(String[]args)
 	{
