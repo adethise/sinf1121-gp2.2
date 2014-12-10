@@ -4,10 +4,11 @@ import java.util.LinkedList;
 public class Graph
 {
 	private List<List<Edge>> main;
+	private nnodes;
 
 	//Edge = arete
 	//Vertex = Sommet
-	private class Edge
+	public class Edge
 	{
 		private int cost;
 		private int origin, destination;
@@ -18,5 +19,14 @@ public class Graph
 			this.origin = origin;
 			this.destination = destination;
 		}
+	}
+
+	public Graph(String filename, int n)
+	{
+		main = new ArrayList(n);
+		for (int i = 0 ; i < n ; i++ ) {
+			main.add(i, new LinkedList());
+		}
+		this.nnodes = n;
 	}
 }
