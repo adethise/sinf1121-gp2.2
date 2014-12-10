@@ -30,7 +30,53 @@ public class Graph
 			return (origin+"\t"+destination+"\t"+cost);
 		}
 	}
+	public Graph(String filename)
+	{
+		String lines = null;
+		int n = 0;
+		try
+		{
+			BufferedReader buffs = new BufferedReader(new FileReader(filename));
+			while ((lines = buffs.readLine())!=null)
+			{
+				n++;
+			}
+			buffs.close();
+			String line = null;
+			String [] tab =null;
+		
+			main = new ArrayList<List<Edge>>(n);
+			for (int i = 0 ; i < n ; i++ ) {
+				main.add(i, new LinkedList<Edge>());
+			}
+			this.nnodes = n;
+		
+			try
+			{
+				BufferedReader buff = new BufferedReader(new FileReader(filename));
+				while ((line = buff.readLine())!=null)
+				{
+					tab = line.split("\t");
+					Edge edge = new Edge( Integer.parseInt(tab[2]),Integer.parseInt(tab[0]),Integer.parseInt(tab[1]));
+					main.get(edge.origin).add(edge);
+					main.get(edge.destination).add(edge);
+				}
+			buff.close();
+	
 
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace(System.err);
+		}
+
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace(System.err);
+		}
+	}
+	
 	public Graph(String filename, int n)
 	{
 		String line = null;
@@ -52,6 +98,7 @@ public class Graph
 				main.get(edge.origin).add(edge);
 				main.get(edge.destination).add(edge);
 			}
+			buff.close();
 	
 
 		}
