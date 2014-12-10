@@ -1,21 +1,22 @@
+import java.util.*;
 public class SpanningTree
 {
 	public static void main(String[] args)
 	{
-		assert (args.length == 2) "Wrong number of parameters";
+		assert (args.length == 2);
 
 		Graph g = new Graph(args[0]);
 
-		PriorityQueue p = new PriorityQueue();
+		PriorityQueue<Graph.Edge> p = new PriorityQueue<Graph.Edge>();
 
-		List<Boolean> visited = new ArrayList<Boolean>(g.size());
+		boolean[] visited = new boolean[g.size()];
 		for ( int i = 0 ; i < g.size() ; i++ ) {
-			visited.add(i, false);
+			visited[i] = false;
 		}
 
 		List<Graph.Edge> solution = new LinkedList<Graph.Edge>();
 
-		visited.add(0, true);
+		visited[0] = true;
 		for ( Graph.Edge e : g.getEdges(0) ) {
 			p.offer(e);
 		}
@@ -25,21 +26,21 @@ public class SpanningTree
 			if ( !visited[e.origin] ) {
 				solution.add(e);
 				visited[e.origin] = true;
-				for ( Graph.edge edge : g.getEdges(e.origin) ) {
+				for ( Graph.Edge edge : g.getEdges(e.origin) ) {
 					p.offer(edge);
 				}
 			}
 			else if ( !visited[e.destination] ) {
 				solution.add(e);
 				visited[e.destination] = true;
-				for ( Graph.edge edge : g.getEdges(e.destination) ) {
+				for ( Graph.Edge edge : g.getEdges(e.destination) ) {
 					p.offer(edge);
 				}
 			}
 		}
 
 
-		for ( e : solution ) {
+		for ( Graph.Edge edge : solution ) {
 			System.out.println(e.toString());
 		}
 	}
