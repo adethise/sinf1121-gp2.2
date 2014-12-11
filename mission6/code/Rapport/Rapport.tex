@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tikz}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Java,                   % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\date{Vendredi 12 Décembre 2014}
+\author{Groupe 2.2}
+\title{Mission 6 : Rapport Final}
+\begin{document}
+\maketitle
+\section*{Introduction}
+Pour cette mission, il nous a été demandé de pouvoir établir la liste de connections aériennes à inclure dans l'offre d'une compagnie low cost. L'objectif était donc de pouvoir desservir un nombre maximum de destinations à moindre coût à partir d'une liste de coûts d'ores et déjà définis entre deux villes.
+
+\section*{Description de l'implémentation}
+Nous avons divisé le programme en deux classes: Graphe et SpanningTree. La première classe va nous servir à créer le Graphe à partir d'une liste de coûts entre deux villes présentée dans le format suivant:\\
+
+\begin{center}
+0 \hspace{1cm} 37 \hspace{1cm} 398\\
+1 \hspace{1cm} 39 \hspace{1cm} 929\\
+...
+\end{center}
+
+Nous avons décidé de définir deux constructeurs pour la classe Graphe. Ceux-ci fonctionnent exactement de la même manière à la différence que le premier calcule la taille de la liste alors que le second suppose que cette information lui est déjà fournie. Le fait d'avoir connaissance ou non de la taille de la liste peut réduire considérablement la complexité temporelle (de $n$ fois précisément) ce qui justifie l'existence de deux constructeurs. Ces derniers vont donc prendre en argument un String filename représentant un fichier qui contient une liste comme expliquée ci-dessus et en fonction du constructeur, il y aura un second argument de type int qui représente la taille de cette liste.\\
+
+Après avoir reçu ou calculé la taille de la liste, l'algorithme va se poursuivre en créant une $ArrayList$ de taille $n$ contenant à chaque indice une liste d'arêtes $Edge$. Il est important de préciser que $Edge$ est une sous classe de Graphe. Celle-ci va nous permettre de représenter une arête composée d'un coût, d'une origine et d'une destination. Cette sous classe est accompagnée d'une méthode toString et d'une méthode compareTo pour pouvoir comparer deux arêtes sur base de leur coût respectif.\\
+
+(...)\\
+
+La seconde classe, SpanningTree, ne contient qu'une méthode main qui va réaliser tous les calculs de plus courts chemins; c'est elle qui va nous fournir la liste de connections aériennes à inclure dans l'offre de la compagnie low cost. Pour ce faire, la méthode va tout d'abord se charger de créer un Graphe par le biais d'un nom de fichier indiqué en argument. Ensuite, ...
+
+\section*{Conclusion}
+
+
+\end{document}
