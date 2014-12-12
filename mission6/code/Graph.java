@@ -19,17 +19,20 @@ public class Graph
 			this.origin = origin;
 			this.destination = destination;
 		}
+
 		public int compareTo(Edge sommet)
 		{
 			
 			return (this.cost-sommet.cost);
 			
 		}
+
 		public String toString()
 		{
 			return (origin+"\t"+destination+"\t"+cost);
 		}
 	}
+
 	public Graph(String filename)
 	{
 		String lines = null;
@@ -46,7 +49,8 @@ public class Graph
 			String [] tab =null;
 		
 			main = new ArrayList<List<Edge>>(n);
-			for (int i = 0 ; i < n ; i++ ) {
+			for (int i = 0 ; i < n ; i++ )
+			{
 				main.add(i, new LinkedList<Edge>());
 			}
 			this.nnodes = n;
@@ -61,15 +65,12 @@ public class Graph
 					main.get(edge.origin).add(edge);
 					main.get(edge.destination).add(edge);
 				}
-			buff.close();
-	
-
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace(System.err);
-		}
-
+				buff.close();
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace(System.err);
+			}
 		}
 		catch(IOException e)
 		{
@@ -83,7 +84,8 @@ public class Graph
 		String [] tab =null;
 		
 		main = new ArrayList<List<Edge>>(n);
-		for (int i = 0 ; i < n ; i++ ) {
+		for (int i = 0 ; i < n ; i++ )
+		{
 			main.add(i, new LinkedList<Edge>());
 		}
 		this.nnodes = n;
@@ -94,13 +96,11 @@ public class Graph
 			while ((line = buff.readLine())!=null)
 			{
 				tab = line.split("\t");
-				Edge edge = new Edge( Integer.parseInt(tab[2]),Integer.parseInt(tab[0]),Integer.parseInt(tab[1]));
+				Edge edge = new Edge(Integer.parseInt(tab[2]), Integer.parseInt(tab[0]), Integer.parseInt(tab[1]));
 				main.get(edge.origin).add(edge);
 				main.get(edge.destination).add(edge);
 			}
 			buff.close();
-	
-
 		}
 		catch(IOException e)
 		{
@@ -112,14 +112,9 @@ public class Graph
 	{
 		return main.get(number);
 	}
+
 	public int size()
 	{
 		return main.size();
 	}
-	
-	public static void main(String[]args)
-	{
-		System.out.println("Kikooooooo :) :) :) :)");
-	}
 }
-
