@@ -22,9 +22,7 @@ public class Graph
 
 		public int compareTo(Edge sommet)
 		{
-			
 			return (this.cost-sommet.cost);
-			
 		}
 
 		public String toString()
