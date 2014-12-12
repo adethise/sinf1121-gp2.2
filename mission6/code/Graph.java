@@ -76,36 +76,6 @@ public class Graph
 		}
 	}
 	
-	public Graph(String filename, int n)
-	{
-		String line = null;
-		String [] tab =null;
-		
-		main = new ArrayList<List<Edge>>(n);
-		for (int i = 0 ; i < n ; i++ )
-		{
-			main.add(i, new LinkedList<Edge>());
-		}
-		this.nnodes = n;
-		
-		try
-		{
-			BufferedReader buff = new BufferedReader(new FileReader(filename));
-			while ((line = buff.readLine())!=null)
-			{
-				tab = line.split("\t");
-				Edge edge = new Edge(Integer.parseInt(tab[2]), Integer.parseInt(tab[0]), Integer.parseInt(tab[1]));
-				main.get(edge.origin).add(edge);
-				main.get(edge.destination).add(edge);
-			}
-			buff.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace(System.err);
-		}
-	}
-	
 	public List<Edge> getEdges(int number)
 	{
 		return main.get(number);
