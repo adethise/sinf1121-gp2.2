@@ -70,6 +70,26 @@ Après avoir reçu ou calculé la taille de la liste, l'algorithme va se poursui
 La seconde classe, SpanningTree, ne contient qu'une méthode main qui va réaliser tous les calculs de plus courts chemins; c'est elle qui va nous fournir la liste de connections aériennes à inclure dans l'offre de la compagnie low cost. Pour ce faire, la méthode va tout d'abord se charger de créer un Graphe par le biais d'un nom de fichier indiqué en argument. Ensuite, elle va créer une $PriorityQueue$ qui contiendra toutes les arêtes du graphe classé en fonction de leurs coûts respectifs. De plus nous allons utiliser un tableau de $boolean$ pour savoir quel noeud a déjà été visité lors de l'application de l'algorithme.\\
 
 Dans un premier temps l'agorithme va ajouter à la $PriorityQueue$ toutes les arêtes du premier noeud du graphe. Ensuite nous allons récupérer la première arêtes de la $PriorityQueue$, c'est-à-dire celle avec le plus petit coûts, et vérifier si soit l'origine ou la destination de cette arrêtes n'est pas encore été visité, si ce n'est pas le cas on ajoute l'arrêtes à la liste de solution, on note que l'origine ou la destination de cette arêtes a été visité et on rajoute dans la $PriorityQueue$ toutes les arrêtes du noeud d'origine ou de destination de cette arêtes. Et ainsi de suite jusqu'à ce que la $PriorityQueue$ soit vide.
+
+\section*{Question 1 : Solution}
+
+\section*{Question 2 : Complexité}
+
+\section*{Question 3 : Adaptation}
+
+\begin{enumerate}
+\item On prend un nœud au hasard comme racine.
+\item On prend un autre nœud au hasard.
+\item On calcule un Dijkstra modifié entre ces deux nœuds et on sélectionne le meilleur chemin.
+\item On ajoute tous les nœuds sur ce chemin à l'ensemble des nœuds connectés.
+\item On prend un autre noeud au hasard, on fait Dijkstra pour calculer sa distance à tous les nœuds.
+\item On ajoute les nœuds et arête sur le chemin le plus court vers un nœud déjà relié au graphe des nœuds connectés.
+\end{enumerate}
+
+Tant que tous les nœuds ne sont pas reliés, on reprend à l'étape 5.\\
+
+N.B. : La solution exacte du problème semble très compliquée et en tous cas ne peut sans doute pas être trouvé avec une $greedy method$.
+
 \section*{Conclusion}
 
 
